@@ -31,6 +31,7 @@ public class GameController : MonoBehaviour
     private void Awake()
     {
         puzzles = Resources.LoadAll<Sprite>("Sprites/pngwing.com");
+        countGuesses = 0;
     }
 
     void Start()
@@ -111,6 +112,7 @@ public class GameController : MonoBehaviour
 
             countCorrectGuesses++;
 
+            countGuesses += 1;
             StartCoroutine(CheckIfThePuzzleMatch());
 
         }
@@ -168,6 +170,11 @@ public class GameController : MonoBehaviour
             list[i] = list[ramdomIndex];
             list[ramdomIndex] = temp;
         }
+    }
+
+    int GetCountGuesses()
+    {
+        return countGuesses;
     }
 
 }
