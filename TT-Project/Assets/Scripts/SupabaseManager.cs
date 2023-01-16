@@ -3,56 +3,49 @@ using UnityEngine;
 using UnityEngine.Networking;
 using System;
 
-// UnityWebRequest.Get example
-
-// Access a website and use UnityWebRequest.Get to download a page.
-// Also try to download a non-existing page. Display the error.
-public class Database
+public class SupabaseManager
 {
     private readonly string DATABASE_URL = "https://tuxwkiinqssipykgyyau.supabase.co/rest/v1/";
     private readonly string SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR1eHdraWlucXNzaXB5a2d5eWF1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzI0MTQ2MDMsImV4cCI6MTk4Nzk5MDYwM30.QUl9cKY1h-NRtPlLz2lQN0UOWUAWMSbAF6FnQF2Ga20";
-    public StudentList studentList { get; set; }
+    public string jsonData { get; set; }
 
-    public Database()
-    {
-
-    }
-
-    // Method section.
+    // --------------------Method section--------------------
 
     // Use to return top ten Student data.
     public IEnumerator GetTopTenStudentData()
     {
-        UnityWebRequest request = RequestURL_GET_topTenStudent(DATABASE_URL);
-        yield return API_Coroutine(request, SUPABASE_KEY);
-        Debug.Log("Test getTopTenStudentData in Database class");
-        //return myStudentList;
+        UnityWebRequest request = RequestURL_GET_topTenStudent();
+        yield return API_GET_Coroutine(request,"students");
     }
 
-    // Request section
+    // --------------------create Request section--------------------
 
     // Use to create web request for get all Student data.
-    private UnityWebRequest RequestURL_GET_AllStudenData(string ref_url)
+    private UnityWebRequest RequestURL_GET_AllStudenData()
     {
-        string api_url = ref_url + "Student?select=*";
+        string api_url = DATABASE_URL + "Student?select=*";
         UnityWebRequest request = UnityWebRequest.Get(api_url);
         return request;
     }
 
-    private UnityWebRequest RequestURL_GET_topTenStudent(string ref_url)
+    // Use to create web request for get top 10 Student data.
+    private UnityWebRequest RequestURL_GET_topTenStudent()
     {
-        string api_url = ref_url + "Student?limit=10&order=id.asc";
+        string api_url = DATABASE_URL + "Student?limit=10&order=id.asc";
         UnityWebRequest request = UnityWebRequest.Get(api_url);
         return request;
     }
+
+    // --------------------send API section--------------------
 
     // Do web request by follow request from input.
-    private IEnumerator API_Coroutine(UnityWebRequest request, string key)
+    // @params jsonHeader use for specify which type of json want to collect such as "students" by refer from class.
+    // @params request is HTTP request that want to send.
+    private IEnumerator API_GET_Coroutine(UnityWebRequest request, string jsonHeader)
     {
         // add important header to make request complete.
-        request.SetRequestHeader("apikey", key);
-        request.SetRequestHeader("Authorization", "Bearer " + key);
-        Debug.Log("Test \"API_coroutine\" function in Database class");
+        request.SetRequestHeader("apikey", SUPABASE_KEY);
+        request.SetRequestHeader("Authorization", "Bearer " + SUPABASE_KEY);
         yield return request.SendWebRequest();
 
         // if request is error for some reason.
@@ -65,9 +58,14 @@ public class Database
         // if request success
         else
         {
-            string jsonData = "{\"students\":" + request.downloadHandler.text + "}";
-            studentList = JsonUtility.FromJson<StudentList>(jsonData);
+            jsonData = "{\""+jsonHeader+"\":" + request.downloadHandler.text + "}";
+            //studentList = JsonUtility.FromJson<StudentList>(jsonData);
             yield break;
         }
     }
+
+    //private IEnumerator API_POST_Coroutine(UnityWebRequest request)
+    //{
+
+    //}
 }
