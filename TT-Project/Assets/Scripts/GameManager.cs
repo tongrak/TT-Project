@@ -20,18 +20,16 @@ public class GameManager : MonoBehaviour
 
     public List<Button> btns = new List<Button>();
 
-    private bool firstGuess, secondGuess;
+    private bool isChoose;  //  check is guessing
 
-    private int countGuesses;
-    private int countCorrectGuesses;
+    private int countGuesses;   //  guess already done
+    private int countCorrectGuesses;    
     private int gameGuesses;
 
-    private int firstGuessIndex, secondGuessIndex;
+    private int currentPuzzIdx, currentAnsIdx;  //  current guess and answer index
 
-    private string firstGuessPuzzle, secondGuessPuzzle;
+    private string currentPuzz, currentAns; //  current guess and answer name
 
-    /*  My variable */
-    public int currentPuzzIdx;
 
 
     /*  Method  */
@@ -48,18 +46,17 @@ public class GameManager : MonoBehaviour
         AddGamePuzzles();
         Shuffle(gamePuzzles);
 
-        ShowPuzzle(gamePuzzles);
-        ShowNextPuzzle(gamePuzzles);
+        StartCoroutine(RememPuzzleTime());
 
         gameGuesses = gamePuzzles.Count / 2;
     }
 
+    //  Create button
     void GetButton()
     {
-        //  Change bgImage
+
         //  Puzzle btn
         GameObject[] Puzzle_objects = GameObject.FindGameObjectsWithTag("PuzzleBtn");
-
 
         for (int i=0; i<Puzzle_objects.Length; i++)
         {
@@ -67,11 +64,7 @@ public class GameManager : MonoBehaviour
             btns[i].image.sprite = Puzzle_bgImage;  // Change that btn bgImage
             
         }
-
-        /*  wah */
         currentPuzzIdx = Puzzle_objects.Length - 1;
-        //firstGuessPuzzle = gamePuzzles[currentPuzzIdx].name;
-        //btns[currentPuzzIdx].image.sprite = gamePuzzles[currentPuzzIdx];
 
         //  Ans btn
         GameObject[] Answer_objects = GameObject.FindGameObjectsWithTag("AnswerBtn");
@@ -84,9 +77,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //  Add puzzle image to gamePuzzle list
     void AddGamePuzzles()
     {
-        //  Add puzzle image to gamePuzzle list
         int looper = btns.Count;    //  check button count
         int index = 0;
 
@@ -100,6 +93,8 @@ public class GameManager : MonoBehaviour
             index++;
         }
     }
+
+    //  Check button interaction
     void AddListeners()
     {
         foreach(Button btn in btns)
@@ -108,51 +103,19 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //  Check picked answer
     public void PickPuzzle()
     {
 
-        /*
-        //  Check first pick is equal to second pick
-        if (!firstGuess)
+        if (!isChoose)
         {
-            firstGuess = true;
-            firstGuessIndex = int.Parse(UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.name);
+            isChoose = true;
+            currentAnsIdx = int.Parse(UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.name);
 
-            firstGuessPuzzle = gamePuzzles[firstGuessIndex].name;
+            currentAns = gamePuzzles[currentAnsIdx].name;
+            btns[currentAnsIdx].image.sprite = gamePuzzles[currentAnsIdx];
 
-            btns[firstGuessIndex].image.sprite = gamePuzzles[firstGuessIndex];
-        }
-        else if (!secondGuess)
-        {
-            secondGuess = true;
-            secondGuessIndex = int.Parse(UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.name);
-
-            secondGuessPuzzle = gamePuzzles[secondGuessIndex].name;
-
-            btns[secondGuessIndex].image.sprite = gamePuzzles[secondGuessIndex];
-            
-            if(firstGuessPuzzle == secondGuessPuzzle)
-            {
-                print("Puzzle Match");
-            }
-            else
-            {
-                print("Puzzle don't Match");
-            }
-
-            StartCoroutine(checkThePuzzleMatch());
-        }
-        */
-        /*  Wah */
-        if (!secondGuess)
-        {
-            secondGuess = true;
-            secondGuessIndex = int.Parse(UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.name);
-
-            secondGuessPuzzle = gamePuzzles[secondGuessIndex].name;
-            btns[secondGuessIndex].image.sprite = gamePuzzles[secondGuessIndex];
-
-            if(firstGuessPuzzle == secondGuessPuzzle)
+            if(currentPuzz == currentAns)
             {
                 print("Puzzle Match");
             }else
@@ -168,65 +131,30 @@ public class GameManager : MonoBehaviour
     //  Check selected is match
     IEnumerator checkThePuzzleMatch()
     {
-        /*
+        
         yield return new WaitForSeconds(0.5f);
 
-        if (firstGuessPuzzle == secondGuessPuzzle)
+        if(currentPuzz == currentAns)
         {
-            //  if match set invissible
-            yield return new WaitForSeconds(0.5f);
-            btns[firstGuessIndex].interactable = false; //  set can not  interaction
-            btns[secondGuessIndex].interactable = false;
-
-            btns[firstGuessIndex].image.color = new Color(0, 0, 0, 0);
-            btns[secondGuessIndex].image.color = new Color(0, 0, 0, 0);
-
-            CheckTheGameFinished();
-
-        }else
-        {
-            //  if not match return bgImage
-            btns[firstGuessIndex].image.sprite = Answer_bgImage;
-            btns[secondGuessIndex].image.sprite = Answer_bgImage;
-        }
-        yield return new WaitForSeconds(0.5f);
-
-        firstGuess = secondGuess = false;
-
-        void CheckTheGameFinished() {
-            countCorrectGuesses++;
-
-            if(countCorrectGuesses == gameGuesses)
-            {
-                print("game finished");
-                print("it took you " + countGuesses + " ");
-            }
-        }
-        */
-        /*  Wah */
-        yield return new WaitForSeconds(0.5f);
-
-        if(firstGuessPuzzle == secondGuessPuzzle)
-        {
-            yield return new WaitForSeconds(0.5f);
+            //yield return new WaitForSeconds(0.5f);
             btns[currentPuzzIdx].interactable = false;
-            btns[secondGuessIndex].interactable = false;
+            //btns[currentAnsIdx].interactable = false;
 
             btns[currentPuzzIdx].image.color = new Color(0, 0, 0, 0);
-            btns[secondGuessIndex].image.color = new Color(0, 0, 0, 0);
+            //btns[currentAnsIdx].image.color = new Color(0, 0, 0, 0);
 
             CheckTheGameFinished();
+            currentPuzzIdx--;
             if (currentPuzzIdx > -1) { 
-                currentPuzzIdx--;
-                ShowNextPuzzle(gamePuzzles);
+                ShowNextPuzzle();
             }
         }else
         {
             //
         }
-        yield return new WaitForSeconds(0.5f);
+        //yield return new WaitForSeconds(0.5f);
 
-        secondGuess = false;
+        isChoose = false;
 
         void CheckTheGameFinished()
         {
@@ -239,6 +167,27 @@ public class GameManager : MonoBehaviour
             }
         }
 
+    }
+
+    //  Show puzzle for remember
+    IEnumerator RememPuzzleTime()
+    {
+        yield return new WaitForSeconds(0.5f);
+        for (int i=0; i<btns.Count/2; i++)
+        {
+            yield return new WaitForSeconds(1f);
+            btns[i].image.sprite = gamePuzzles[i];
+
+        }
+
+        yield return new WaitForSeconds(1f);
+        for (int i=0; i<btns.Count/2; i++)
+        {
+            btns[i].image.sprite = Puzzle_bgImage;
+        }
+        yield return new WaitForSeconds(0.5f);
+        currentPuzz = gamePuzzles[currentPuzzIdx].name;
+        ShowAnsChoice();
     }
     
     //  Shuffel puzzle
@@ -262,26 +211,20 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    /*  My method   */
-    void ShowPuzzle(List<Sprite> list)
+    //  Show aswer choice
+    void ShowAnsChoice()
     {
-        //firstGuessPuzzle = gamePuzzles[currentPuzzIdx].name;
-        //btns[currentPuzzIdx].image.sprite = gamePuzzles[currentPuzzIdx];
-        /*
-        for (int i = 0; i<list.Count/2; i++)
-        {
-            btns[i].image.sprite = gamePuzzles[i];
-        }
-        */
-        for (int i = list.Count / 2; i < list.Count; i++)
+        for (int i = btns.Count / 2; i < btns.Count; i++)
         {
             btns[i].image.sprite = gamePuzzles[i];
         }
         
     }
-    void ShowNextPuzzle(List<Sprite> list)
+
+    //  show next guess
+    void ShowNextPuzzle()
     {
         btns[currentPuzzIdx].image.sprite = gamePuzzles[currentPuzzIdx];
-        firstGuessPuzzle = gamePuzzles[currentPuzzIdx].name;
+        currentPuzz = gamePuzzles[currentPuzzIdx].name;
     }
 }
