@@ -12,6 +12,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]    // Ans image bg
     private Sprite Answer_bgImage;
 
+    [SerializeField]
+    private Sprite CurrentGuess_bgImage;
+
     /*  Global variable */
     public Sprite[] puzzles;    //  puzzle image list
 
@@ -185,6 +188,9 @@ public class GameManager : MonoBehaviour
         {
             btns[i].image.sprite = Puzzle_bgImage;
         }
+        btns[btns.Count / 2 - 1].image.sprite = CurrentGuess_bgImage;
+
+        //  show choice 
         yield return new WaitForSeconds(0.5f);
         currentPuzz = gamePuzzles[currentPuzzIdx].name;
         ShowAnsChoice();
@@ -224,7 +230,7 @@ public class GameManager : MonoBehaviour
     //  show next guess
     void ShowNextPuzzle()
     {
-        btns[currentPuzzIdx].image.sprite = gamePuzzles[currentPuzzIdx];
+        btns[currentPuzzIdx].image.sprite = CurrentGuess_bgImage;
         currentPuzz = gamePuzzles[currentPuzzIdx].name;
     }
 }
