@@ -11,27 +11,19 @@ public class SupabaseManager
 
     // --------------------Method section--------------------
 
-    // Use to return top ten Student data.
-    public IEnumerator GetTopTenStudentData()
+    // Use to get top 10 Player data then save data in @param jsonData.
+    public IEnumerator GetTopTenPlayerData()
     {
-        UnityWebRequest request = RequestURL_GET_topTenStudent();
-        yield return API_GET_Coroutine(request,"students");
+        UnityWebRequest request = RequestURL_GET_topTenPlayer();
+        yield return API_GET_Coroutine(request, "players");
     }
 
     // --------------------create Request section--------------------
 
-    // Use to create web request for get all Student data.
-    private UnityWebRequest RequestURL_GET_AllStudenData()
+    // Use to create web request for get top 10 Player data.
+    private UnityWebRequest RequestURL_GET_topTenPlayer()
     {
-        string api_url = DATABASE_URL + "Student?select=*";
-        UnityWebRequest request = UnityWebRequest.Get(api_url);
-        return request;
-    }
-
-    // Use to create web request for get top 10 Student data.
-    private UnityWebRequest RequestURL_GET_topTenStudent()
-    {
-        string api_url = DATABASE_URL + "Student?limit=10&order=id.asc";
+        string api_url = DATABASE_URL + "Player_Score?limit=10^&order=Best_score.desc";
         UnityWebRequest request = UnityWebRequest.Get(api_url);
         return request;
     }
@@ -39,8 +31,8 @@ public class SupabaseManager
     // --------------------send API section--------------------
 
     // Do web request by follow request from input.
-    // @params jsonHeader use for specify which type of json want to collect such as "students" by refer from class.
     // @params request is HTTP request that want to send.
+    // @params jsonHeader use for specify which type of json want to collect such as "students" by refer from class.
     private IEnumerator API_GET_Coroutine(UnityWebRequest request, string jsonHeader)
     {
         // add important header to make request complete.

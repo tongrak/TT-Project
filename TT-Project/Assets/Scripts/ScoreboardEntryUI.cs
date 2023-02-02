@@ -9,10 +9,10 @@ public class ScoreboardEntryUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI entryNameText = null;
     [SerializeField] private TextMeshProUGUI entryScoreText = null;
 
-    public void Initialise(int rank,Student player)
+    public void Initialise(int rank,Player_Score player)
     {
         entryRankText.text = rank.ToString();
-        entryNameText.text = player.fname;
-        entryScoreText.text = player.id.ToString();
+        entryNameText.text = player.Player_name;
+        entryScoreText.text = player.Best_score.ToString();
     }
 }

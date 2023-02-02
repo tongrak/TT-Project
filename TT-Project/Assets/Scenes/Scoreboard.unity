@@ -344,6 +344,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 233060166, guid: 845cf3a288a696043b7845aba3391256, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -44.872437
+      objectReference: {fileID: 0}
     - target: {fileID: 346764107, guid: 845cf3a288a696043b7845aba3391256, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -446,7 +450,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5052182318485105271, guid: 845cf3a288a696043b7845aba3391256, type: 3}
       propertyPath: maxScoreboardEntries
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 845cf3a288a696043b7845aba3391256, type: 3}
