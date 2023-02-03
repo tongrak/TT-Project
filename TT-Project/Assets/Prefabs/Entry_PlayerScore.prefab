@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 5004889379201792188}
   - component: {fileID: 499122728074015755}
   m_Layer: 5
-  m_Name: Entry_Highscore
+  m_Name: Entry_PlayerScore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

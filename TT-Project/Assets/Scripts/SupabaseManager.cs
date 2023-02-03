@@ -7,9 +7,15 @@ public class SupabaseManager
 {
     private readonly string DATABASE_URL = "https://tuxwkiinqssipykgyyau.supabase.co/rest/v1/";
     private readonly string SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR1eHdraWlucXNzaXB5a2d5eWF1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzI0MTQ2MDMsImV4cCI6MTk4Nzk5MDYwM30.QUl9cKY1h-NRtPlLz2lQN0UOWUAWMSbAF6FnQF2Ga20";
+    private static SupabaseManager instance = new SupabaseManager();
     public string jsonData { get; set; }
 
     // --------------------Method section--------------------
+
+    public static SupabaseManager getInstance()
+    {
+        return instance;
+    }
 
     // Use to get top 10 Player data then save data in @param jsonData.
     public IEnumerator GetTopTenPlayerData()

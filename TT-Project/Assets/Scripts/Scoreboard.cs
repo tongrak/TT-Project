@@ -12,7 +12,7 @@ public class Scoreboard : MonoBehaviour
 
     private void Start()
     {
-        DBConnector = new SupabaseManager();
+        DBConnector = SupabaseManager.getInstance();
         GetTopTenStudent();
     }
 
