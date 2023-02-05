@@ -31,6 +31,13 @@ public class SupabaseManager
         yield return API_GET_Coroutine(request, "players");
     }
 
+    // ใช้สำหรับ register new player
+    public IEnumerator createNewPlayer(string username)
+    {
+        UnityWebRequest request = RequestURL_Post_currentPlayer(username);
+        yield return API_POST_Coroutine(request, "players");
+    }
+
     // --------------------create Request section--------------------
 
     // Use to create web request for get top 10 Player data.
@@ -46,6 +53,17 @@ public class SupabaseManager
     {
         string api_url = DATABASE_URL + "Player_Score?Player_name=eq."+username;
         UnityWebRequest request = UnityWebRequest.Get(api_url);
+        return request;
+    }
+
+    // สร้าง request สำหรับเพิ่ม player ลงใน database
+    private UnityWebRequest RequestURL_Post_currentPlayer(string username)
+    {
+        WWWForm form = new WWWForm();
+        form.AddField("Player_name", username);
+
+        string api_url = DATABASE_URL + "Player_Score";
+        UnityWebRequest request = UnityWebRequest.Post(api_url, form);
         return request;
     }
 
@@ -82,6 +100,8 @@ public class SupabaseManager
         // add important header to make request complete.
         request.SetRequestHeader("apikey", SUPABASE_KEY);
         request.SetRequestHeader("Authorization", "Bearer " + SUPABASE_KEY);
+        request.SetRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        request.SetRequestHeader("Prefer", "return=minimal");
         yield return request.SendWebRequest();
 
         // if request is error for some reason.

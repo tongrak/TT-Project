@@ -35,5 +35,21 @@ public class Login : MonoBehaviour
 
         // นำข้อมูลใน jsonData มาแปลงเป็น class ของ C# โดยที่ตัวแปรใน class นั้นต้องมีชื่อที่ตรงกับ database แบบเป๊ะ ๆ
         playerData = JsonUtility.FromJson<PlayerList>(dbConnector.jsonData);
+
+        // if username isn't in database
+        if (playerData.players.Length == 0)
+        {
+            print("Not login yet");
+            // นำ username ที่ได้มาไปใส่ใน database
+            yield return dbConnector.createNewPlayer(username);
+            Debug.Log(dbConnector.jsonData);
+
+            // นำข้อมูลของ username ใหม่ใน database มาเก็บไว้ใน unity
+        }
+        // if username is in database
+        else
+        {
+            print("Welcome back");
+        }
     }
 }
