@@ -348,6 +348,18 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 2065855576}
+    - target: {fileID: 1495513089155739522, guid: 845cf3a288a696043b7845aba3391256, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1495513089517557552, guid: 845cf3a288a696043b7845aba3391256, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1495513089743297719, guid: 845cf3a288a696043b7845aba3391256, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4467210503907875939, guid: 845cf3a288a696043b7845aba3391256, type: 3}
       propertyPath: m_Name
       value: System_Scoreboard
