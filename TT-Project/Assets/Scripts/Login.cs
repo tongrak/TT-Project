@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Login : MonoBehaviour
 {
@@ -28,28 +28,34 @@ public class Login : MonoBehaviour
         StartCoroutine(GetPlayer_Coroutine(username));
     }
 
+    private void changeScene()
+    {
+        SceneManager.LoadScene("Scoreboard");
+    }
+
     IEnumerator GetPlayer_Coroutine(string username)
     {
         yield return dbConnector.GetPlayerData(username);
-        Debug.Log(dbConnector.jsonData);
 
-        // นำข้อมูลใน jsonData มาแปลงเป็น class ของ C# โดยที่ตัวแปรใน class นั้นต้องมีชื่อที่ตรงกับ database แบบเป๊ะ ๆ
+        // นำข้อมูลใน jsonData มาแปลงเป็น class ของ C# โดยที่ตัวแปรใน class นั้นต้องมีชื่อที่ตรงกับ supabase แบบเป๊ะ ๆ
         playerData = JsonUtility.FromJson<PlayerList>(dbConnector.jsonData);
 
         // if username isn't in database
         if (playerData.players.Length == 0)
         {
-            print("Not login yet");
-            // นำ username ที่ได้มาไปใส่ใน database
+            print("Create new player data");
+            // นำ username ที่ได้มาไปใส่ใน supabase
             yield return dbConnector.createNewPlayer(username);
-            Debug.Log(dbConnector.jsonData);
 
-            // นำข้อมูลของ username ใหม่ใน database มาเก็บไว้ใน unity
+            // นำข้อมูลของ username ใหม่ใน supabase มาเก็บไว้ใน unity
+            yield return dbConnector.GetPlayerData(username);
+            playerData = JsonUtility.FromJson<PlayerList>(dbConnector.jsonData);
+
+
         }
-        // if username is in database
-        else
-        {
-            print("Welcome back");
-        }
+        Debug.Log(dbConnector.jsonData);
+
+        // change scene to scoreboard
+        changeScene();
     }
 }
