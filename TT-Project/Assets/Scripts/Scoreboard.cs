@@ -13,7 +13,7 @@ public class Scoreboard : MonoBehaviour
     private void Start()
     {
         DBConnector = SupabaseManager.getInstance();
-        GetTopTenStudent();
+        GetTopTenPlayer();
     }
 
     // Use to update scoreboard UI
@@ -35,12 +35,6 @@ public class Scoreboard : MonoBehaviour
                 GetComponent<ScoreboardEntryUI>().Initialise(rank, highscore);
             rank++;
         }
-    }
-
-    private void GetTopTenStudent()
-    {
-        StartCoroutine(GetTopTenPlayer_Coroutine());
-        //return JsonUtility.FromJson<StudentList>(DBConnector.jsonData);
     }
 
     private void GetTopTenPlayer()
