@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
 
     public List<Button> btns = new List<Button>();
 
+    public GameOverScreen GameOverScreen;   //  get game over screen
+
     private bool isChoose;  //  check is guessing
 
     private int countGuesses;   //  guess already done
@@ -168,6 +170,7 @@ public class GameManager : MonoBehaviour
             {
                 print("game finished");
                 print("it took you " + countGuesses + " ");
+                GameOver(countGuesses); // call game over
             }
         }
 
@@ -242,5 +245,11 @@ public class GameManager : MonoBehaviour
     {
         btns[currentPuzzIdx].image.sprite = CurrentGuess_bgImage;
         currentPuzz = gamePuzzles[currentPuzzIdx].name;
+    }
+
+    //  show game over
+    void GameOver(int score)
+    {
+        GameOverScreen.Setup(score);
     }
 }
