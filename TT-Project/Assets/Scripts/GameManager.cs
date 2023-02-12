@@ -65,6 +65,7 @@ public class GameManager : MonoBehaviour
         {
             btns.Add(Puzzle_objects[i].GetComponent<Button>()); //  Add btn to btnList
             btns[i].image.sprite = Puzzle_bgImage;  // Change that btn bgImage
+            btns[i].enabled = false;    // Set btn can't interactable   // fixed bug interact
             
         }
         currentPuzzIdx = Puzzle_objects.Length - 1;
@@ -175,6 +176,7 @@ public class GameManager : MonoBehaviour
     //  Show puzzle for remember
     IEnumerator RememPuzzleTime()
     {
+        ShowAnsChoice(true);
         yield return new WaitForSeconds(0.5f);
         for (int i=0; i<btns.Count/2; i++)
         {
@@ -193,7 +195,7 @@ public class GameManager : MonoBehaviour
         //  show choice 
         yield return new WaitForSeconds(0.5f);
         currentPuzz = gamePuzzles[currentPuzzIdx].name;
-        ShowAnsChoice();
+        ShowAnsChoice(false);
     }
     
     //  Shuffel puzzle
@@ -218,11 +220,19 @@ public class GameManager : MonoBehaviour
     }
 
     //  Show aswer choice
-    void ShowAnsChoice()
+    void ShowAnsChoice(bool isShowTime)
     {
         for (int i = btns.Count / 2; i < btns.Count; i++)
         {
-            btns[i].image.sprite = gamePuzzles[i];
+            if (isShowTime) //  set can't interact btn in show puzzle time  // fixed btn bug 
+            {
+                btns[i].enabled = false;
+            }
+            else
+            {
+                btns[i].image.sprite = gamePuzzles[i];
+                btns[i].enabled = true;
+            }
         }
         
     }
