@@ -2,14 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameController : MonoBehaviour
 {
 
+    //Image
     [SerializeField]
     private Sprite bgImage;
 
+    //Score
+    [SerializeField]
+    private FloatSO scoreSO;
+
+    //Time
+    [SerializeField]
+    private FloatSO TimeSO;
+
+    [SerializeField]
+    private TMP_Text scoreText;
+
+    //Puzzles
     public Sprite[] puzzles;
 
     public List<Sprite> gamePuzzle = new List<Sprite>();
@@ -36,6 +50,7 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
+        scoreText.text = scoreSO.Value + "";
         GetButtons();
         AddListeners();
         AddGamePuzzle();
@@ -110,8 +125,6 @@ public class GameController : MonoBehaviour
 
             btns[secondGuessIndex].image.sprite = gamePuzzle[secondGuessIndex];
 
-            countCorrectGuesses++;
-
             countGuesses += 1;
             StartCoroutine(CheckIfThePuzzleMatch());
 
@@ -120,17 +133,24 @@ public class GameController : MonoBehaviour
 
     IEnumerator CheckIfThePuzzleMatch()
     {
-        yield return new WaitForSeconds(1f) ;
+        yield return new WaitForSeconds(.5f) ;
 
         if (firstGuessPuzzle == secondGuessPuzzle)
         {
             yield return new WaitForSeconds(.5f);
+
+            //Main Score++
+            scoreSO.Value += 10;
+            scoreText.text = scoreSO.Value + "";
 
             btns[firstGuessIndex].interactable = false;
             btns[secondGuessIndex].interactable = false;
 
             btns[firstGuessIndex].image.color = new Color(0, 0, 0, 0);
             btns[secondGuessIndex].image.color = new Color(0, 0, 0, 0);
+
+            Debug.Log(countCorrectGuesses);
+            Debug.Log(gameGuesses);
 
             CheckIfTheGameIsFinished();
 
@@ -139,7 +159,13 @@ public class GameController : MonoBehaviour
         {
             yield return new WaitForSeconds(.5f);
 
-       
+            //Main Score
+            if(scoreSO.Value > 0)
+            {
+                scoreSO.Value -= 1;
+                scoreText.text = scoreSO.Value + "";
+            }
+            
             btns[firstGuessIndex].image.sprite = bgImage;
             btns[secondGuessIndex].image.sprite = bgImage;
         }
@@ -148,6 +174,7 @@ public class GameController : MonoBehaviour
 
         firstGuess = secondGuess = false;
 
+        Debug.Log("Score = " + scoreSO.Value);
     }
 
     void CheckIfTheGameIsFinished()
@@ -157,7 +184,8 @@ public class GameController : MonoBehaviour
         if(countCorrectGuesses == gameGuesses)
         {
             Debug.Log("Game Finished");
-            Debug.Log("It took you " + countCorrectGuesses + " may guess(es) to finish the game");
+            Debug.Log("It took you " + countGuesses + " may guess(es) to finish the game");
+            SceneManager.LoadScene(Random.Range(2,3));
         }
     }
 
@@ -172,9 +200,12 @@ public class GameController : MonoBehaviour
         }
     }
 
-    int GetCountGuesses()
+    private void Update()
     {
-        return countGuesses;
+        if(TimeSO.Value <= 0)
+        {
+            SceneManager.LoadScene(4);
+        }
     }
 
 }
