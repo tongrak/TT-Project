@@ -9,6 +9,8 @@ public class ContdownTimer : MonoBehaviour
     float startingTime = 15f;
     float cutsceneTime = 6f;
 
+    private bool timeEnded = false;
+
     [SerializeField] 
     Text countdownText;
 
@@ -35,11 +37,17 @@ public class ContdownTimer : MonoBehaviour
             if (currentTime <= 0)
             {
                 currentTime = 0;
+                timeEnded = true;
             }
         }else
         {
             cutsceneTime -= Time.deltaTime;
         }
 
+    }
+
+    public bool TimeEnded()
+    {
+        return timeEnded;
     }
 }

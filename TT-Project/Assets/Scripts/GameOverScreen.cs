@@ -7,6 +7,10 @@ using UnityEngine.SceneManagement;
 public class GameOverScreen : MonoBehaviour
 {
     public Text pointsText;
+
+    private string[] sceneList = { "memory game", "ReverseRetention_1" };
+    private int randomIndex;
+
     public void Setup(int score)
     {
         gameObject.SetActive(true);
@@ -14,7 +18,8 @@ public class GameOverScreen : MonoBehaviour
     }
 
     public void NextPuzzle() {
-        SceneManager.LoadScene("memory game");
+        randomIndex = Random.Range(0, sceneList.Length);
+        SceneManager.LoadScene(sceneList[randomIndex]);
     }
 
     public void MainMenu() {

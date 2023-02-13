@@ -59,7 +59,6 @@ public class GameManager : MonoBehaviour
     //  Create button
     void GetButton()
     {
-
         //  Puzzle btn
         GameObject[] Puzzle_objects = GameObject.FindGameObjectsWithTag("PuzzleBtn");
 
