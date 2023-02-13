@@ -185,7 +185,7 @@ public class GameController : MonoBehaviour
         {
             Debug.Log("Game Finished");
             Debug.Log("It took you " + countGuesses + " may guess(es) to finish the game");
-            int index = Random.Range(4, 6);
+            int index = Random.Range(5, 7);
             SceneManager.LoadScene(index);
         }
     }
