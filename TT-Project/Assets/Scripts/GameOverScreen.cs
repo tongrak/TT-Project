@@ -11,7 +11,7 @@ public class GameOverScreen : MonoBehaviour
     private string[] sceneList = { "memory game", "ReverseRetention_1" };
     private int randomIndex;
 
-    public void Setup(int score)
+    public void Setup()
     {
         //gameObject.SetActive(true);
         //pointsText.text = score.ToString() + " POINTS"; //show point 

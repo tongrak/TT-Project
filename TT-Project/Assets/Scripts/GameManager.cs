@@ -142,6 +142,7 @@ public class GameManager : MonoBehaviour
             }else
             {
                 print("Puzzle don't Match");
+                GameOverScreen.Setup();
             }
 
             StartCoroutine(checkThePuzzleMatch());
@@ -187,7 +188,7 @@ public class GameManager : MonoBehaviour
                 showScore.text = scoreSO.Value + "";
                 print("game finished");
                 print("it took you " + countGuesses + " ");
-                GameOver(countGuesses); // call game over
+                GameOver(); // call game over
             }
         }
 
@@ -265,9 +266,9 @@ public class GameManager : MonoBehaviour
     }
 
     //  show game over
-    void GameOver(int score)
+    void GameOver()
     {
-        GameOverScreen.Setup(score);
+        GameOverScreen.Setup();
     }
 
     private void Update()
