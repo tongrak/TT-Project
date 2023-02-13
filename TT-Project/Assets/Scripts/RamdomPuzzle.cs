@@ -17,13 +17,13 @@ public class RamdomPuzzle : MonoBehaviour
         Debug.Log(glg.childAlignment);
         
         glg.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
-        allCards = Random.Range(4, 21);
+        allCards = Random.Range(4, 17);
         
 
 
         while (allCards % 2 != 0)
         {
-            allCards = Random.Range(4, 21);
+            allCards = Random.Range(4, 17);
             
         }
 
