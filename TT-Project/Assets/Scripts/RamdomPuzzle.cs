@@ -64,7 +64,7 @@ public class RamdomPuzzle : MonoBehaviour
         }else if (allCards == 20)
         {
             glg.cellSize = new Vector2(150, 225);
-            glg.spacing = new Vector2(10, 5);
+            glg.spacing = new Vector2(10, 2);
             Debug.Log(glg.cellSize);
             Debug.Log(glg.spacing);
         }
