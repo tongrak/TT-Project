@@ -1223,7 +1223,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 02:59
+  m_Text: 10
 --- !u!222 &809698011
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1679,6 +1679,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   countdownText: {fileID: 809698010}
+  timeCount: {fileID: 11400000, guid: 36500eefdd050ea4a8e66b731318299a, type: 2}
 --- !u!1 &1125264141
 GameObject:
   m_ObjectHideFlags: 0
@@ -2040,7 +2041,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 99999
+  m_Text: 0
 --- !u!222 &1322353353
 CanvasRenderer:
   m_ObjectHideFlags: 0
