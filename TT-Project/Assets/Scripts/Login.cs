@@ -29,9 +29,9 @@ public class Login : MonoBehaviour
     }
 
     // use to change current scene to scoreboard scene
-    private void changeScene()
+    private void changeScene(string scene)
     {
-        SceneManager.LoadScene("Scoreboard");
+        SceneManager.LoadScene(scene);
     }
 
     IEnumerator GetPlayer_Coroutine(string username)
@@ -67,6 +67,7 @@ public class Login : MonoBehaviour
         Debug.Log("Player name: " + PlayerData.username + "\n" + "Best score: " + PlayerData.bestScore.ToString() + "\n" + "Current score: " + PlayerData.currentScore.ToString());
 
         // change scene to scoreboard
-        changeScene();
+        //changeScene("Scoreboard");
+        ChangeSceneManager.changeScene("Scoreboard");
     }
 }
