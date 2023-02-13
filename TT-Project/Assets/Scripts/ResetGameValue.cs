@@ -14,7 +14,7 @@ public class ResetGameValue : MonoBehaviour
     public void reset()
     {
         scroeSO.Value = 0;
-        TimeSO.Value = 10f;
+        TimeSO.Value = 180f;
     }
 
 }

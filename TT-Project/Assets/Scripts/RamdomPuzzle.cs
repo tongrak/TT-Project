@@ -18,6 +18,7 @@ public class RamdomPuzzle : MonoBehaviour
         
         glg.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
         allCards = Random.Range(4, 21);
+        
 
 
         while (allCards % 2 != 0)
@@ -25,13 +26,15 @@ public class RamdomPuzzle : MonoBehaviour
             allCards = Random.Range(4, 21);
             
         }
-        
+
+
         if (allCards == 18)
         {
             glg.constraintCount = allCards / 3;
             
         }else if(allCards == 20)
         {
+            glg.childAlignment = TextAnchor.LowerCenter;
             glg.constraintCount = allCards / 4;
         }
         else
@@ -54,7 +57,7 @@ public class RamdomPuzzle : MonoBehaviour
         }
         else if(allCards >= 18 && allCards < 20)
         {
-            glg.cellSize = new Vector2(150, 220);
+            glg.cellSize = new Vector2(180, 250);
             glg.spacing = new Vector2(7, 7);
             Debug.Log(glg.cellSize);
             Debug.Log(glg.spacing);
