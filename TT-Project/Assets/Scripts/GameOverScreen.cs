@@ -13,8 +13,9 @@ public class GameOverScreen : MonoBehaviour
 
     public void Setup(int score)
     {
-        gameObject.SetActive(true);
-        pointsText.text = score.ToString() + " POINTS"; //show point 
+        //gameObject.SetActive(true);
+        //pointsText.text = score.ToString() + " POINTS"; //show point 
+        NextPuzzle();
     }
 
     public void NextPuzzle() {
