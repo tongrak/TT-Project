@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -14,6 +16,18 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private Sprite CurrentGuess_bgImage;
+
+    //Score
+    [SerializeField]
+    private FloatSO scoreSO;
+
+    //Show Score
+    [SerializeField]
+    private TMP_Text showScore;
+
+    //Time
+    [SerializeField]
+    private FloatSO TimeSO;
 
     /*  Global variable */
     public Sprite[] puzzles;    //  puzzle image list
@@ -51,8 +65,10 @@ public class GameManager : MonoBehaviour
         AddGamePuzzles();
         Shuffle(gamePuzzles);
 
-        StartCoroutine(RememPuzzleTime());
 
+        showScore.text = scoreSO.Value + "";
+        StartCoroutine(RememPuzzleTime());
+     
         gameGuesses = gamePuzzles.Count / 2;
     }
 
@@ -167,6 +183,8 @@ public class GameManager : MonoBehaviour
 
             if (countCorrectGuesses == gameGuesses)
             {
+                scoreSO.Value += 10;
+                showScore.text = scoreSO.Value + "";
                 print("game finished");
                 print("it took you " + countGuesses + " ");
                 GameOver(countGuesses); // call game over
@@ -250,5 +268,13 @@ public class GameManager : MonoBehaviour
     void GameOver(int score)
     {
         GameOverScreen.Setup(score);
+    }
+
+    private void Update()
+    {
+        if(TimeSO.Value <= 0)
+        {
+            SceneManager.LoadScene(3);
+        }
     }
 }

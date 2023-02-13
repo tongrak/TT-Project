@@ -160,11 +160,11 @@ public class GameController : MonoBehaviour
             yield return new WaitForSeconds(.5f);
 
             //Main Score
-            if(scoreSO.Value > 0)
+            /*if(scoreSO.Value > 0)
             {
                 scoreSO.Value -= 2;
                 scoreText.text = scoreSO.Value + "";
-            }
+            }*/
             
             btns[firstGuessIndex].image.sprite = bgImage;
             btns[secondGuessIndex].image.sprite = bgImage;
