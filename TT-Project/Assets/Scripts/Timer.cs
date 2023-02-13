@@ -1,31 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
 
+
     [SerializeField]
     Text countdownText;
 
-    float currentTime = 0f;
-    float startingTime = 180f;
-
-    void Start()
-    {
-        currentTime = startingTime;
-    }
+    [SerializeField]
+    private FloatSO timeCount;
 
     
     void Update()
     {
-        currentTime -= 1 * Time.deltaTime;
-        countdownText.text = currentTime.ToString("00");
+        timeCount.Value -= 1 * Time.deltaTime;
+        countdownText.text = timeCount.Value.ToString("00");
 
-        if(currentTime <= 0)
+        if(timeCount.Value <= 0)
         {
-            currentTime = 0;
+            timeCount.Value = 0;
         }
     }
 }
