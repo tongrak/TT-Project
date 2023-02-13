@@ -911,7 +911,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1027421627}
+      - m_Target: {fileID: 2070119117}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: HowToPlay
         m_Mode: 1
@@ -985,6 +985,7 @@ GameObject:
   - component: {fileID: 1054409970}
   - component: {fileID: 1054409969}
   - component: {fileID: 1054409968}
+  - component: {fileID: 1054409971}
   m_Layer: 5
   m_Name: leaderboardButton
   m_TagString: Untagged
@@ -1056,7 +1057,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1054409969}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2070119117}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: Leaderboard
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1054409969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1095,6 +1108,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1054409966}
   m_CullTransparentMesh: 1
+--- !u!114 &1054409971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1054409966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7746dee3bb8ece498f11abaae4d430b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1174349022
 GameObject:
   m_ObjectHideFlags: 0
@@ -1441,6 +1466,7 @@ GameObject:
   - component: {fileID: 2070119115}
   - component: {fileID: 2070119114}
   - component: {fileID: 2070119116}
+  - component: {fileID: 2070119117}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1489,6 +1515,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scroeSO: {fileID: 11400000, guid: 1150a4bdf7e26f8428f99a72fa87ba4e, type: 2}
   TimeSO: {fileID: 11400000, guid: 36500eefdd050ea4a8e66b731318299a, type: 2}
+--- !u!114 &2070119117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2070119113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7746dee3bb8ece498f11abaae4d430b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2127137974
 GameObject:
   m_ObjectHideFlags: 0

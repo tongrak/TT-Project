@@ -162,7 +162,7 @@ public class GameController : MonoBehaviour
             //Main Score
             if(scoreSO.Value > 0)
             {
-                scoreSO.Value -= 1;
+                scoreSO.Value -= 2;
                 scoreText.text = scoreSO.Value + "";
             }
             
@@ -185,7 +185,7 @@ public class GameController : MonoBehaviour
         {
             Debug.Log("Game Finished");
             Debug.Log("It took you " + countGuesses + " may guess(es) to finish the game");
-            int index = Random.Range(2, 4);
+            int index = Random.Range(4, 6);
             SceneManager.LoadScene(index);
         }
     }
@@ -205,7 +205,7 @@ public class GameController : MonoBehaviour
     {
         if(TimeSO.Value <= 0)
         {
-            SceneManager.LoadScene(4);
+            SceneManager.LoadScene(3);
         }
     }
 
