@@ -1,0 +1,2 @@
+number of blocks
+pattern of puzzle

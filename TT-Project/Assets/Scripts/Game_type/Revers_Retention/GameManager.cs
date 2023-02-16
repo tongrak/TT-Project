@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         //  Get asset image from Resources
-        puzzles = Resources.LoadAll<Sprite>("Animal Basic Asset Pack/Free Sprites 1x");
+        puzzles = Resources.LoadAll<Sprite>("Sprites_Reverse_Retention/Animal Basic Asset Pack/Free Sprites 1x");
     }
     // Start is called before the first frame update
     void Start()
