@@ -44,7 +44,7 @@ public class GameController : MonoBehaviour
 
     private void Awake()
     {
-        puzzles = Resources.LoadAll<Sprite>("Sprites/pngwing.com");
+        puzzles = Resources.LoadAll<Sprite>("Sprites_Card_Pairing/pngwing.com");
         countGuesses = 0;
     }
 
