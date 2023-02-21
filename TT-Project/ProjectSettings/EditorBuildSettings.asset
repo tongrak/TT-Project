@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ReverseRetention_1.unity
     guid: 091481860539bc943ba484c09143cc44
+  - enabled: 1
+    path: Assets/Scenes/Selection.unity
+    guid: db51fd4b014c85148a0f99d992c3360c
   m_configObjects: {}
