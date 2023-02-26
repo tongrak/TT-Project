@@ -159,11 +159,12 @@ public class GameManager : MonoBehaviour
         if(currentPuzz == currentAns)
         {
             //yield return new WaitForSeconds(0.5f);
-            btns[currentPuzzIdx].interactable = false;
+            //btns[currentPuzzIdx].interactable = false;    //fix show correct ans
             //btns[currentAnsIdx].interactable = false;
 
-            btns[currentPuzzIdx].image.color = new Color(0, 0, 0, 0);
+            //btns[currentPuzzIdx].image.color = new Color(0, 0, 0, 0); //fix show correct ans
             //btns[currentAnsIdx].image.color = new Color(0, 0, 0, 0);
+            btns[currentPuzzIdx].image.sprite = gamePuzzles[currentPuzzIdx];
 
             CheckTheGameFinished();
             currentPuzzIdx--;
