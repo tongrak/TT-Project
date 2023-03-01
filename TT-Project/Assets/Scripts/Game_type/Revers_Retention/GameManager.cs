@@ -49,6 +49,9 @@ public class GameManager : MonoBehaviour
 
     private string currentPuzz, currentAns; //  current guess and answer name
 
+    private bool isRememTime = false;
+    private float rememTimeStamp;
+
 
 
     /*  Method  */
@@ -198,6 +201,9 @@ public class GameManager : MonoBehaviour
     //  Show puzzle for remember
     IEnumerator RememPuzzleTime()
     {
+        rememTimeStamp = TimeSO.Value;
+        isRememTime = true;
+
         ShowAnsChoice(true);
         yield return new WaitForSeconds(0.5f);
         for (int i=0; i<btns.Count/2; i++)
@@ -217,6 +223,7 @@ public class GameManager : MonoBehaviour
         //  show choice 
         yield return new WaitForSeconds(0.5f);
         currentPuzz = gamePuzzles[currentPuzzIdx].name;
+        isRememTime = false;
         ShowAnsChoice(false);
     }
     
@@ -274,6 +281,10 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        if (isRememTime)
+        {
+            TimeSO.Value = rememTimeStamp;
+        }
         if(TimeSO.Value <= 0)
         {
             SceneManager.LoadScene(3);
