@@ -6,7 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class Login : MonoBehaviour
 {
-    public TMP_InputField usernameField;
+    [SerializeField]
+    private TMP_InputField usernameField;
+    [SerializeField]
+    private TMP_InputField passwordField;
+    [SerializeField]
+    private IntSO bestScoreSO;
+    [SerializeField]
+    private StringSO UsernameSO;
     private SupabaseManager dbConnector;
     private PlayerList playerData;
     // Start is called before the first frame update
@@ -25,7 +32,8 @@ public class Login : MonoBehaviour
     public void loginButton()
     {
         string username = usernameField.text;
-        StartCoroutine(GetPlayer_Coroutine(username));
+        string password = passwordField.text;
+        StartCoroutine(GetPlayer_Coroutine(username, password));
     }
 
     // use to change current scene to scoreboard scene
@@ -34,7 +42,7 @@ public class Login : MonoBehaviour
         SceneManager.LoadScene(scene);
     }
 
-    IEnumerator GetPlayer_Coroutine(string username)
+    IEnumerator GetPlayer_Coroutine(string username, string password)
     {
         yield return dbConnector.API_GET_Coroutine("Player_Score?Player_name=eq."+username, "players");
 

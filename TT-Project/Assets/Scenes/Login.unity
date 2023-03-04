@@ -202,7 +202,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: username
+  m_text: Password
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cfb23839f25da8e45a53a61a6bd73712, type: 2}
   m_sharedMaterial: {fileID: -8630912199415620028, guid: cfb23839f25da8e45a53a61a6bd73712, type: 2}
@@ -1988,6 +1988,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   usernameField: {fileID: 2063370285}
+  passwordField: {fileID: 1934993435}
+  bestScoreSO: {fileID: 0}
+  UsernameSO: {fileID: 0}
 --- !u!1 &1720370753
 GameObject:
   m_ObjectHideFlags: 0
@@ -2309,7 +2312,7 @@ GameObject:
   - component: {fileID: 1934993436}
   - component: {fileID: 1934993435}
   m_Layer: 5
-  m_Name: InputField (TMP)
+  m_Name: Password(Textbox)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2485,7 +2488,7 @@ GameObject:
   - component: {fileID: 2063370286}
   - component: {fileID: 2063370285}
   m_Layer: 5
-  m_Name: InputField (TMP)
+  m_Name: Username(Textbox)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
