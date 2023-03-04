@@ -29,7 +29,7 @@ public class Login : MonoBehaviour
     }
 
     // use to change current scene to scoreboard scene
-    private void changeScene(string scene)
+    public void changeScene(string scene)
     {
         SceneManager.LoadScene(scene);
     }
