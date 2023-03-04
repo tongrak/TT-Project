@@ -52,7 +52,7 @@ public class CurrPlayerRank : MonoBehaviour
 
     IEnumerator GetAllPlayer_Coroutine()
     {
-        yield return dbConnector.GetAllPlayerData();
+        yield return dbConnector.API_GET_Coroutine("Player_Score?order=Best_score.desc", "players");
         Debug.Log(dbConnector.jsonData);
 
         // นำข้อมูลใน jsonData มาแปลงเป็น class ของ C# โดยที่ตัวแปรใน class นั้นต้องมีชื่อที่ตรงกับ database แบบเป๊ะ ๆ

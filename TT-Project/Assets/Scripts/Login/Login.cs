@@ -36,7 +36,7 @@ public class Login : MonoBehaviour
 
     IEnumerator GetPlayer_Coroutine(string username)
     {
-        yield return dbConnector.GetPlayerData(username);
+        yield return dbConnector.API_GET_Coroutine("Player_Score?Player_name=eq."+username, "players");
 
         // นำข้อมูลใน jsonData มาแปลงเป็น class ของ C# โดยที่ตัวแปรใน class นั้นต้องมีชื่อที่ตรงกับ supabase แบบเป๊ะ ๆ
         playerData = JsonUtility.FromJson<PlayerList>(dbConnector.jsonData);
@@ -46,7 +46,9 @@ public class Login : MonoBehaviour
         {
             print("Create new player data");
             // นำ username ที่ได้มาไปใส่ใน supabase
-            yield return dbConnector.createNewPlayer(username);
+            Dictionary<string, string> newUser_data = new Dictionary<string, string>();
+            newUser_data.Add("Player_name", username);
+            yield return dbConnector.API_POST_Coroutine(newUser_data, "Player_Score", "players");
 
             // นำข้อมูลของ username มาเก็บไว้ใน unity
             PlayerData.username = username;

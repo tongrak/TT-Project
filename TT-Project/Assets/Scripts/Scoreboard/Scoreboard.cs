@@ -44,7 +44,7 @@ public class Scoreboard : MonoBehaviour
 
     IEnumerator GetTopTenPlayer_Coroutine()
     {
-        yield return DBConnector.GetTopTenPlayerData();
+        yield return DBConnector.API_GET_Coroutine("Player_Score?limit=10^&order=Best_score.desc", "players");
         Debug.Log(DBConnector.jsonData);
         
         // นำข้อมูลใน jsonData มาแปลงเป็น class ของ C# โดยที่ตัวแปรใน class นั้นต้องมีชื่อที่ตรงกับ database แบบเป๊ะ ๆ
