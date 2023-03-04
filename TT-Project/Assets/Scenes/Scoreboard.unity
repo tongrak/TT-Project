@@ -488,6 +488,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8173507128044980507, guid: 845cf3a288a696043b7845aba3391256, type: 3}
+      propertyPath: usernameSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 0c056b497423e774b9a3b41358654d20, type: 2}
+    - target: {fileID: 8173507128044980507, guid: 845cf3a288a696043b7845aba3391256, type: 3}
+      propertyPath: Seq_bestScore
+      value: 
+      objectReference: {fileID: 11400000, guid: ac0e70a4e142c6a4397dd883fd383895, type: 2}
+    - target: {fileID: 8173507128044980507, guid: 845cf3a288a696043b7845aba3391256, type: 3}
+      propertyPath: Mix_bestScoreSO
+      value: 
+      objectReference: {fileID: 11400000, guid: dce09a380b81ec84f8ba78585e23104b, type: 2}
+    - target: {fileID: 8173507128044980507, guid: 845cf3a288a696043b7845aba3391256, type: 3}
+      propertyPath: Rev_bestScoreSO
+      value: 
+      objectReference: {fileID: 11400000, guid: aa4a20ce4f9dea641b90c8eed852422e, type: 2}
+    - target: {fileID: 8173507128044980507, guid: 845cf3a288a696043b7845aba3391256, type: 3}
+      propertyPath: MemRand_bestScoreSO
+      value: 
+      objectReference: {fileID: 11400000, guid: c5a7862769e75de4eaefb1ea95bcbce8, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 845cf3a288a696043b7845aba3391256, type: 3}
 --- !u!1 &5887842317493565911 stripped

@@ -8,6 +8,11 @@ public class CurrPlayerRank : MonoBehaviour
     [SerializeField] private TextMeshProUGUI RankText = null;
     [SerializeField] private TextMeshProUGUI NameText = null;
     [SerializeField] private TextMeshProUGUI ScoreText = null;
+    [SerializeField] private StringSO usernameSO;
+    [SerializeField] private IntSO Seq_bestScore;
+    [SerializeField] private IntSO MemRand_bestScoreSO;
+    [SerializeField] private IntSO Rev_bestScoreSO;
+    [SerializeField] private IntSO Mix_bestScoreSO;
     private SupabaseManager dbConnector;
     private PlayerList playerData;
     private int playerRank = 1;
@@ -27,8 +32,8 @@ public class CurrPlayerRank : MonoBehaviour
     private void UpdateUI()
     {
         RankText.text = playerRank.ToString();
-        NameText.text = PlayerData.username;
-        ScoreText.text = PlayerData.bestScore.ToString();
+        NameText.text = usernameSO.Value;
+        ScoreText.text = Seq_bestScore.Value.ToString();
     }
 
     private void searchRank()
