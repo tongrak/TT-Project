@@ -62,9 +62,11 @@ public class Login : MonoBehaviour
             PlayerData.username = username;
             PlayerData.bestScore = 0;
             PlayerData.currentScore = 0;
+            UsernameSO.Value = username;
+            bestScoreSO.Value = 0;
         }
 
-        // if username isn in database
+        // if username is in database
         else
         {
             // นำข้อมูลของ username มาเก็บไว้ใน unity
@@ -72,6 +74,8 @@ public class Login : MonoBehaviour
             PlayerData.username = currPlayer.Player_name;
             PlayerData.bestScore = currPlayer.Best_score;
             PlayerData.currentScore = currPlayer.Current_score;
+            UsernameSO.Value = username;
+            bestScoreSO.Value = currPlayer.Best_score;
         }
 
         Debug.Log("Player name: " + PlayerData.username + "\n" + "Best score: " + PlayerData.bestScore.ToString() + "\n" + "Current score: " + PlayerData.currentScore.ToString());
