@@ -1,0 +1,12 @@
+Number of card
+1
+2
+Number of kind
+1
+2
+Number of select card
+2
+3
+Number of flip card
+1
+1
