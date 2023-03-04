@@ -14,7 +14,7 @@ public class Login : MonoBehaviour
     [SerializeField] private IntSO Rev_bestScoreSO;
     [SerializeField] private IntSO Mix_bestScoreSO;
     private SupabaseManager dbConnector;
-    private PlayerList playerData;
+    private Player_DataList playerData;
     // Start is called before the first frame update
     void Start()
     {
@@ -49,16 +49,16 @@ public class Login : MonoBehaviour
     IEnumerator Test_coroutine()
     {
         string username = "TestP2";
-        yield return StartCoroutine(dbConnector.API_GET_Coroutine("Player_account?select=username,MemoRandom_Score!inner(best_score, recent_score),SequenceMem_Score!inner(best_score, recent_score),Reverse_Score!inner(best_score, recent_score),Mix_Score!inner(best_score, recent_score)&username=eq."+username, "join data"));
+        yield return StartCoroutine(dbConnector.API_GET_Coroutine("Player_account?select=username,MemoRandom_Score!inner(best_score),SequenceMem_Score!inner(best_score),Reverse_Score!inner(best_score),Mix_Score!inner(best_score)&username=eq."+username, "join data"));
         print(dbConnector.jsonData);
     }
 
     IEnumerator GetPlayer_Coroutine(string username, string password)
     {
-        yield return dbConnector.API_GET_Coroutine("Player_Score?Player_name.eq."+username, "players");
+        yield return dbConnector.API_GET_Coroutine("Player_account?select=username,MemoRandom_Score!inner(best_score),SequenceMem_Score!inner(best_score),Reverse_Score!inner(best_score),Mix_Score!inner(best_score)&username=eq." + username, "players");
 
         // นำข้อมูลใน jsonData มาแปลงเป็น class ของ C# โดยที่ตัวแปรใน class นั้นต้องมีชื่อที่ตรงกับ supabase แบบเป๊ะ ๆ
-        playerData = JsonUtility.FromJson<PlayerList>(dbConnector.jsonData);
+        playerData = JsonUtility.FromJson<Player_DataList>(dbConnector.jsonData);
 
         // if username isn't in database
         if (playerData.players.Length == 0)
@@ -70,9 +70,9 @@ public class Login : MonoBehaviour
             yield return dbConnector.API_POST_Coroutine(newUser_data, "Player_Score", "players");
 
             // นำข้อมูลของ username มาเก็บไว้ใน unity
-            PlayerData.username = username;
-            PlayerData.bestScore = 0;
-            PlayerData.currentScore = 0;
+            //PlayerData.username = username;
+            //PlayerData.bestScore = 0;
+            //PlayerData.currentScore = 0;
             UsernameSO.Value = username;
             Seq_bestScoreSO.Value = 0;
             Rev_bestScoreSO.Value = 0;
@@ -83,17 +83,19 @@ public class Login : MonoBehaviour
         else
         {
             // นำข้อมูลของ username มาเก็บไว้ใน unity
-            Player_Score currPlayer = playerData.players[0];
-            PlayerData.username = currPlayer.Player_name;
-            PlayerData.bestScore = currPlayer.Best_score;
-            PlayerData.currentScore = currPlayer.Current_score;
+            Player_Data currPlayer = playerData.players[0];
+            //PlayerData.username = currPlayer.username;
+            //PlayerData.bestScore = currPlayer.Reverse_Score.best_score;
+            //PlayerData.currentScore = currPlayer.SequenceMem_Score.best_score;
             UsernameSO.Value = username;
-            Seq_bestScoreSO.Value = currPlayer.Best_score;
-            Rev_bestScoreSO.Value = 0;
-            MemRand_bestScoreSO.Value = 0;
+            Seq_bestScoreSO.Value = currPlayer.SequenceMem_Score.best_score;
+            Rev_bestScoreSO.Value = currPlayer.Reverse_Score.best_score;
+            MemRand_bestScoreSO.Value = currPlayer.MemoRandom_Score.best_score;
+            Mix_bestScoreSO.Value = currPlayer.Mix_Score.best_score;
         }
 
-        Debug.Log("Player name: " + PlayerData.username + "\n" + "Best score: " + PlayerData.bestScore.ToString() + "\n" + "Current score: " + PlayerData.currentScore.ToString());
+        Debug.Log("Login success!!!!!");
+        Debug.Log(dbConnector.jsonData);
 
         // change scene to scoreboard
         //changeScene("Scoreboard");
