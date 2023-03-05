@@ -123,6 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &9320953 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1495513089517557552, guid: 845cf3a288a696043b7845aba3391256, type: 3}
+  m_PrefabInstance: {fileID: 5887842317493565910}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &72612338
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,6 +243,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1495513089711373968, guid: 845cf3a288a696043b7845aba3391256, type: 3}
   m_PrefabInstance: {fileID: 5887842317493565910}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &604300670 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1495513089155739522, guid: 845cf3a288a696043b7845aba3391256, type: 3}
+  m_PrefabInstance: {fileID: 5887842317493565910}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1074826512
 GameObject:
   m_ObjectHideFlags: 0
@@ -263,6 +285,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1560974025 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1495513089743297719, guid: 845cf3a288a696043b7845aba3391256, type: 3}
+  m_PrefabInstance: {fileID: 5887842317493565910}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2065855574
 GameObject:
   m_ObjectHideFlags: 0
@@ -510,6 +543,18 @@ PrefabInstance:
       propertyPath: score_table
       value: SequenceMem_Score
       objectReference: {fileID: 0}
+    - target: {fileID: 5052182318485105271, guid: 845cf3a288a696043b7845aba3391256, type: 3}
+      propertyPath: currentNameText
+      value: 
+      objectReference: {fileID: 1560974025}
+    - target: {fileID: 5052182318485105271, guid: 845cf3a288a696043b7845aba3391256, type: 3}
+      propertyPath: currentRankText
+      value: 
+      objectReference: {fileID: 9320953}
+    - target: {fileID: 5052182318485105271, guid: 845cf3a288a696043b7845aba3391256, type: 3}
+      propertyPath: currentBestscoreText
+      value: 
+      objectReference: {fileID: 604300670}
     - target: {fileID: 5052182318485105271, guid: 845cf3a288a696043b7845aba3391256, type: 3}
       propertyPath: currPlayerRankEntryObject
       value: 
