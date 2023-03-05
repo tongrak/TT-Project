@@ -46,7 +46,7 @@ public class CurrPlayerRank : MonoBehaviour
     {
         Debug.Log("search rank for: " + usernameSO.Value);
         int rank = 1;
-        foreach(Player_Score p in playerData.players)
+        foreach(Player_Score p in playerData.jsonData)
         {
             if(p.Player_name == usernameSO.Value)
             {
@@ -64,7 +64,7 @@ public class CurrPlayerRank : MonoBehaviour
 
     IEnumerator GetAllPlayer_Coroutine()
     {
-        yield return dbConnector.API_GET_Coroutine("Player_Score?order=Best_score.desc", "players");
+        yield return dbConnector.API_GET_Coroutine("Player_Score?order=Best_score.desc");
 
         // นำข้อมูลใน jsonData มาแปลงเป็น class ของ C# โดยที่ตัวแปรใน class นั้นต้องมีชื่อที่ตรงกับ database แบบเป๊ะ ๆ
         playerData = JsonUtility.FromJson<PlayerList>(dbConnector.jsonData);

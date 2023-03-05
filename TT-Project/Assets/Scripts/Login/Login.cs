@@ -51,7 +51,7 @@ public class Login : MonoBehaviour
     IEnumerator Test_coroutine()
     {
         string username = "TestP2";
-        yield return StartCoroutine(dbConnector.API_GET_Coroutine("Player_account?select=username,MemoRandom_Score!inner(best_score),SequenceMem_Score!inner(best_score),Reverse_Score!inner(best_score),Mix_Score!inner(best_score)&username=eq." + username + "&password=eq.NDU2Nwo=", "join data"));
+        yield return StartCoroutine(dbConnector.API_GET_Coroutine("Player_account?select=username,MemoRandom_Score!inner(best_score),SequenceMem_Score!inner(best_score),Reverse_Score!inner(best_score),Mix_Score!inner(best_score)&username=eq." + username + "&password=eq.NDU2Nwo="));
         print(dbConnector.jsonData);
     }
 
@@ -60,20 +60,20 @@ public class Login : MonoBehaviour
         // encoded password
         byte[] bytesToEncode = Encoding.UTF8.GetBytes(password);
         string encodedPassword = Convert.ToBase64String(bytesToEncode);
-        // check if user and password is correct
-        yield return dbConnector.API_GET_Coroutine("Player_account?select=username,MemoRandom_Score!inner(best_score),SequenceMem_Score!inner(best_score),Reverse_Score!inner(best_score),Mix_Score!inner(best_score)&username=eq." + username +"&password=eq." + encodedPassword, "players");
+        // check if username and password is correct
+        yield return dbConnector.API_GET_Coroutine("Player_account?select=username,MemoRandom_Score!inner(best_score),SequenceMem_Score!inner(best_score),Reverse_Score!inner(best_score),Mix_Score!inner(best_score)&username=eq." + username +"&password=eq." + encodedPassword);
 
         // นำข้อมูลใน jsonData มาแปลงเป็น class ของ C# โดยที่ตัวแปรใน class นั้นต้องมีชื่อที่ตรงกับ supabase แบบเป๊ะ ๆ
         playerData = JsonUtility.FromJson<Player_DataList>(dbConnector.jsonData);
 
         // if username isn't in database, then register
-        if (playerData.players.Length == 0)
+        if (playerData.jsonData.Length == 0)
         {
             print("Create new player data");
             // นำ username ที่ได้มาไปใส่ใน supabase
             Dictionary<string, string> newUser_data = new Dictionary<string, string>();
             newUser_data.Add("Player_name", username);
-            yield return dbConnector.API_POST_Coroutine(newUser_data, "Player_Score", "players");
+            yield return dbConnector.API_POST_Coroutine(newUser_data, "Player_Score");
 
             // นำข้อมูลของ username มาเก็บไว้ใน unity
             UsernameSO.Value = username;
@@ -86,17 +86,17 @@ public class Login : MonoBehaviour
         // if username is in database, then login
         else
         {
+            Debug.Log("Login success!!!!!");
             // นำข้อมูลของ username มาเก็บไว้ใน unity
-            Player_Data currPlayer = playerData.players[0];
+            Player_Data currPlayer = playerData.jsonData[0];
             UsernameSO.Value = currPlayer.username;
             Seq_bestScoreSO.Value = currPlayer.SequenceMem_Score.best_score;
             Rev_bestScoreSO.Value = currPlayer.Reverse_Score.best_score;
             MemRand_bestScoreSO.Value = currPlayer.MemoRandom_Score.best_score;
             Mix_bestScoreSO.Value = currPlayer.Mix_Score.best_score;
+            ChangeSceneManager.changeScene("MainMenu");
         }
 
-        Debug.Log("Login success!!!!!");
 
-        ChangeSceneManager.changeScene("MainMenu");
     }
 }

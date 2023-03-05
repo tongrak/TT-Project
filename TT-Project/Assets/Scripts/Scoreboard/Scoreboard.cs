@@ -27,7 +27,7 @@ public class Scoreboard : MonoBehaviour
 
         // Create score list from 
         int rank = 1;
-        foreach(Player_Score highscore in playerData.players.Take(maxScoreboardEntries))
+        foreach(Player_Score highscore in playerData.jsonData.Take(maxScoreboardEntries))
         {
             // Instantiate use for cloning scoreboardEntryObject inside highscoreContainer to build ranking list.
             // GetComponent use for getting object that same type as ScoreboardEntryUI.
@@ -44,7 +44,7 @@ public class Scoreboard : MonoBehaviour
 
     IEnumerator GetTopTenPlayer_Coroutine()
     {
-        yield return DBConnector.API_GET_Coroutine("Player_Score?limit=10^&order=Best_score.desc", "players");
+        yield return DBConnector.API_GET_Coroutine("Player_Score?limit=10^&order=Best_score.desc");
         Debug.Log(DBConnector.jsonData);
         
         // นำข้อมูลใน jsonData มาแปลงเป็น class ของ C# โดยที่ตัวแปรใน class นั้นต้องมีชื่อที่ตรงกับ database แบบเป๊ะ ๆ

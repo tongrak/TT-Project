@@ -10,6 +10,7 @@ public class SupabaseManager
     private readonly string SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR1eHdraWlucXNzaXB5a2d5eWF1Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY3MjQxNDYwMywiZXhwIjoxOTg3OTkwNjAzfQ.NO3eFnFFEASXg6zoRD-JPh-plmt9vhZ_B1SaGiK5hqs";
     //private static SupabaseManager instance = new SupabaseManager();
     public string jsonData { get; set; }
+    public string errData { get; set; }
 
     // --------------------Method section--------------------
 
@@ -23,7 +24,7 @@ public class SupabaseManager
     // Do web request by follow request from input.
     // @params request is HTTP request that want to send.
     // @params jsonHeader use for specify which type of json want to collect such as "students" by refer from class.
-    public IEnumerator API_GET_Coroutine(string parameter, string jsonHeader)
+    public IEnumerator API_GET_Coroutine(string parameter)
     {
         // create request for GET API
         string api_url = DATABASE_URL + parameter;
@@ -43,13 +44,13 @@ public class SupabaseManager
         // if request success
         else
         {
-            jsonData = "{\""+jsonHeader+"\":" + request.downloadHandler.text + "}";
+            jsonData = "{\"jsonData\":" + request.downloadHandler.text + "}";
             //studentList = JsonUtility.FromJson<StudentList>(jsonData);
             yield break;
         }
     }
 
-    public IEnumerator API_POST_Coroutine(Dictionary<string, string> data, string parameter, string jsonHeader)
+    public IEnumerator API_POST_Coroutine(Dictionary<string, string> data, string parameter)
     {
         // add data for each attribute to form
         WWWForm form = new WWWForm();
@@ -70,6 +71,7 @@ public class SupabaseManager
         // if request is error for some reason.
         if (request.result == UnityWebRequest.Result.ConnectionError || request.result == UnityWebRequest.Result.DataProcessingError || request.result == UnityWebRequest.Result.ProtocolError)
         {
+            errData = request.error;
             Debug.LogError(request.error);
             Debug.LogError("Check from this request: " + request.url);
             yield break;
@@ -77,7 +79,8 @@ public class SupabaseManager
         // if request success
         else
         {
-            jsonData = "{\"" + jsonHeader + "\":" + request.downloadHandler.text + "}";
+            errData = null;
+            jsonData = "{\"jsonData\":" + request.downloadHandler.text + "}";
             //studentList = JsonUtility.FromJson<StudentList>(jsonData);
             yield break;
         }

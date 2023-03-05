@@ -1,18 +1,95 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using System;
+using System.Text;
 
 public class Register : MonoBehaviour
 {
+    [SerializeField] private TMP_InputField usernameField;
+    [SerializeField] private TMP_InputField passwordField;
+    [SerializeField] private TMP_InputField confirmPasswordField;
+    [SerializeField] StringSO UsernameSO;
+    [SerializeField] IntSO Seq_bestScoreSO;
+    [SerializeField] IntSO MemRand_bestScoreSO;
+    [SerializeField] IntSO Rev_bestScoreSO;
+    [SerializeField] IntSO Mix_bestScoreSO;
+    private SupabaseManager dbConnector;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        dbConnector = SupabaseManager.getInstance();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
+    }
+
+    public void RegisterButton()
+    {
+        string username = usernameField.text;
+        string password = passwordField.text;
+        string confirmPass = confirmPasswordField.text;
+
+        if(password != confirmPass)
+        {
+            Debug.Log("Password and ConfimPassword is not same");
+        }
+        else
+        {
+            StartCoroutine(Register_Coroutine(username, password));
+        }
+    }
+
+    IEnumerator Register_Coroutine(string username, string password)
+    {
+        // encoded password
+        byte[] bytesToEncode = Encoding.UTF8.GetBytes(password);
+        string encodedPassword = Convert.ToBase64String(bytesToEncode);
+        // create data for insert to database.
+        Dictionary<string, string> newUser_data = new Dictionary<string, string>();
+        newUser_data.Add("username", username);
+        newUser_data.Add("password", encodedPassword);
+        // try to insert new player data.
+        yield return dbConnector.API_POST_Coroutine(newUser_data, "Player_account");
+        // if username have already exist in database.
+        if (dbConnector.errData != null)
+        {
+            Debug.Log("err: " + dbConnector.errData);
+            Debug.Log("Can't register");
+        }
+        // if username have never exist in database.
+        else
+        {
+            Debug.Log("register success!!!!!");
+        }
+    }
+
+    public void TestButton()
+    {
+        string username = "TestAPI";
+        string password = "1234";
+        StartCoroutine(Test_Coroutine(username, password));
+    }
+
+    IEnumerator Test_Coroutine(string username, string password)
+    {
+        Dictionary<string, string> newUser_data = new Dictionary<string, string>();
+        newUser_data.Add("username", username);
+        newUser_data.Add("password", password);
+        yield return dbConnector.API_POST_Coroutine(newUser_data, "Player_account");
+        if(dbConnector.errData != null)
+        {
+            Debug.Log("err: " + dbConnector.errData);
+            Debug.Log("Can't register");
+        }
+        else
+        {
+            Debug.Log("register success!!!!!");
+        }
     }
 }
