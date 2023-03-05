@@ -39,6 +39,7 @@ public class SupabaseManager
         {
             Debug.LogError(request.error);
             Debug.LogError("Check from this request: " + request.url);
+            request.Dispose();
             yield break;
         }
         // if request success
@@ -46,6 +47,7 @@ public class SupabaseManager
         {
             jsonData = "{\"jsonData\":" + request.downloadHandler.text + "}";
             //studentList = JsonUtility.FromJson<StudentList>(jsonData);
+            request.Dispose();
             yield break;
         }
     }
@@ -74,6 +76,7 @@ public class SupabaseManager
             errData = request.error;
             Debug.LogError(request.error);
             Debug.LogError("Check from this request: " + request.url);
+            request.Dispose();
             yield break;
         }
         // if request success
@@ -81,7 +84,7 @@ public class SupabaseManager
         {
             errData = null;
             jsonData = "{\"jsonData\":" + request.downloadHandler.text + "}";
-            //studentList = JsonUtility.FromJson<StudentList>(jsonData);
+            request.Dispose();
             yield break;
         }
     }
