@@ -1388,9 +1388,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 975666047}
-  - component: {fileID: 975666048}
-  - component: {fileID: 975666049}
   - component: {fileID: 975666050}
+  - component: {fileID: 975666049}
+  - component: {fileID: 975666048}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1422,11 +1422,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 975666046}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 092e2ca766e9d0740973ac4150552a00, type: 3}
+  m_Script: {fileID: 11500000, guid: 8ad926dee9197f04497b64a241f4db83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  puzzlefield: {fileID: 1042814934}
-  button: {fileID: 5167141523042492730, guid: 9348f2b083235a347840036284e5a72c, type: 3}
+  Puzzle_bgImage: {fileID: 21300000, guid: 0265a4982d26abb4fa69600c6c80a6b4, type: 3}
+  Answer_bgImage: {fileID: 21300000, guid: 64aa609ff79c2454f8c6921e9fe9a369, type: 3}
+  CurrentGuess_bgImage: {fileID: 21300000, guid: 0265a4982d26abb4fa69600c6c80a6b4, type: 3}
+  scoreSO: {fileID: 11400000, guid: 1150a4bdf7e26f8428f99a72fa87ba4e, type: 2}
+  showScore: {fileID: 1368309353}
+  TimeSO: {fileID: 11400000, guid: 36500eefdd050ea4a8e66b731318299a, type: 2}
+  puzzles: []
+  gamePuzzles: []
+  btns: []
+  GameOverScreen: {fileID: 1544950149}
 --- !u!114 &975666049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1436,7 +1444,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 975666046}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 092e2ca766e9d0740973ac4150552a00, type: 3}
+  m_Script: {fileID: 11500000, guid: 2766687d0c0825e428b05c0e13d9db6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   puzzlefield: {fileID: 887717684}
@@ -1450,19 +1458,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 975666046}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3c097fe18c22954c84b6f13d43af292, type: 3}
+  m_Script: {fileID: 11500000, guid: 2766687d0c0825e428b05c0e13d9db6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Puzzle_bgImage: {fileID: 21300000, guid: a856811f7d9e6594db77dca154500127, type: 3}
-  Answer_bgImage: {fileID: 21300000, guid: db6af77123023b44fa84cb210c682913, type: 3}
-  CurrentGuess_bgImage: {fileID: 21300000, guid: 003b7cd25cb4dd146b586deb50822233, type: 3}
-  scoreSO: {fileID: 11400000, guid: 1150a4bdf7e26f8428f99a72fa87ba4e, type: 2}
-  showScore: {fileID: 1368309353}
-  TimeSO: {fileID: 11400000, guid: 36500eefdd050ea4a8e66b731318299a, type: 2}
-  puzzles: []
-  gamePuzzles: []
-  btns: []
-  GameOverScreen: {fileID: 1544950149}
+  puzzlefield: {fileID: 1042814934}
+  button: {fileID: 5167141523042492730, guid: 9348f2b083235a347840036284e5a72c, type: 3}
 --- !u!1 &1042814933
 GameObject:
   m_ObjectHideFlags: 0
