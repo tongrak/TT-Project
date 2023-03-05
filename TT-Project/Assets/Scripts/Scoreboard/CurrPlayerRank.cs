@@ -10,12 +10,12 @@ public class CurrPlayerRank : MonoBehaviour
     [SerializeField] private TextMeshProUGUI ScoreText = null;
     [SerializeField] private StringSO usernameSO;
     [SerializeField] private IntSO Seq_bestScore;
+    [SerializeField] private string score_table;
     //[SerializeField] private IntSO MemRand_bestScoreSO;
     //[SerializeField] private IntSO Rev_bestScoreSO;
     //[SerializeField] private IntSO Mix_bestScoreSO;
     private SupabaseManager dbConnector;
     private PlayerList playerData;
-    private string username;
     private int playerRank = 1;
     // Start is called before the first frame update
     void Start()
@@ -26,7 +26,6 @@ public class CurrPlayerRank : MonoBehaviour
     private void Awake()
     {
         dbConnector = SupabaseManager.getInstance();
-        username = usernameSO.Value;
     }
 
     // Update is called once per frame
@@ -39,14 +38,13 @@ public class CurrPlayerRank : MonoBehaviour
     {
         //string username = usernameSO.Value;
         RankText.text = playerRank.ToString();
-        NameText.text = username;
+        NameText.text = usernameSO.Value;
         ScoreText.text = Seq_bestScore.Value.ToString();
-        usernameSO.Value = username;
     }
 
     private void searchRank()
     {
-        Debug.Log("search rank for: " + username);
+        Debug.Log("search rank for: " + usernameSO.Value);
         int rank = 1;
         foreach(Player_Score p in playerData.players)
         {
