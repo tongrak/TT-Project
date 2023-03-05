@@ -10,11 +10,16 @@ public class RDM_AddRememBtn : MonoBehaviour
     [SerializeField]
     private GameObject button;
 
+    private int puzzleSize;
+    private int ansSize;
+
     private void Awake()
     {
+        puzzleSize = 2;
+        ansSize = 4;
         if (button.tag == "PuzzleBtn")
         {
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < puzzleSize; i++)
             {
                 //  create puzzle btn
                 GameObject _button = Instantiate(button);
@@ -23,12 +28,13 @@ public class RDM_AddRememBtn : MonoBehaviour
             }
         }else if (button.tag == "AnswerBtn")
         {
-            for (int i = 4; i < 8; i++)
+            for (int i = puzzleSize; i < puzzleSize+ansSize; i++)
             {
                 //  create puzzle btn
                 GameObject _button = Instantiate(button);
                 _button.name = "" + i;
                 _button.transform.SetParent(puzzlefield, false);
+                print(i);
             }
         }
         else

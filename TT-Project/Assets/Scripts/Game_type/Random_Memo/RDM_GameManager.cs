@@ -52,6 +52,9 @@ public class RDM_GameManager : MonoBehaviour
     private bool isRememTime = false;
     private float rememTimeStamp;
 
+    private int puzzleSize;
+    private int ansSize;
+
 
 
     /*  Method  */
@@ -80,8 +83,9 @@ public class RDM_GameManager : MonoBehaviour
     {
         //  Puzzle btn
         GameObject[] Puzzle_objects = GameObject.FindGameObjectsWithTag("PuzzleBtn");
+        puzzleSize = Puzzle_objects.Length;
 
-        for (int i=0; i<Puzzle_objects.Length; i++)
+        for (int i=0; i< puzzleSize; i++)
         {
             btns.Add(Puzzle_objects[i].GetComponent<Button>()); //  Add btn to btnList
             btns[i].image.sprite = Puzzle_bgImage;  // Change that btn bgImage
@@ -92,11 +96,12 @@ public class RDM_GameManager : MonoBehaviour
 
         //  Ans btn
         GameObject[] Answer_objects = GameObject.FindGameObjectsWithTag("AnswerBtn");
+        ansSize = Answer_objects.Length;
 
-        for (int i = 0; i < Answer_objects.Length; i++)
+        for (int i = 0; i < ansSize; i++)
         {
             btns.Add(Answer_objects[i].GetComponent<Button>());
-            btns[i].image.sprite = Puzzle_bgImage;
+            btns[puzzleSize+i].image.sprite = Answer_bgImage;
 
         }
     }
@@ -104,12 +109,11 @@ public class RDM_GameManager : MonoBehaviour
     //  Add puzzle image to gamePuzzle list
     void AddGamePuzzles()
     {
-        int looper = btns.Count;    //  check button count
         int index = 0;
 
-        for (int i=0; i<looper; i++)    // for repeat image
+        for (int i=0; i<puzzleSize+ansSize; i++)
         {
-            if(index == looper / 2)
+            if (i == puzzleSize)
             {
                 index = 0;
             }
@@ -206,7 +210,7 @@ public class RDM_GameManager : MonoBehaviour
 
         ShowAnsChoice(true);
         yield return new WaitForSeconds(0.5f);
-        for (int i=0; i<btns.Count/2; i++)
+        for (int i=0; i<puzzleSize; i++)
         {
             yield return new WaitForSeconds(1f);
             btns[i].image.sprite = gamePuzzles[i];
@@ -214,11 +218,11 @@ public class RDM_GameManager : MonoBehaviour
         }
 
         yield return new WaitForSeconds(1f);
-        for (int i=0; i<btns.Count/2; i++)
+        for (int i=0; i<puzzleSize; i++)
         {
             btns[i].image.sprite = Puzzle_bgImage;
         }
-        btns[btns.Count / 2 - 1].image.sprite = CurrentGuess_bgImage;
+        btns[puzzleSize - 1].image.sprite = CurrentGuess_bgImage;
 
         //  show choice 
         yield return new WaitForSeconds(0.5f);
@@ -231,18 +235,18 @@ public class RDM_GameManager : MonoBehaviour
     void Shuffle(List<Sprite> list)
     {
         //  Puzzle Shuffle
-        for (int i = 0; i < list.Count/2; i++)
+        for (int i = 0; i < puzzleSize; i++)
         {
             Sprite temp = list[i];
-            int randomIndex = Random.Range(i, list.Count/2);
+            int randomIndex = Random.Range(i, puzzleSize);
             list[i] = list[randomIndex];
             list[randomIndex] = temp;
         }
         //  Answer Shuffle
-        for (int i = list.Count / 2; i < list.Count; i++)
+        for (int i = puzzleSize; i < puzzleSize+ansSize; i++)
         {
             Sprite temp = list[i];
-            int randomIndex = Random.Range(i, list.Count);
+            int randomIndex = Random.Range(i, puzzleSize+ansSize);
             list[i] = list[randomIndex];
             list[randomIndex] = temp;
         }
@@ -251,7 +255,7 @@ public class RDM_GameManager : MonoBehaviour
     //  Show aswer choice
     void ShowAnsChoice(bool isShowTime)
     {
-        for (int i = btns.Count / 2; i < btns.Count; i++)
+        for (int i = puzzleSize; i < puzzleSize+ansSize; i++)
         {
             if (isShowTime) //  set can't interact btn in show puzzle time  // fixed btn bug 
             {
@@ -287,7 +291,7 @@ public class RDM_GameManager : MonoBehaviour
         }
         if(TimeSO.Value <= 0)
         {
-            SceneManager.LoadScene(3);
+            //SceneManager.LoadScene(3);
         }
     }
 }
