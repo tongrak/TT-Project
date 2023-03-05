@@ -17,6 +17,7 @@ public class Login : MonoBehaviour
     [SerializeField] IntSO Mix_bestScoreSO;
     private SupabaseManager dbConnector;
     private Player_DataList playerData;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,30 +30,25 @@ public class Login : MonoBehaviour
 
     }
 
-    // for login button
-    public void loginButton()
-    {
-        string username = usernameField.text;
-        string password = passwordField.text;
-        StartCoroutine(Login_Coroutine(username, password));
-    }
-
-    public void TestButton()
-    {
-        StartCoroutine(Test_coroutine());
-    }
-
     // use to change current scene to scoreboard scene
     public void changeScene(string scene)
     {
         SceneManager.LoadScene(scene);
     }
 
-    IEnumerator Test_coroutine()
+    // for login button
+    public void loginButton()
     {
-        string username = "TestP2";
-        yield return StartCoroutine(dbConnector.API_GET_Coroutine("Player_account?select=username,MemoRandom_Score!inner(best_score),SequenceMem_Score!inner(best_score),Reverse_Score!inner(best_score),Mix_Score!inner(best_score)&username=eq." + username + "&password=eq.NDU2Nwo="));
-        print(dbConnector.jsonData);
+        string username = usernameField.text;
+        string password = passwordField.text;
+        if(username == "" || password == "")
+        {
+            Debug.Log("Please fill in all text field");
+        }
+        else
+        {
+            StartCoroutine(Login_Coroutine(username, password));
+        }
     }
 
     IEnumerator Login_Coroutine(string username, string password)
@@ -69,24 +65,12 @@ public class Login : MonoBehaviour
         // if username isn't in database, then register
         if (playerData.jsonData.Length == 0)
         {
-            print("Create new player data");
-            // นำ username ที่ได้มาไปใส่ใน supabase
-            Dictionary<string, string> newUser_data = new Dictionary<string, string>();
-            newUser_data.Add("Player_name", username);
-            yield return dbConnector.API_POST_Coroutine(newUser_data, "Player_Score");
-
-            // นำข้อมูลของ username มาเก็บไว้ใน unity
-            UsernameSO.Value = username;
-            Seq_bestScoreSO.Value = 0;
-            Rev_bestScoreSO.Value = 0;
-            MemRand_bestScoreSO.Value = 0;
-            Mix_bestScoreSO.Value = 0;
+            Debug.Log("username or passsword is not correct");
         }
 
         // if username is in database, then login
         else
         {
-            Debug.Log("Login success!!!!!");
             // นำข้อมูลของ username มาเก็บไว้ใน unity
             Player_Data currPlayer = playerData.jsonData[0];
             UsernameSO.Value = currPlayer.username;
@@ -94,9 +78,23 @@ public class Login : MonoBehaviour
             Rev_bestScoreSO.Value = currPlayer.Reverse_Score.best_score;
             MemRand_bestScoreSO.Value = currPlayer.MemoRandom_Score.best_score;
             Mix_bestScoreSO.Value = currPlayer.Mix_Score.best_score;
+
+            Debug.Log("Login success!!!!!");
+            //change scene
             ChangeSceneManager.changeScene("MainMenu");
         }
 
+    //public void TestButton()
+    //{
+    //    StartCoroutine(Test_coroutine());
+    //}
+
+    //IEnumerator Test_coroutine()
+    //{
+    //    string username = "TestP2";
+    //    yield return StartCoroutine(dbConnector.API_GET_Coroutine("Player_account?select=username,MemoRandom_Score!inner(best_score),SequenceMem_Score!inner(best_score),Reverse_Score!inner(best_score),Mix_Score!inner(best_score)&username=eq." + username + "&password=eq.NDU2Nwo="));
+    //    print(dbConnector.jsonData);
+    //}
 
     }
 }
