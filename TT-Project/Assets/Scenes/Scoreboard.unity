@@ -488,6 +488,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5052182318485105271, guid: 845cf3a288a696043b7845aba3391256, type: 3}
+      propertyPath: usernameSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 0c056b497423e774b9a3b41358654d20, type: 2}
+    - target: {fileID: 5052182318485105271, guid: 845cf3a288a696043b7845aba3391256, type: 3}
+      propertyPath: bestScoreSO
+      value: 
+      objectReference: {fileID: 11400000, guid: ac0e70a4e142c6a4397dd883fd383895, type: 2}
+    - target: {fileID: 5052182318485105271, guid: 845cf3a288a696043b7845aba3391256, type: 3}
+      propertyPath: score_table
+      value: SequenceMem_Score
+      objectReference: {fileID: 0}
     - target: {fileID: 8173507128044980507, guid: 845cf3a288a696043b7845aba3391256, type: 3}
       propertyPath: usernameSO
       value: 
