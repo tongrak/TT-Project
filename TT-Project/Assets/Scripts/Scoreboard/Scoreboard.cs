@@ -1,17 +1,20 @@
 using System.Collections;
 using System.Linq;
 using UnityEngine;
+using TMPro;
 
 public class Scoreboard : MonoBehaviour
 {
     [SerializeField] private int maxScoreboardEntries = 10;
     [SerializeField] private Transform highscoreContainerTransform = null;
     [SerializeField] private GameObject scoreboardEntryObject = null;
-    [SerializeField] private GameObject currPlayerRankEntryObject = null;
+    [SerializeField] private TextMeshProUGUI currentNameText = null;
+    [SerializeField] private TextMeshProUGUI currentRankText = null;
+    [SerializeField] private TextMeshProUGUI currentBestscoreText = null;
     [SerializeField] private string score_table;
     [SerializeField] private StringSO usernameSO;
     [SerializeField] private IntSO bestScoreSO;
-    private PlayerList playerData;
+
     private SupabaseManager DBConnector;
     private Player_BestScoreList allPlayer_bestScore;
 
@@ -34,7 +37,7 @@ public class Scoreboard : MonoBehaviour
             Destroy(child.gameObject);
         }
 
-        // Create score list from 
+        // Create score list form 
         int rank = 1;
         foreach (Player_BestScore highscore in allPlayer_bestScore.jsonData.Take(maxScoreboardEntries))
         {
@@ -44,6 +47,11 @@ public class Scoreboard : MonoBehaviour
                 GetComponent<ScoreboardEntryUI>().Initialise(rank, highscore);
             rank++;
         }
+
+        // Create current player rank form
+        currentNameText.text = usernameSO.Value;
+        currentRankText.text = computeCurrRank().ToString();
+        currentBestscoreText.text = bestScoreSO.Value.ToString();
     }
 
     private IEnumerator GetAllPlayerBestScore_Coroutine()
@@ -55,6 +63,20 @@ public class Scoreboard : MonoBehaviour
         Debug.Log("All player best score: " + DBConnector.jsonData);
 
         UpdateUI();
+    }
+
+    private int computeCurrRank()
+    {
+        int rank = 1;
+        foreach (Player_BestScore p in allPlayer_bestScore.jsonData)
+        {
+            if (p.username == usernameSO.Value)
+            {
+                return rank;
+            }
+            rank++;
+        }
+        return 0;
     }
 
     //private void GetTopTenPlayer()

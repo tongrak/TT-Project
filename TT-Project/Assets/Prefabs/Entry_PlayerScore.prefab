@@ -147,7 +147,6 @@ GameObject:
   - component: {fileID: 5004889379201792190}
   - component: {fileID: 5004889379201792191}
   - component: {fileID: 5004889379201792188}
-  - component: {fileID: 499122728074015755}
   m_Layer: 5
   m_Name: Entry_PlayerScore
   m_TagString: Untagged
@@ -242,21 +241,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &499122728074015755
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5004889379201792186}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 382840ae18e696b4ba3d689bfa5bf43e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entryRankText: {fileID: 5004889380752970013}
-  entryNameText: {fileID: 5004889379166706330}
-  entryScoreText: {fileID: 5004889380793412015}
 --- !u!1 &5004889380752970011
 GameObject:
   m_ObjectHideFlags: 0

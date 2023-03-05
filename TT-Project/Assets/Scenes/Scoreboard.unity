@@ -222,6 +222,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &201229591 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1495513089711373975, guid: 845cf3a288a696043b7845aba3391256, type: 3}
+  m_PrefabInstance: {fileID: 5887842317493565910}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &201229592 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1495513089711373968, guid: 845cf3a288a696043b7845aba3391256, type: 3}
+  m_PrefabInstance: {fileID: 5887842317493565910}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1074826512
 GameObject:
   m_ObjectHideFlags: 0
@@ -499,6 +509,18 @@ PrefabInstance:
     - target: {fileID: 5052182318485105271, guid: 845cf3a288a696043b7845aba3391256, type: 3}
       propertyPath: score_table
       value: SequenceMem_Score
+      objectReference: {fileID: 0}
+    - target: {fileID: 5052182318485105271, guid: 845cf3a288a696043b7845aba3391256, type: 3}
+      propertyPath: currPlayerRankEntryObject
+      value: 
+      objectReference: {fileID: 201229591}
+    - target: {fileID: 5052182318485105271, guid: 845cf3a288a696043b7845aba3391256, type: 3}
+      propertyPath: CurrPlayerRankContainerTransform
+      value: 
+      objectReference: {fileID: 201229592}
+    - target: {fileID: 8173507128044980507, guid: 845cf3a288a696043b7845aba3391256, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8173507128044980507, guid: 845cf3a288a696043b7845aba3391256, type: 3}
       propertyPath: usernameSO
