@@ -8,11 +8,11 @@ public class Login : MonoBehaviour
 {
     [SerializeField] private TMP_InputField usernameField;
     [SerializeField] private TMP_InputField passwordField;
-    [SerializeField] private StringSO UsernameSO;
-    [SerializeField] private IntSO Seq_bestScoreSO;
-    [SerializeField] private IntSO MemRand_bestScoreSO;
-    [SerializeField] private IntSO Rev_bestScoreSO;
-    [SerializeField] private IntSO Mix_bestScoreSO;
+    [SerializeField] StringSO UsernameSO;
+    [SerializeField] IntSO Seq_bestScoreSO;
+    [SerializeField] IntSO MemRand_bestScoreSO;
+    [SerializeField] IntSO Rev_bestScoreSO;
+    [SerializeField] IntSO Mix_bestScoreSO;
     private SupabaseManager dbConnector;
     private Player_DataList playerData;
     // Start is called before the first frame update
@@ -32,7 +32,7 @@ public class Login : MonoBehaviour
     {
         string username = usernameField.text;
         string password = passwordField.text;
-        StartCoroutine(GetPlayer_Coroutine(username, password));
+        StartCoroutine(Login_Coroutine(username, password));
     }
 
     public void TestButton()
@@ -53,7 +53,7 @@ public class Login : MonoBehaviour
         print(dbConnector.jsonData);
     }
 
-    IEnumerator GetPlayer_Coroutine(string username, string password)
+    IEnumerator Login_Coroutine(string username, string password)
     {
         yield return dbConnector.API_GET_Coroutine("Player_account?select=username,MemoRandom_Score!inner(best_score),SequenceMem_Score!inner(best_score),Reverse_Score!inner(best_score),Mix_Score!inner(best_score)&username=eq." + username, "players");
 
@@ -87,7 +87,7 @@ public class Login : MonoBehaviour
             //PlayerData.username = currPlayer.username;
             //PlayerData.bestScore = currPlayer.Reverse_Score.best_score;
             //PlayerData.currentScore = currPlayer.SequenceMem_Score.best_score;
-            UsernameSO.Value = username;
+            UsernameSO.Value = playerData.players[0].username;
             Seq_bestScoreSO.Value = currPlayer.SequenceMem_Score.best_score;
             Rev_bestScoreSO.Value = currPlayer.Reverse_Score.best_score;
             MemRand_bestScoreSO.Value = currPlayer.MemoRandom_Score.best_score;
@@ -95,7 +95,7 @@ public class Login : MonoBehaviour
         }
 
         Debug.Log("Login success!!!!!");
-        Debug.Log(dbConnector.jsonData);
+        //Debug.Log(dbConnector.jsonData);
 
         // change scene to scoreboard
         //changeScene("Scoreboard");
