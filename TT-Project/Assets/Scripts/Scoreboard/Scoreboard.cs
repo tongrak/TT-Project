@@ -31,7 +31,7 @@ public class Scoreboard : MonoBehaviour
 
     private void Start()
     {
-        GetAllPlayerBestScore();
+        GetAllPlayerAllScore();
     }
 
     // Use to update scoreboard UI
@@ -70,12 +70,12 @@ public class Scoreboard : MonoBehaviour
                 GetComponent<ScoreboardEntryUI>().Initialise(rank, new Player_BestScore(usernameSO.Value, bestScoreSO.Value));
     }
 
-    private void GetAllPlayerBestScore()
+    private void GetAllPlayerAllScore()
     {
-        StartCoroutine(GetAllPlayerBestScore_Coroutine());
+        StartCoroutine(GetAllPlayerAllScore_Coroutine());
     }
 
-    private IEnumerator GetAllPlayerBestScore_Coroutine()
+    private IEnumerator GetAllPlayerAllScore_Coroutine()
     {
         // ดึงข้อมูล username และ best score ของแต่ละคนมาจาก supabase ใน table ที่เลือกมา
         yield return DBConnector.API_GET_Coroutine(score_table+"?select=username,best_score,recent_score&order=best_score.desc,username.asc");

@@ -1263,6 +1263,7 @@ MonoBehaviour:
   rankFromBS_SO: {fileID: 11400000, guid: 0aef0780410bfd94384836cfa20ecbd7, type: 2}
   rankFromRS_SO: {fileID: 11400000, guid: 0ccaaac1acd5ba549a29fde24e87dc3b, type: 2}
   numberOfPlayer_SO: {fileID: 11400000, guid: 87ad3ab90f076bf4ba09da7365397787, type: 2}
+  scoreboard_SO: {fileID: 11400000, guid: 0d64ac22c53d4a7479673a3316cc0686, type: 2}
   score_table: 
 --- !u!114 &5928245581824322365
 MonoBehaviour:
