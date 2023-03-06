@@ -118,7 +118,7 @@ public class Scoreboard : MonoBehaviour
             }
             rank++;
         }
-        return 0;
+        return rank;
     }
 
     private int findRecentScore()
