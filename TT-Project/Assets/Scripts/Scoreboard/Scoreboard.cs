@@ -11,12 +11,15 @@ public class Scoreboard : MonoBehaviour
     [SerializeField] private GameObject scoreboardEntryObject = null;
     [SerializeField] private Transform currRankContainerTransform = null;
     [SerializeField] private GameObject currRankEntryObject = null;
-    [SerializeField] private Transform scoreBarContainerTransform = null;
-    [SerializeField] private GameObject scoreBarEntryObject = null;
 
-    [SerializeField] private string score_table;
     [SerializeField] private StringSO usernameSO;
     [SerializeField] private IntSO bestScoreSO;
+    [SerializeField] private IntSO rankFromBS_SO;
+    [SerializeField] private IntSO rankFromRS_SO;
+    [SerializeField] private IntSO numberOfPlayer_SO;
+    [SerializeField] private ScoreboardSO scoreboard_SO;
+
+    [SerializeField] private string score_table;
 
     private SupabaseManager DBConnector;
     private Player_AllScoreList allPlayer_bestScore;
@@ -65,12 +68,6 @@ public class Scoreboard : MonoBehaviour
         rank = computeCurrRankFromBS();
         Instantiate(currRankEntryObject, currRankContainerTransform).
                 GetComponent<ScoreboardEntryUI>().Initialise(rank, new Player_BestScore(usernameSO.Value, bestScoreSO.Value));
-
-        //create score bar
-        int bs_rank = computeCurrRankFromBS();
-        int rs_rank = computeCurrRankFromRS();
-        Instantiate(scoreBarEntryObject, scoreBarContainerTransform).
-            GetComponent<ScoreBarEntryUI>().Initialise(rs_rank, bs_rank, allPlayer_bestScore.jsonData.Length+1);
     }
 
     private void GetAllPlayerBestScore()
@@ -87,6 +84,11 @@ public class Scoreboard : MonoBehaviour
         Debug.Log("All player score: " + DBConnector.jsonData);
 
         UpdateUI();
+
+        // save rank for current player to unity
+        rankFromBS_SO.Value = computeCurrRankFromBS();
+        rankFromRS_SO.Value = computeCurrRankFromRS();
+        numberOfPlayer_SO.Value = allPlayer_bestScore.jsonData.Length + 1;
     }
 
     // find rank of current player form best score.
@@ -132,19 +134,4 @@ public class Scoreboard : MonoBehaviour
         }
         return 0;
     }
-
-    //private void GetTopTenPlayer()
-    //{
-    //    StartCoroutine(GetTopTenPlayer_Coroutine());
-    //}
-
-    //IEnumerator GetTopTenPlayer_Coroutine()
-    //{
-    //    yield return DBConnector.API_GET_Coroutine("Player_Score?limit=10^&order=Best_score.desc");
-    //    //Debug.Log(DBConnector.jsonData);
-        
-    //    //// นำข้อมูลใน jsonData มาแปลงเป็น class ของ C# โดยที่ตัวแปรใน class นั้นต้องมีชื่อที่ตรงกับ database แบบเป๊ะ ๆ
-    //    //playerData = JsonUtility.FromJson<PlayerList>(DBConnector.jsonData);
-    //    UpdateUI();
-    //}
 }
