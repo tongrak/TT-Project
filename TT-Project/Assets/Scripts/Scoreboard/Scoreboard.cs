@@ -9,8 +9,11 @@ public class Scoreboard : MonoBehaviour
     [SerializeField] private int maxScoreboardEntries = 10;
     [SerializeField] private Transform highscoreContainerTransform = null;
     [SerializeField] private GameObject scoreboardEntryObject = null;
-    [SerializeField] private Transform CurrRankContainerTransform = null;
+    [SerializeField] private Transform currRankContainerTransform = null;
     [SerializeField] private GameObject currRankEntryObject = null;
+    [SerializeField] private Transform scoreBarContainerTransform = null;
+    [SerializeField] private GameObject scoreBarEntryObject = null;
+
     [SerializeField] private string score_table;
     [SerializeField] private StringSO usernameSO;
     [SerializeField] private IntSO bestScoreSO;
@@ -50,7 +53,7 @@ public class Scoreboard : MonoBehaviour
 
         // Delete child object in CurrRankContainer except first gameObject
         int transform_index = 0;
-        foreach (Transform child in CurrRankContainerTransform)
+        foreach (Transform child in currRankContainerTransform)
         {
             if(transform_index != 0)
             {
@@ -60,12 +63,14 @@ public class Scoreboard : MonoBehaviour
         }
         // Create current player rank form
         rank = computeCurrRankFromBS();
-        Instantiate(currRankEntryObject, CurrRankContainerTransform).
+        Instantiate(currRankEntryObject, currRankContainerTransform).
                 GetComponent<ScoreboardEntryUI>().Initialise(rank, new Player_BestScore(usernameSO.Value, bestScoreSO.Value));
 
         //create score bar
         int bs_rank = computeCurrRankFromBS();
         int rs_rank = computeCurrRankFromRS();
+        Instantiate(scoreBarEntryObject, scoreBarContainerTransform).
+            GetComponent<ScoreBarEntryUI>().Initialise(rs_rank, bs_rank, allPlayer_bestScore.jsonData.Length+1);
     }
 
     private void GetAllPlayerBestScore()

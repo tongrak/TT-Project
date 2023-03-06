@@ -527,6 +527,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2011388665, guid: 845cf3a288a696043b7845aba3391256, type: 3}
   m_PrefabInstance: {fileID: 5887842317493565910}
   m_PrefabAsset: {fileID: 0}
+--- !u!224 &1834873040 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1232492871067460742, guid: 845cf3a288a696043b7845aba3391256, type: 3}
+  m_PrefabInstance: {fileID: 5887842317493565910}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2065855574
 GameObject:
   m_ObjectHideFlags: 0
@@ -799,6 +804,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5004889379201792186, guid: f188a311f578ee74d95869ab5d47855a, type: 3}
     - target: {fileID: 5052182318485105271, guid: 845cf3a288a696043b7845aba3391256, type: 3}
+      propertyPath: scoreBarEntryObject
+      value: 
+      objectReference: {fileID: 8727142925888114478, guid: 99d765be6e4ac90438691fe4ef5c6b19, type: 3}
+    - target: {fileID: 5052182318485105271, guid: 845cf3a288a696043b7845aba3391256, type: 3}
       propertyPath: currentBestscoreText
       value: 
       objectReference: {fileID: 0}
@@ -810,6 +819,14 @@ PrefabInstance:
       propertyPath: CurrRankContainerTransform
       value: 
       objectReference: {fileID: 5887842317493565913}
+    - target: {fileID: 5052182318485105271, guid: 845cf3a288a696043b7845aba3391256, type: 3}
+      propertyPath: currRankContainerTransform
+      value: 
+      objectReference: {fileID: 5887842317493565913}
+    - target: {fileID: 5052182318485105271, guid: 845cf3a288a696043b7845aba3391256, type: 3}
+      propertyPath: scoreBarContainerTransform
+      value: 
+      objectReference: {fileID: 1834873040}
     - target: {fileID: 5052182318485105271, guid: 845cf3a288a696043b7845aba3391256, type: 3}
       propertyPath: CurrPlayerRankContainerTransform
       value: 
