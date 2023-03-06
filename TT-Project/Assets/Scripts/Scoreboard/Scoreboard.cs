@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Networking;
 using TMPro;
 
 public class Scoreboard : MonoBehaviour
@@ -8,9 +9,11 @@ public class Scoreboard : MonoBehaviour
     [SerializeField] private int maxScoreboardEntries = 10;
     [SerializeField] private Transform highscoreContainerTransform = null;
     [SerializeField] private GameObject scoreboardEntryObject = null;
-    [SerializeField] private TextMeshProUGUI currentNameText = null;
-    [SerializeField] private TextMeshProUGUI currentRankText = null;
-    [SerializeField] private TextMeshProUGUI currentBestscoreText = null;
+    [SerializeField] private Transform CurrRankContainerTransform = null;
+    [SerializeField] private GameObject currRankEntryObject = null;
+    ////[SerializeField] private TextMeshProUGUI currentNameText = null;
+    ////[SerializeField] private TextMeshProUGUI currentRankText = null;
+    //[SerializeField] private TextMeshProUGUI currentBestscoreText = null;
     [SerializeField] private string score_table;
     [SerializeField] private StringSO usernameSO;
     [SerializeField] private IntSO bestScoreSO;
@@ -25,7 +28,7 @@ public class Scoreboard : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(GetAllPlayerBestScore_Coroutine());
+        GetAllPlayerBestScore();
     }
 
     // Use to update scoreboard UI
@@ -49,9 +52,15 @@ public class Scoreboard : MonoBehaviour
         }
 
         // Create current player rank form
-        currentNameText.text = usernameSO.Value;
-        currentRankText.text = computeCurrRank().ToString();
-        currentBestscoreText.text = bestScoreSO.Value.ToString();
+        rank = computeCurrRank();
+        Player_BestScore pb = new Player_BestScore(usernameSO.Value, bestScoreSO.Value);
+        Instantiate(currRankEntryObject, CurrRankContainerTransform).
+                GetComponent<ScoreboardEntryUI>().Initialise(rank, pb);
+    }
+
+    private void GetAllPlayerBestScore()
+    {
+        StartCoroutine(GetAllPlayerBestScore_Coroutine());
     }
 
     private IEnumerator GetAllPlayerBestScore_Coroutine()

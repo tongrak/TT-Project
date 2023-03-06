@@ -123,17 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &9320953 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1495513089517557552, guid: 845cf3a288a696043b7845aba3391256, type: 3}
-  m_PrefabInstance: {fileID: 5887842317493565910}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &72612338
 GameObject:
   m_ObjectHideFlags: 0
@@ -233,27 +222,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &201229591 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1495513089711373975, guid: 845cf3a288a696043b7845aba3391256, type: 3}
-  m_PrefabInstance: {fileID: 5887842317493565910}
-  m_PrefabAsset: {fileID: 0}
---- !u!224 &201229592 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 1495513089711373968, guid: 845cf3a288a696043b7845aba3391256, type: 3}
-  m_PrefabInstance: {fileID: 5887842317493565910}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &604300670 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1495513089155739522, guid: 845cf3a288a696043b7845aba3391256, type: 3}
-  m_PrefabInstance: {fileID: 5887842317493565910}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1074826512
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,17 +253,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1560974025 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1495513089743297719, guid: 845cf3a288a696043b7845aba3391256, type: 3}
-  m_PrefabInstance: {fileID: 5887842317493565910}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2065855574
 GameObject:
   m_ObjectHideFlags: 0
@@ -546,23 +503,31 @@ PrefabInstance:
     - target: {fileID: 5052182318485105271, guid: 845cf3a288a696043b7845aba3391256, type: 3}
       propertyPath: currentNameText
       value: 
-      objectReference: {fileID: 1560974025}
+      objectReference: {fileID: 0}
     - target: {fileID: 5052182318485105271, guid: 845cf3a288a696043b7845aba3391256, type: 3}
       propertyPath: currentRankText
       value: 
-      objectReference: {fileID: 9320953}
+      objectReference: {fileID: 0}
+    - target: {fileID: 5052182318485105271, guid: 845cf3a288a696043b7845aba3391256, type: 3}
+      propertyPath: currRankEntryObject
+      value: 
+      objectReference: {fileID: 5004889379201792186, guid: f188a311f578ee74d95869ab5d47855a, type: 3}
     - target: {fileID: 5052182318485105271, guid: 845cf3a288a696043b7845aba3391256, type: 3}
       propertyPath: currentBestscoreText
       value: 
-      objectReference: {fileID: 604300670}
+      objectReference: {fileID: 0}
     - target: {fileID: 5052182318485105271, guid: 845cf3a288a696043b7845aba3391256, type: 3}
       propertyPath: currPlayerRankEntryObject
       value: 
-      objectReference: {fileID: 201229591}
+      objectReference: {fileID: 0}
+    - target: {fileID: 5052182318485105271, guid: 845cf3a288a696043b7845aba3391256, type: 3}
+      propertyPath: CurrRankContainerTransform
+      value: 
+      objectReference: {fileID: 5887842317493565913}
     - target: {fileID: 5052182318485105271, guid: 845cf3a288a696043b7845aba3391256, type: 3}
       propertyPath: CurrPlayerRankContainerTransform
       value: 
-      objectReference: {fileID: 201229592}
+      objectReference: {fileID: 0}
     - target: {fileID: 8173507128044980507, guid: 845cf3a288a696043b7845aba3391256, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -591,7 +556,8 @@ PrefabInstance:
       propertyPath: MemRand_bestScoreSO
       value: 
       objectReference: {fileID: 11400000, guid: c5a7862769e75de4eaefb1ea95bcbce8, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8173507128044980507, guid: 845cf3a288a696043b7845aba3391256, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 845cf3a288a696043b7845aba3391256, type: 3}
 --- !u!1 &5887842317493565911 stripped
 GameObject:
@@ -610,3 +576,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db040dde9edeacf47bb4783e0a68b9c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &5887842317493565913 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2468019173685307419, guid: 845cf3a288a696043b7845aba3391256, type: 3}
+  m_PrefabInstance: {fileID: 5887842317493565910}
+  m_PrefabAsset: {fileID: 0}
