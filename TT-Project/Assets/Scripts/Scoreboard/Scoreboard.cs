@@ -103,7 +103,7 @@ public class Scoreboard : MonoBehaviour
     private int computeCurrRankFromRS()
     {
         int rank = 1;
-        int recentScore = findRecenScore();
+        int recentScore = findRecentScore();
         foreach (Player_AllScore p in allPlayer_bestScore.jsonData)
         {
             // ถ้าหาก recent score นั้นมีค่าเท่ากับ best score ของตนเอง หรือ recent score มีค่ามากกว่าผู้เล่นคนถัดไป
@@ -116,7 +116,7 @@ public class Scoreboard : MonoBehaviour
         return 0;
     }
 
-    private int findRecenScore()
+    private int findRecentScore()
     {
         foreach (Player_AllScore p in allPlayer_bestScore.jsonData)
         {
