@@ -12,14 +12,19 @@ public class SelectSBUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        sb_SO.scoreboardHeader = headerSB;
-        sb_SO.gameTypeTable = gameTypeTable;
-        sb_SO.bestScoreSO = bestScoreSO;
+
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void ChangeScoreSOValue()
+    {
+        sb_SO.scoreboardHeader = headerSB;
+        sb_SO.gameTypeTable = gameTypeTable;
+        sb_SO.bestScoreSO = bestScoreSO;
     }
 }

@@ -662,6 +662,42 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 245760213, guid: 845cf3a288a696043b7845aba3391256, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 245760214, guid: 845cf3a288a696043b7845aba3391256, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 245760214, guid: 845cf3a288a696043b7845aba3391256, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 245760214, guid: 845cf3a288a696043b7845aba3391256, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5887842317493565911}
+    - target: {fileID: 245760214, guid: 845cf3a288a696043b7845aba3391256, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 245760214, guid: 845cf3a288a696043b7845aba3391256, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: changeScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 245760214, guid: 845cf3a288a696043b7845aba3391256, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ChangeSceneManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 245760214, guid: 845cf3a288a696043b7845aba3391256, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: SelectScoreboard
+      objectReference: {fileID: 0}
+    - target: {fileID: 245760214, guid: 845cf3a288a696043b7845aba3391256, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1315806405, guid: 845cf3a288a696043b7845aba3391256, type: 3}
       propertyPath: m_text
       value: back
@@ -725,6 +761,10 @@ PrefabInstance:
     - target: {fileID: 5052182318485105271, guid: 845cf3a288a696043b7845aba3391256, type: 3}
       propertyPath: score_table
       value: SequenceMem_Score
+      objectReference: {fileID: 0}
+    - target: {fileID: 5824443368411179974, guid: 845cf3a288a696043b7845aba3391256, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -38.875916
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 845cf3a288a696043b7845aba3391256, type: 3}

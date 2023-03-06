@@ -877,7 +877,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1149737231}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1197480731}
+        m_TargetAssemblyTypeName: ChangeSceneManager, Assembly-CSharp
+        m_MethodName: changeScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Scoreboard
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1149737231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -926,6 +938,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1197480729}
   - component: {fileID: 1197480730}
+  - component: {fileID: 1197480731}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -965,6 +978,18 @@ MonoBehaviour:
   rankFromBS_SO: {fileID: 11400000, guid: 0aef0780410bfd94384836cfa20ecbd7, type: 2}
   rankFromRS_SO: {fileID: 11400000, guid: 0ccaaac1acd5ba549a29fde24e87dc3b, type: 2}
   numberOfPlayer_SO: {fileID: 11400000, guid: 87ad3ab90f076bf4ba09da7365397787, type: 2}
+--- !u!114 &1197480731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1197480728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db040dde9edeacf47bb4783e0a68b9c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1424180584
 GameObject:
   m_ObjectHideFlags: 0
@@ -1110,6 +1135,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1551376335}
   - component: {fileID: 1551376336}
+  - component: {fileID: 1551376337}
   m_Layer: 0
   m_Name: SaveSOData
   m_TagString: Untagged
@@ -1149,6 +1175,19 @@ MonoBehaviour:
   rev_bestScoreSO: {fileID: 11400000, guid: aa4a20ce4f9dea641b90c8eed852422e, type: 2}
   memRand_bestScoreSO: {fileID: 11400000, guid: c5a7862769e75de4eaefb1ea95bcbce8, type: 2}
   mix_bestScoreSO: {fileID: 11400000, guid: dce09a380b81ec84f8ba78585e23104b, type: 2}
+--- !u!114 &1551376337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551376334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7b2b7b903aff0946a4437fd3ab18467, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sb_SO: {fileID: 11400000, guid: 0d64ac22c53d4a7479673a3316cc0686, type: 2}
 --- !u!1 &1753359842
 GameObject:
   m_ObjectHideFlags: 0
