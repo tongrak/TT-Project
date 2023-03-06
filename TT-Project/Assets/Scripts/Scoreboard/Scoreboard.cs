@@ -62,6 +62,10 @@ public class Scoreboard : MonoBehaviour
         rank = computeCurrRankFromBS();
         Instantiate(currRankEntryObject, CurrRankContainerTransform).
                 GetComponent<ScoreboardEntryUI>().Initialise(rank, new Player_BestScore(usernameSO.Value, bestScoreSO.Value));
+
+        //create score bar
+        int bs_rank = computeCurrRankFromBS();
+        int rs_rank = computeCurrRankFromRS();
     }
 
     private void GetAllPlayerBestScore()
@@ -102,7 +106,11 @@ public class Scoreboard : MonoBehaviour
         int recentScore = findRecenScore();
         foreach (Player_AllScore p in allPlayer_bestScore.jsonData)
         {
-            
+            // ถ้าหาก recent score นั้นมีค่าเท่ากับ best score ของตนเอง หรือ recent score มีค่ามากกว่าผู้เล่นคนถัดไป
+            if((recentScore == p.best_score && p.username == usernameSO.Value) || recentScore > p.best_score)
+            {
+                return rank;
+            }
             rank++;
         }
         return 0;
