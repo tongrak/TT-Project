@@ -17,8 +17,8 @@ public class ScoreBarEntryUI : MonoBehaviour
         RectTransform rt_bar = (RectTransform)bar.transform;
         float barLength = rt_bar.rect.width;
 
-        float xPos_recent = (barLength / (amountOfPlayer - 1)) * (recentScoreRank - 1);
-        float xPos_best = (barLength / (amountOfPlayer - 1)) * (bestScoreRank - 1);
+        float xPos_recent = -((barLength / (amountOfPlayer - 1)) * (recentScoreRank - 1));
+        float xPos_best = -((barLength / (amountOfPlayer - 1)) * (bestScoreRank - 1));
 
         // set recent score line position
         recentLine.transform.position = new Vector2(xPos_recent, recentLine.transform.position.y);
