@@ -45,15 +45,16 @@ public class RDM_GameManager : MonoBehaviour
     private int countCorrectGuesses;    
     private int gameGuesses;
 
-    private int currentPuzzIdx, currentAnsIdx;  //  current guess and answer index
+    private int currentAnsIdx, currentGuessesIdx;  //  current guess and answer index
 
-    private string currentPuzz, currentAns; //  current guess and answer name
+    private string currentAns; //  current answer name
 
     private bool isRememTime = false;
     private float rememTimeStamp;
 
     private int puzzleSize;
     private int ansSize;
+    public List<string> guessesList;
 
 
 
@@ -85,7 +86,6 @@ public class RDM_GameManager : MonoBehaviour
         showScore.text = scoreSO.Value + "";
         StartCoroutine(RememPuzzleTime());
      
-        gameGuesses = gamePuzzles.Count / 2;
     }
 
     //  Create button
@@ -102,7 +102,6 @@ public class RDM_GameManager : MonoBehaviour
             btns[i].enabled = false;    // Set btn can't interactable   // fixed bug interact
             
         }
-        currentPuzzIdx = Puzzle_objects.Length - 1;
 
         //  Ans btn
         GameObject[] Answer_objects = GameObject.FindGameObjectsWithTag("AnswerBtn");
@@ -148,14 +147,21 @@ public class RDM_GameManager : MonoBehaviour
         if (!isChoose)
         {
             isChoose = true;
-            currentAnsIdx = int.Parse(UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.name);
-
+            currentAnsIdx = int.Parse(UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.name); // get select ans name
+            
             currentAns = gamePuzzles[currentAnsIdx].name;
-            btns[currentAnsIdx].image.sprite = gamePuzzles[currentAnsIdx];
+            //btns[currentAnsIdx].image.sprite = gamePuzzles[currentAnsIdx];
 
-            if(currentPuzz == currentAns)
+            if(guessesList.Contains(currentAns))
             {
                 print("Puzzle Match");
+                for(int i=0; i<puzzleSize; i++)
+                {
+                    if(gamePuzzles[i].name == currentAns)
+                    {
+                        currentGuessesIdx = i;
+                    }
+                }
             }else
             {
                 print("Puzzle don't Match");
@@ -167,27 +173,40 @@ public class RDM_GameManager : MonoBehaviour
         }
     }
 
+    //  Random guesses
+    void RandomGuess(int guessSize, int randCount)
+    {
+        for(int i=0; i<randCount; i++)
+        {
+            int rnd = Random.Range(0, guessSize);
+            gameGuesses = randCount;
+            if (guessesList.Count == 0)
+            {
+                guessesList.Add(gamePuzzles[rnd].name);
+            }
+            else if (guessesList.Contains(gamePuzzles[rnd].name))
+            {
+                i--;
+            }
+            else
+            {
+                guessesList.Add(gamePuzzles[rnd].name);
+            }
+
+        }
+    }
+
     //  Check selected is match
     IEnumerator checkThePuzzleMatch()
     {
         
         yield return new WaitForSeconds(0.5f);
 
-        if(currentPuzz == currentAns)
+        if(guessesList.Contains(currentAns))
         {
-            //yield return new WaitForSeconds(0.5f);
-            //btns[currentPuzzIdx].interactable = false;    //fix show correct ans
-            //btns[currentAnsIdx].interactable = false;
-
-            //btns[currentPuzzIdx].image.color = new Color(0, 0, 0, 0); //fix show correct ans
-            //btns[currentAnsIdx].image.color = new Color(0, 0, 0, 0);
-            btns[currentPuzzIdx].image.sprite = gamePuzzles[currentPuzzIdx];
+            btns[currentGuessesIdx].image.sprite = gamePuzzles[currentAnsIdx];
 
             CheckTheGameFinished();
-            currentPuzzIdx--;
-            if (currentPuzzIdx > -1) { 
-                ShowNextPuzzle();
-            }
         }else
         {
             //
@@ -222,21 +241,22 @@ public class RDM_GameManager : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         for (int i=0; i<puzzleSize; i++)
         {
-            yield return new WaitForSeconds(1f);
             btns[i].image.sprite = gamePuzzles[i];
 
         }
 
-        yield return new WaitForSeconds(1f);
+        RandomGuess(puzzleSize, 1);
+        yield return new WaitForSeconds(3f);
         for (int i=0; i<puzzleSize; i++)
         {
-            btns[i].image.sprite = Puzzle_bgImage;
+            if (guessesList.Contains(gamePuzzles[i].name))    //  if puzzle in guesslist change it bg
+            {
+                btns[i].image.sprite = Puzzle_bgImage;
+            }
         }
-        btns[puzzleSize - 1].image.sprite = CurrentGuess_bgImage;
 
         //  show choice 
         yield return new WaitForSeconds(0.5f);
-        currentPuzz = gamePuzzles[currentPuzzIdx].name;
         isRememTime = false;
         ShowAnsChoice(false);
     }
@@ -278,13 +298,6 @@ public class RDM_GameManager : MonoBehaviour
             }
         }
         
-    }
-
-    //  show next guess
-    void ShowNextPuzzle()
-    {
-        btns[currentPuzzIdx].image.sprite = CurrentGuess_bgImage;
-        currentPuzz = gamePuzzles[currentPuzzIdx].name;
     }
 
     //  show game over

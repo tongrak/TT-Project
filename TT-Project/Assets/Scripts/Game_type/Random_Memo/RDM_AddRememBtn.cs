@@ -34,7 +34,6 @@ public class RDM_AddRememBtn : MonoBehaviour
                 GameObject _button = Instantiate(button);
                 _button.name = "" + i;
                 _button.transform.SetParent(puzzlefield, false);
-                print(i);
             }
         }
         else
