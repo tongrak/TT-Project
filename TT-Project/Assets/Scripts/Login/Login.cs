@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 using System;
@@ -12,6 +13,9 @@ public class Login : MonoBehaviour
     [SerializeField] private TMP_InputField usernameField;
     [SerializeField] private TMP_InputField passwordField;
     [SerializeField] private GameObject popup;
+    [Header("Disable objects")]
+    [SerializeField] private Transform buttons;
+    [SerializeField] private Transform inputTextField;
     [Header("SO file")]
     [SerializeField] StringSO UsernameSO;
     [SerializeField] IntSO Seq_bestScoreSO;
@@ -49,6 +53,44 @@ public class Login : MonoBehaviour
     public void changeScene(string scene)
     {
         SceneManager.LoadScene(scene);
+    }
+
+    // disable สิ่งต่าง ๆ เมื่อทำการ login
+    public void DisableObjects()
+    {
+        foreach(Transform child in buttons)
+        {
+            child.GetComponent<Button>().interactable = false;
+        }
+        foreach(Transform child1 in inputTextField)
+        {
+            foreach(Transform child2 in child1)
+            {
+                if (child2.GetComponent<TMP_InputField>())
+                {
+                    child2.GetComponent<TMP_InputField>().interactable = false;
+                }
+            }
+        }
+    }
+
+    // enable ปุ่มต่าง ๆ หลังจากกด close popup
+    public void EnableObjects()
+    {
+        foreach (Transform child in buttons)
+        {
+            child.GetComponent<Button>().interactable = true;
+        }
+        foreach (Transform child1 in inputTextField)
+        {
+            foreach (Transform child2 in child1)
+            {
+                if (child2.GetComponent<TMP_InputField>())
+                {
+                    child2.GetComponent<TMP_InputField>().interactable = true;
+                }
+            }
+        }
     }
 
     // for login button

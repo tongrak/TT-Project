@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using System;
 using System.Text;
@@ -12,6 +13,9 @@ public class Register : MonoBehaviour
     [SerializeField] private TMP_InputField passwordField;
     [SerializeField] private TMP_InputField confirmPasswordField;
     [SerializeField] private GameObject popup;
+    [Header("Disable objects")]
+    [SerializeField] private Transform buttons;
+    [SerializeField] private Transform inputTextField;
     [Header("SO file")] 
     [SerializeField] StringSO UsernameSO;
     [SerializeField] IntSO Seq_bestScoreSO;
@@ -32,6 +36,34 @@ public class Register : MonoBehaviour
     void Update()
     {
 
+    }
+
+    // disable สิ่งต่าง ๆ เมื่อทำการ register
+    public void DisableObjects()
+    {
+        foreach (Transform child in buttons)
+        {
+            child.GetComponent<Button>().interactable = false;
+        }
+
+        foreach (Transform child in inputTextField)
+        {
+            child.GetComponent<TMP_InputField>().interactable = false;
+        }
+    }
+
+    // enable ปุ่มต่าง ๆ หลังจากกด close popup
+    public void EnableObjects()
+    {
+        foreach (Transform child in buttons)
+        {
+            child.GetComponent<Button>().interactable = true;
+        }
+
+        foreach (Transform child in inputTextField)
+        {
+            child.GetComponent<TMP_InputField>().interactable = true;
+        }
     }
 
     // pop the popup window when error accur
