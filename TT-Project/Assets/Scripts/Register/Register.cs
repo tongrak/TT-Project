@@ -7,26 +7,41 @@ using System.Text;
 
 public class Register : MonoBehaviour
 {
+    [Header("Game objects")]
     [SerializeField] private TMP_InputField usernameField;
     [SerializeField] private TMP_InputField passwordField;
     [SerializeField] private TMP_InputField confirmPasswordField;
+    [SerializeField] private GameObject popup;
+    [Header("SO file")] 
     [SerializeField] StringSO UsernameSO;
     [SerializeField] IntSO Seq_bestScoreSO;
     [SerializeField] IntSO MemRand_bestScoreSO;
     [SerializeField] IntSO Rev_bestScoreSO;
     [SerializeField] IntSO Mix_bestScoreSO;
+
     private SupabaseManager dbConnector;
 
     // Start is called before the first frame update
     void Start()
     {
         dbConnector = SupabaseManager.getInstance();
+        popup.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    // pop the popup window when error accur
+    private void popWarning(string message)
+    {
+        // write warning message in popup
+        TextMeshProUGUI warningText = popup.transform.Find("warningText").GetComponent<TextMeshProUGUI>();
+        warningText.text = "" + message;
+        // pop warning
+        popup.SetActive(true);
     }
 
     public void RegisterButton()
@@ -38,10 +53,12 @@ public class Register : MonoBehaviour
         if (password == "" || confirmPass == "" || username == "")
         {
             Debug.Log("Please fill in all text field");
+            popWarning("Please fill in all text field");
         }
         else if(password != confirmPass)
         {
             Debug.Log("Password and ConfimPassword is not same");
+            popWarning("Password and ConfimPassword is not same");
         }
         else
         {
