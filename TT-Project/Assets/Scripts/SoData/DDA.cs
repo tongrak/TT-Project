@@ -86,11 +86,28 @@ public class DDA : ScriptableObject
         }
         else
         {
-            this._performance.Add((wxh1 * _x[_x.Count] - wyh2 * _y[_y.Count]) + (accum_h * this._accum));
+            this._performance.Add((wxh1 * _x[_x.Count - 1] - wyh2 * _y[_y.Count - 1]) + (accum_h * this._accum));
         }
         
     }
-    
+
+    public void Placeholder()
+    {
+        if (this.level == 1)
+        {
+            this._performance.Add((wxe1 * _x[_x.Count - 1] - wye2 * _y[_y.Count - 1]));
+        }
+        else if (this.level == 2)
+        {
+            this._performance.Add((wxn1 * _x[_x.Count - 1] - wyn2 * _y[_y.Count - 1]));
+        }
+        else
+        {
+            this._performance.Add((wxh1 * _x[_x.Count - 1 ] - wyh2 * _y[_y.Count - 1]));
+        }
+    }
+
+
     public Double min()
     {
         List<Double> temp = this._performance;
@@ -136,15 +153,189 @@ public class DDA : ScriptableObject
     {
         if (this.level == 1)
         {
-            
+            if(min() < 0.5 && min() > 0)
+            {
+                if(mean() < 0.5)
+                {
+                    if(max() < 0)
+                    {
+                        if(this.level != 1)
+                        {
+                            this.level -= 1;
+                        }
+                        
+                    }
+                    else if(max() > 0.5)
+                    {
+                        if (std() > 1)
+                        {
+                            if (this.level != 1)
+                            {
+                                this.level -= 1;
+                            }
+                        }
+                        else
+                        {
+                            if (this.level != 3)
+                            {
+                                this.level += 1;
+                            }
+                        }
+                    }
+                    
+                }
+                else if (mean() > 0.5)
+                {
+                    if (this.level != 3)
+                    {
+                        this.level += 1;
+                    }
+                }
+                
+                
+            }
+            else if (min() <= 0 && min() >= -0.5)
+            {
+                if (mean() > 0.5)
+                {
+                    if (this.level != 3)
+                    {
+                        this.level += 1;
+                    }
+                }
+
+            }
+            else
+            {
+                if (this.level != 3)
+                {
+                    this.level += 1;
+                }
+            }
         }
         else if (this.level == 2)
         {
+            if (min() < 0.5 && min() > 0)
+            {
+                if (mean() < 0.5)
+                {
+                    if (max() < 0)
+                    {
+                        if (this.level != 1)
+                        {
+                            this.level -= 1;
+                        }
 
+                    }
+                    else if (max() > 0.5)
+                    {
+                        if (std() > 1)
+                        {
+                            if (this.level != 1)
+                            {
+                                this.level -= 1;
+                            }
+                        }
+                        else
+                        {
+                            if (this.level != 3)
+                            {
+                                this.level += 1;
+                            }
+                        }
+                    }
+
+                }
+                else if (mean() > 0.5)
+                {
+                    if (this.level != 3)
+                    {
+                        this.level += 1;
+                    }
+                }
+
+
+            }
+            else if (min() <= 0 && min() >= -0.5)
+            {
+                if (mean() > 0.5)
+                {
+                    if (this.level != 3)
+                    {
+                        this.level += 1;
+                    }
+                }
+
+            }
+            else
+            {
+                if (this.level != 3)
+                {
+                    this.level += 1;
+                }
+            }
         }
         else
         {
+            if (min() < 0.5 && min() > 0)
+            {
+                if (mean() < 0.5)
+                {
+                    if (max() < 0)
+                    {
+                        if (this.level != 1)
+                        {
+                            this.level -= 1;
+                        }
 
+                    }
+                    else if (max() > 0.5)
+                    {
+                        if (std() > 1)
+                        {
+                            if (this.level != 1)
+                            {
+                                this.level -= 1;
+                            }
+                        }
+                        else
+                        {
+                            if (this.level != 3)
+                            {
+                                this.level += 1;
+                            }
+                        }
+                    }
+
+                }
+                else if (mean() > 0.5)
+                {
+                    if (this.level != 3)
+                    {
+                        this.level += 1;
+                    }
+                }
+
+
+            }
+            else if (min() <= 0 && min() >= -0.5)
+            {
+                if (mean() > 0.5)
+                {
+                    if (this.level != 3)
+                    {
+                        this.level += 1;
+                    }
+                }
+
+            }
+            else
+            {
+                if (this.level != 3)
+                {
+                    this.level += 1;
+                }
+            }
         }
     }
 
