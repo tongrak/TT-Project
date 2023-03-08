@@ -1,0 +1,12 @@
+Number of card : range
+1
+2
+Number of kind : range
+1
+2
+Number of select card : range
+2
+3
+Number of flip card : range
+1
+1
