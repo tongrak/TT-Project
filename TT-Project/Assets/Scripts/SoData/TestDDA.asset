@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bea3293379fb21049b350ad20cd6beac, type: 3}
-  m_Name: TimeSO
+  m_Script: {fileID: 11500000, guid: 0b6fdf72fd7cc5740890a1d66e21a14a, type: 3}
+  m_Name: TestDDA
   m_EditorClassIdentifier: 
-  _value: 116.4127
+  _x: 0
+  _y: 0

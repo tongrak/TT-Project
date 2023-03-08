@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,8 +9,11 @@ public class Timer : MonoBehaviour
 {
 
 
+    //[SerializeField]
+    //Text countdownText;
+
     [SerializeField]
-    Text countdownText;
+    private TMP_Text scoreText;
 
     [SerializeField]
     private FloatSO timeCount;
@@ -18,9 +22,10 @@ public class Timer : MonoBehaviour
     void Update()
     {
         timeCount.Value -= 1 * Time.deltaTime;
-        countdownText.text = timeCount.Value.ToString("00");
+        //countdownText.text = timeCount.Value.ToString("00");
+        scoreText.text = timeCount.Value.ToString("00");
 
-        if(timeCount.Value <= 0)
+        if (timeCount.Value <= 0)
         {
             timeCount.Value = 0;
         }

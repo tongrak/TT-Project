@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,13 +17,9 @@ public class buttonController : MonoBehaviour
     {
         theSprite = GetComponent<SpriteRenderer>();    
         theGM = FindObjectOfType<GameController_SM>();
+        thisButtonNumber = Convert.ToInt32(this.name);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     void OnMouseDown()
     {
