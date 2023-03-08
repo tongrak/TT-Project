@@ -187,7 +187,9 @@ public class GameController_SM : MonoBehaviour
                 {
                     Debug.Log("Win and new game.");
 
-                    DDA.X += 1;
+                    DDA.Wx += 1;
+                    DDA.addX(DDA.Wx);
+                    DDA.heuristic();
                     //Main Score++
                     scoreSO.Value += 10;
                     scoreText.text = scoreSO.Value + "";
@@ -199,7 +201,9 @@ public class GameController_SM : MonoBehaviour
             }
             else
             {
-                DDA.Y += 1;
+                DDA.Wy += 1;
+                DDA.addY(DDA.Wy);
+                DDA.heuristic();
                 Debug.Log("Wrong End game");
                 gameActive = false;
                 SceneManager.LoadScene("sequence_memory_game");

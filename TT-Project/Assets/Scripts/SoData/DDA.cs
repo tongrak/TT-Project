@@ -1,5 +1,8 @@
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,59 +11,141 @@ using UnityEngine.SceneManagement;
 
 public class DDA : ScriptableObject
 {
-    
+    [SerializeField]
+    private int level = 1;
 
     [SerializeField]
-    private int _x;
+    private int wx;
 
     [SerializeField]
-    private int _y;
+    private int wy;
 
     [SerializeField]
-    private int _sum;
+    private List<Double> _x = new List<Double>();
+
+    [SerializeField]
+    private List<Double> _y = new List<Double>();
+
+    [SerializeField]
+    private Double _accum;
+
+    [SerializeField]
+    private List<Double> _performance = new List<Double>();
 
 
     //weight
-    private int wxe1 = 2;
-    private int wye2 = 0;
-    private int wxn1 = 2;
-    private int wyn2 = 1;
-    private int wxh1 = 1;
-    private int wyh2 = 3;
 
-    public int Y
+    //easy
+    private Double wxe1 = 0.5;
+    private Double wye2 = 0.4;
+    private Double accum_e = 0.1;
+    //normal
+    private Double wxn1 = 0.5;
+    private Double wyn2 = 0.5;
+    private Double accum_n = 0.09;
+    //hard
+    private Double wxh1 = 0.5;
+    private Double wyh2 = 0.55;
+    private Double accum_h = 0.08;
+
+
+    public int Wx
     {
-        get { return _y; }
-        set { _y = value; }
+        get { return wx; }
+        set { wx = value; }
     }
 
-    public int X
+    public int Wy
     {
-        get { return _x; }
-        set { _x = value; }
+        get { return wy; }
+        set { wy = value; }
     }
 
-    public int SUM
+    public void addX(int value)
     {
-        get { return _sum; }
-        set { _sum = value; }
+        _x.Add(value);
+        _y.Add(0);
     }
 
-    public void heuristic(int x,int y,string l)
+
+    public void addY(int value)
     {
-        if (l.Equals("e"))
+        _y.Add(value);
+        _x.Add(0);
+    }
+
+    public void heuristic()
+    {
+        if (this.level == 1)
         {
-            this._sum = wxe1*x - wye2*y;
+            this._performance.Add((wxe1 * _x[_x.Count - 1] - wye2 * _y[_y.Count - 1]) + (accum_e* this._accum));
         }
-        else if (l.Equals("n"))
+        else if (this.level == 2)
         {
-            this._sum = wxn1 * x - wyn2 * y;
+            this._performance.Add((wxn1 * _x[_x.Count - 1] - wyn2 * _y[_y.Count - 1]) + (accum_n * this._accum));
         }
         else
         {
-            this._sum = wxh1 * x - wyh2 * y;
+            this._performance.Add((wxh1 * _x[_x.Count] - wyh2 * _y[_y.Count]) + (accum_h * this._accum));
         }
         
+    }
+    
+    public Double min()
+    {
+        List<Double> temp = this._performance;
+        return temp[0];
+    }
+
+    public Double max()
+    {
+        List<Double> temp = this._performance;
+        return temp[temp.Count-1];
+    }
+
+    public Double mean()
+    {
+        Double sum = 0;
+
+        for(int i = 0; i < this._performance.Count; i++)
+        {
+            sum += _performance[i];
+        }
+
+        Double result = sum / (_performance.Count);
+
+        return result;
+    }
+
+    public Double std()
+    {
+        Double sd;
+        Double sum = 0;
+
+        for (int i = 0; i < _performance.Count; i++)
+        {
+            sum += math.pow((_performance[i] - mean()), 2);
+        }
+
+        sd = math.sqrt(sum / _performance.Count - 1);
+
+        return sd;
+    }
+
+    public void reLevel()
+    {
+        if (this.level == 1)
+        {
+            
+        }
+        else if (this.level == 2)
+        {
+
+        }
+        else
+        {
+
+        }
     }
 
 
