@@ -45,6 +45,7 @@ public class SupabaseManager
         // if request success
         else
         {
+            errData = null;
             jsonData = "{\"jsonData\":" + request.downloadHandler.text + "}";
             request.Dispose();
             //yield break;

@@ -121,6 +121,7 @@ public class Register : MonoBehaviour
         {
             Debug.Log("err: " + dbConnector.errData);
             Debug.Log("This username have already exist");
+            popWarning("This username have already exist");
         }
         // if new username have never exist in database.
         else
