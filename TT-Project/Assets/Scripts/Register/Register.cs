@@ -35,7 +35,12 @@ public class Register : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKey("space"))
+        {
+            usernameField.text = usernameField.text.Replace(" ", "");
+            passwordField.text = passwordField.text.Replace(" ", "");
+            confirmPasswordField.text = confirmPasswordField.text.Replace(" ", "");
+        }
     }
 
     // disable สิ่งต่าง ๆ เมื่อทำการ register

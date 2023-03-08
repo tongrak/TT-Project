@@ -36,7 +36,11 @@ public class Login : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKey("space"))
+        {
+            usernameField.text = usernameField.text.Replace(" ", "");
+            passwordField.text = passwordField.text.Replace(" ", "");
+        }
     }
 
     // pop the popup window when error accur
