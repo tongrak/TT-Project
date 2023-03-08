@@ -26,10 +26,13 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/memory game.unity
     guid: fe4c7dbeee4040341a824f458a323693
   - enabled: 0
     path: Assets/Scenes/ReverseRetention_1.unity
     guid: 091481860539bc943ba484c09143cc44
+  - enabled: 1
+    path: Assets/Scenes/MemoRandom.unity
+    guid: 861e8c82704b49449a2a0250d638ca65
   m_configObjects: {}

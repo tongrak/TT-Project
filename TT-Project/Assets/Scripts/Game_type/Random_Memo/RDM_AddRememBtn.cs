@@ -15,7 +15,7 @@ public class RDM_AddRememBtn : MonoBehaviour
 
     private void Awake()
     {
-        puzzleSize = 2;
+        puzzleSize = 3;
         ansSize = 4;
         if (button.tag == "PuzzleBtn")
         {

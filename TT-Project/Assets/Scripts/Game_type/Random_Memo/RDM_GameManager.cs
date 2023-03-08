@@ -245,7 +245,7 @@ public class RDM_GameManager : MonoBehaviour
 
         }
 
-        RandomGuess(puzzleSize, 1);
+        RandomGuess(puzzleSize, 2);
         yield return new WaitForSeconds(3f);
         for (int i=0; i<puzzleSize; i++)
         {
@@ -314,7 +314,7 @@ public class RDM_GameManager : MonoBehaviour
         }
         if(TimeSO.Value <= 0)
         {
-            //SceneManager.LoadScene(3);
+            //SceneManager.LoadScene(0);
         }
     }
 }
