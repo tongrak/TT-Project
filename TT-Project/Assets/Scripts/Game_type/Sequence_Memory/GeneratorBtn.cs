@@ -11,7 +11,7 @@ public class GeneratorBtn : MonoBehaviour
     private Transform gameField;
 
     [SerializeField]
-    private Camera img;
+    private Transform img;
 
     [SerializeField]
     private GameObject btns;
@@ -40,7 +40,7 @@ public class GeneratorBtn : MonoBehaviour
         
         if(level == 1)
         {
-            //img.backgroundColor = new Color(154, 249, 120, 0);
+            img.GetComponent<Image>().color = new Color((float)0.6039216, (float)0.9764706, (float)0.4705882, 1);
           
 
             for (int i = 0; i < 4; i++)
@@ -68,7 +68,7 @@ public class GeneratorBtn : MonoBehaviour
         }
         else if(level == 2)
         {
-            //img.backgroundColor = new Color(249, 228, 120, 0);
+            img.GetComponent<Image>().color = new Color((float)0.9764706, (float)0.8941177, (float)0.4705882, 1);
 
             for (int i = 0; i < 7; i++)
             {
@@ -93,8 +93,8 @@ public class GeneratorBtn : MonoBehaviour
         }
         else
         {
-            //img.backgroundColor = new Color(239, 89, 68, 0);
-            
+            img.GetComponent<Image>().color = new Color((float)0.9372549, (float)0.3490196, (float)0.2666667, 1);
+
             for (int i = 0; i < 10; i++)
             {
                 int[] x = { -402, -363, -325, -20, -202, 122, 213,343,-24,363 };

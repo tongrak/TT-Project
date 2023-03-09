@@ -708,7 +708,7 @@ RectTransform:
   m_Children:
   - {fileID: 1456566202}
   m_Father: {fileID: 1738719302}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -865,6 +865,8 @@ MonoBehaviour:
   scoreSO: {fileID: 11400000, guid: 1150a4bdf7e26f8428f99a72fa87ba4e, type: 2}
   scoreText: {fileID: 761880066}
   TimeSO: {fileID: 11400000, guid: 36500eefdd050ea4a8e66b731318299a, type: 2}
+  pause: {fileID: 11400000, guid: a1e3abab1afd9544faf03030c480e614, type: 2}
+  DDA: {fileID: 0}
   stayLit: 1
   waitBetweenLights: 0.5
   activeSequence: 
@@ -910,11 +912,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameField: {fileID: 1456566202}
-  img: {fileID: 1968669919}
+  img: {fileID: 1738719302}
   btns: {fileID: 2466669294548411031, guid: 464be89a7dd58084f9705bc0a76ef507, type: 3}
   btns2: {fileID: 2466669294548411031, guid: 5254d0656380c4f45878c4c648d548be, type: 3}
   btns3: {fileID: 2466669294548411031, guid: 3ad5d72859d79d844934989a523123df, type: 3}
-  level: 3
+  level: 1
+  DDA: {fileID: 0}
   quad: {fileID: 396824590}
 --- !u!114 &1583397090
 MonoBehaviour:
@@ -928,8 +931,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0358462efb8606741b2e63c82217c8e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 365637723}
+  timeText: {fileID: 365637723}
   timeCount: {fileID: 11400000, guid: 36500eefdd050ea4a8e66b731318299a, type: 2}
+  pause: {fileID: 11400000, guid: a1e3abab1afd9544faf03030c480e614, type: 2}
 --- !u!1 &1738719301
 GameObject:
   m_ObjectHideFlags: 0
@@ -960,8 +964,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1376525144}
   - {fileID: 1931756431}
+  - {fileID: 1376525144}
   m_Father: {fileID: 181990912}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -983,7 +987,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6039216, g: 0.9764706, b: 0.47058824, a: 0}
+  m_Color: {r: 0.9372549, g: 0.34901962, b: 0.26666668, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1108,7 +1112,7 @@ RectTransform:
   m_Children:
   - {fileID: 159607631}
   m_Father: {fileID: 1738719302}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

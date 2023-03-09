@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b6fdf72fd7cc5740890a1d66e21a14a, type: 3}
-  m_Name: TestDDA
+  m_Script: {fileID: 11500000, guid: 9399b6b5d4cc98447bda3df2189bed51, type: 3}
+  m_Name: boolTime
   m_EditorClassIdentifier: 
-  _x: 0
-  _y: 0
+  _value: 0

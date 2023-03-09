@@ -17,12 +17,12 @@ public class GameController_SM : MonoBehaviour
     [SerializeField]
     private FloatSO TimeSO;
 
+    [SerializeField]
+    private boolFortime pause;
+
     //DDA
     [SerializeField]
     private DDA DDA;
-
-    //game managment
-    //public SpriteRenderer[] boxs;
 
     private int colorSelect;
 
@@ -48,8 +48,9 @@ public class GameController_SM : MonoBehaviour
 
     private void Start()
     {
+        
 
-        TimeSO.Value = 180;
+        //TimeSO.Value = 180;
 
         //Main Score++
         scoreText.text = scoreSO.Value + "";
@@ -128,7 +129,10 @@ public class GameController_SM : MonoBehaviour
 
         if (shouldBeLit)
         {
-            
+            //Pause
+            pause.Value = true;
+            Debug.Log("bool = " + pause.Value);
+
             stayLitCounter -= Time.deltaTime;
         
             if(stayLitCounter < 0 )
@@ -148,10 +152,14 @@ public class GameController_SM : MonoBehaviour
         if(shouldBeDark)
         {
             
+
             waitBetweenCounter -= Time.deltaTime;
 
             if(positionInSequence >= activeSequence.Count)
             {
+                //Unpause
+                pause.Value = false;
+                Debug.Log("bool = " + pause.Value);
                 shouldBeDark = false;
                 gameActive = true;
             }
@@ -159,6 +167,7 @@ public class GameController_SM : MonoBehaviour
             {
                 if(waitBetweenCounter < 0)
                 {
+                    
 
                     btns[activeSequence[positionInSequence]].color = new Color(btns[activeSequence[positionInSequence]].color.r, btns[activeSequence[positionInSequence]].color.g, btns[activeSequence[positionInSequence]].color.b, 1f);
                     
@@ -167,6 +176,7 @@ public class GameController_SM : MonoBehaviour
                     shouldBeDark = false;
                 }
             }
+            
         }
     }
 
@@ -187,9 +197,9 @@ public class GameController_SM : MonoBehaviour
                 {
                     Debug.Log("Win and new game.");
 
-                    DDA.Wx += 1;
-                    DDA.addX(DDA.Wx);
-                    DDA.heuristic();
+                    //DDA.Wx += 1;
+                    //DDA.addX(DDA.Wx);
+                    //DDA.heuristic();
                     //Main Score++
                     scoreSO.Value += 10;
                     scoreText.text = scoreSO.Value + "";
@@ -201,9 +211,9 @@ public class GameController_SM : MonoBehaviour
             }
             else
             {
-                DDA.Wy += 1;
-                DDA.addY(DDA.Wy);
-                DDA.heuristic();
+                //DDA.Wy += 1;
+                //DDA.addY(DDA.Wy);
+                //DDA.heuristic();
                 Debug.Log("Wrong End game");
                 gameActive = false;
                 SceneManager.LoadScene("sequence_memory_game");
