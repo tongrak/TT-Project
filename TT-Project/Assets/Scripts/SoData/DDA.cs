@@ -32,6 +32,17 @@ public class DDA : ScriptableObject
     [SerializeField]
     private List<Double> _performance = new List<Double>();
 
+    [SerializeField]
+    private Double Max;
+
+    [SerializeField]
+    private Double Min;
+
+    [SerializeField]
+    private Double Mean;
+
+    [SerializeField]
+    private Double SD;
 
     //weight
 
@@ -48,6 +59,18 @@ public class DDA : ScriptableObject
     private Double wyh2 = 0.55;
     private Double accum_h = 0.08;
 
+
+    public Double Accum
+    {
+        get { return _accum; }
+        set { _accum = value; }
+    }
+
+    public int Level
+    {
+        get { return level; }
+        set { level = value; }
+    }
 
     public int Wx
     {
@@ -111,12 +134,16 @@ public class DDA : ScriptableObject
     public Double min()
     {
         List<Double> temp = this._performance;
+        temp.Sort();
+        this.Min = temp[0];
         return temp[0];
     }
 
     public Double max()
     {
         List<Double> temp = this._performance;
+        temp.Sort();
+        this.Max = temp[temp.Count - 1];
         return temp[temp.Count-1];
     }
 
@@ -130,7 +157,7 @@ public class DDA : ScriptableObject
         }
 
         Double result = sum / (_performance.Count);
-
+        this.Mean = result;
         return result;
     }
 
@@ -142,15 +169,45 @@ public class DDA : ScriptableObject
         for (int i = 0; i < _performance.Count; i++)
         {
             sum += math.pow((_performance[i] - mean()), 2);
+            Debug.Log(sum);
         }
 
-        sd = math.sqrt(sum / _performance.Count - 1);
+        if(_performance.Count > 1)
+        {
+            Debug.Log("xxxxxx");
+            sd = math.sqrt(sum / _performance.Count);
+            Debug.Log(sd);
+        }
+        else
+        {
+            Debug.Log("yyyyyy");
+            sd = math.sqrt(sum / _performance.Count);
+        }
 
+        this.SD = sd;
         return sd;
+    }
+
+    public void Reset()
+    {
+        this.level = 1;
+        this.Wx = 0;
+        this.Wy = 0;
+        this._x.Clear();
+        this._y.Clear();
+        this._performance.Clear();
+        this._accum = 0;
+        this.Mean = 0;
+        this.Min= 0;
+        this.Max = 0;
     }
 
     public void reLevel()
     {
+        min();
+        max();
+        mean();
+        std();
         if (this.level == 1)
         {
             if(min() < 0.5 && min() > 0)
@@ -213,135 +270,78 @@ public class DDA : ScriptableObject
                 }
             }
         }
-        else if (this.level == 2)
+    }
+
+    public void reLevel2()
+    {
+        if(min() < 0.5 && mean() < 0.5 && max() < 0 && std() >= 0.25 && std() <= 1)
         {
-            if (min() < 0.5 && min() > 0)
+            Debug.Log("1111111111111111111111111111");
+            if (this.level != 1)
             {
-                if (mean() < 0.5)
-                {
-                    if (max() < 0)
-                    {
-                        if (this.level != 1)
-                        {
-                            this.level -= 1;
-                        }
-
-                    }
-                    else if (max() > 0.5)
-                    {
-                        if (std() > 1)
-                        {
-                            if (this.level != 1)
-                            {
-                                this.level -= 1;
-                            }
-                        }
-                        else
-                        {
-                            if (this.level != 3)
-                            {
-                                this.level += 1;
-                            }
-                        }
-                    }
-
-                }
-                else if (mean() > 0.5)
-                {
-                    if (this.level != 3)
-                    {
-                        this.level += 1;
-                    }
-                }
-
-
+                this.level -= 1;
             }
-            else if (min() <= 0 && min() >= -0.5)
+        }
+        else if (min() < 0.5 && mean() < 0.5 && max() > 0.5 && std() > 1)
+        {
+            Debug.Log("2222222222222222222222222222");
+            if (this.level != 1)
             {
-                if (mean() > 0.5)
-                {
-                    if (this.level != 3)
-                    {
-                        this.level += 1;
-                    }
-                }
-
+                this.level -= 1;
             }
-            else
+        }
+        else if (min() < 0.5 && mean() < 0.5 && max() > 0.5 && std() >= 0.5 && std() <= 1)
+        {
+            Debug.Log("3333333333333333333333333");
+            if (this.level != 3)
             {
-                if (this.level != 3)
-                {
-                    this.level += 1;
-                }
+                this.level += 1;
+            }
+        }
+        else if (min() < 0.5 && mean() > 0.5 && max() > 0.5 && std() >= 0.25 && std() <= 1)
+        {
+            Debug.Log("44444444444444444444444");
+            if (this.level != 3)
+            {
+                this.level += 1;
+            }
+        }
+        else if (min() <= 0 && min() >= -0.5 && mean() > 0.5 && max() > 0.5 && std() >= 0.25 && std() <= 1)
+        {
+            Debug.Log("5555555555555555555555");
+            if (this.level != 3)
+            {
+                this.level += 1;
+            }
+        }
+        else if (min() <= 0 && min() >= -0.5 && mean() > 0.5 && max() > 0.5 && std() > 1)
+        {
+            Debug.Log("6666666666666666666666");
+            if (this.level != 3)
+            {
+                this.level += 1;
+            }
+        }
+        else if (min() > 0 && mean() > 0.5 && max() > 0.5 && std() > 1)
+        {
+            Debug.Log("7777777777777777777777777");
+            if (this.level != 3)
+            {
+                this.level += 1;
+            }
+        }
+        else if (min() > 0 && mean() > 0.5 && max() > 0.5 && std() >= 0.25 && std() <= 1)
+        {
+            Debug.Log("888888888888888888888");
+            if (this.level != 3)
+            {
+                this.level += 1;
             }
         }
         else
         {
-            if (min() < 0.5 && min() > 0)
-            {
-                if (mean() < 0.5)
-                {
-                    if (max() < 0)
-                    {
-                        if (this.level != 1)
-                        {
-                            this.level -= 1;
-                        }
-
-                    }
-                    else if (max() > 0.5)
-                    {
-                        if (std() > 1)
-                        {
-                            if (this.level != 1)
-                            {
-                                this.level -= 1;
-                            }
-                        }
-                        else
-                        {
-                            if (this.level != 3)
-                            {
-                                this.level += 1;
-                            }
-                        }
-                    }
-
-                }
-                else if (mean() > 0.5)
-                {
-                    if (this.level != 3)
-                    {
-                        this.level += 1;
-                    }
-                }
-
-
-            }
-            else if (min() <= 0 && min() >= -0.5)
-            {
-                if (mean() > 0.5)
-                {
-                    if (this.level != 3)
-                    {
-                        this.level += 1;
-                    }
-                }
-
-            }
-            else
-            {
-                if (this.level != 3)
-                {
-                    this.level += 1;
-                }
-            }
+            Debug.Log("Fineeeeeeeee!?");
         }
     }
 
-
-    public void loadScenes()
-    {
-        SceneManager.LoadScene("sequence_memory_game");
-    }
 }

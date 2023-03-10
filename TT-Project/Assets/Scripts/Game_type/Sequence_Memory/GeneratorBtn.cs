@@ -20,6 +20,9 @@ public class GeneratorBtn : MonoBehaviour
     private GameObject btns2;
 
     [SerializeField]
+    private GameObject btns22;
+
+    [SerializeField]
     private GameObject btns3;
 
     public int level;
@@ -38,7 +41,7 @@ public class GeneratorBtn : MonoBehaviour
         //float screenX, screenY;
         Vector3 pos;
         
-        if(level == 1)
+        if(DDA.Level == 1)
         {
             img.GetComponent<Image>().color = new Color((float)0.6039216, (float)0.9764706, (float)0.4705882, 1);
           
@@ -57,7 +60,7 @@ public class GeneratorBtn : MonoBehaviour
                 //Color color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f), 0.5f);
 
                 GameObject button = Instantiate(btns, pos, btns.transform.rotation);
-                button.GetComponent<SpriteRenderer>().color = color[i];
+                button.GetComponent<SpriteRenderer>().color = new Color((float)0.1176471, (float)0.1176471, (float)0.1176471, 1);
                 button.name = "" + i;
 
 
@@ -66,32 +69,46 @@ public class GeneratorBtn : MonoBehaviour
 
             }
         }
-        else if(level == 2)
+        else if(DDA.Level == 2)
         {
             img.GetComponent<Image>().color = new Color((float)0.9764706, (float)0.8941177, (float)0.4705882, 1);
-
+            int count = 1;
             for (int i = 0; i < 7; i++)
             {
                 
-                int[] x = { -375, -250,-125,0,125, 250, 375 };
-                int[] y = { 0, 0, 0, 0,0,0,0 };
+                int[] x = { -270, -180,-90,0,90, 180, 270 };
+                int[] y = { -20, 20, -20, 20,-20,20,-20 };
 
                 Color[] color = { new Color(1, 0, 0, 0.5f), new Color(0, 0, 1, 0.5f), new Color(1, 1, 0, 0.5f), new Color(0, 1, 0, 0.5f), new Color(249, 120, 224, 0.5f), new Color(33, 236, 65, 0.5f) };
 
                 
-
-
                 pos = new Vector3(x[i], y[i], -99);
 
-                GameObject button = Instantiate(btns2, pos, btns2.transform.rotation);
-                button.GetComponent<SpriteRenderer>().color = new Color(1, 0, 0, 0.5f);
-                button.name = "" + i;
+                
 
-                button.transform.SetParent(gameField, false);
+                if(count % 2 == 0)
+                {
+                    //btns2.transform.eulerAngles = new Vector3(0,0,btns2.transform.eulerAngles.z + 180);
+                    GameObject button = Instantiate(btns22, pos, btns22.transform.rotation);
+                    button.GetComponent<SpriteRenderer>().color = new Color((float)0.1176471, (float)0.1176471, (float)0.1176471, 1);
+                    button.name = "" + i;
+                    button.transform.SetParent(gameField, false);
+                }
+                else
+                {
+                    
+                    GameObject button = Instantiate(btns2, pos, btns2.transform.rotation);
+                    button.GetComponent<SpriteRenderer>().color = new Color((float)0.1176471, (float)0.1176471, (float)0.1176471, 1);
+                    button.name = "" + i;
 
+                    button.transform.SetParent(gameField, false);
+                }
+
+                
+                count++;
             }
         }
-        else
+        else if(DDA.Level == 3)
         {
             img.GetComponent<Image>().color = new Color((float)0.9372549, (float)0.3490196, (float)0.2666667, 1);
 

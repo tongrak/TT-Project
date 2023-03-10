@@ -19,3 +19,7 @@ MonoBehaviour:
   _y: []
   _accum: 0
   _performance: []
+  Max: 0
+  Min: 0
+  Mean: 0
+  SD: 0.5

@@ -66,11 +66,11 @@ public class GameController_SM : MonoBehaviour
         {
             colorSelect = Random.Range(0, btns.Count);
             activeSequence.Add(colorSelect);
-            Debug.Log(activeSequence.Count);
-            Debug.Log("btns = " + btns.Count);
+            //Debug.Log(activeSequence.Count);
+            //Debug.Log("btns = " + btns.Count);
         }
 
-        btns[activeSequence[positionInSequence]].color = new Color(btns[activeSequence[positionInSequence]].color.r, btns[activeSequence[positionInSequence]].color.g, btns[activeSequence[positionInSequence]].color.b, 1f);
+        btns[activeSequence[positionInSequence]].color = new Color((float)0.4509804, 1, (float)0.8666667, 1); ;
 
         stayLitCounter = stayLit;
         shouldBeLit = true;
@@ -86,7 +86,7 @@ public class GameController_SM : MonoBehaviour
             Debug.Log(objects[i].name);
         }
 
-        Debug.Log("len = " + objects.Length);
+        //Debug.Log("len = " + objects.Length);
     }
 
 
@@ -108,11 +108,11 @@ public class GameController_SM : MonoBehaviour
         {
             colorSelect = Random.Range(0, btns.Count);
             activeSequence.Add(colorSelect);
-            Debug.Log(activeSequence.Count);
-            Debug.Log("btns = " + btns.Count);
+            //Debug.Log(activeSequence.Count);
+            //Debug.Log("btns = " + btns.Count);
         }
         
-        btns[activeSequence[positionInSequence]].color = new Color(btns[activeSequence[positionInSequence]].color.r, btns[activeSequence[positionInSequence]].color.g, btns[activeSequence[positionInSequence]].color.b, 1f);
+        btns[activeSequence[positionInSequence]].color = new Color((float)0.4509804, 1, (float)0.8666667, 1); ;
 
         stayLitCounter = stayLit;
         shouldBeLit = true;
@@ -124,6 +124,7 @@ public class GameController_SM : MonoBehaviour
     {
         if (TimeSO.Value <= 0)
         {
+            DDA.Reset();
             SceneManager.LoadScene("Summary");
         }
 
@@ -131,14 +132,14 @@ public class GameController_SM : MonoBehaviour
         {
             //Pause
             pause.Value = true;
-            Debug.Log("bool = " + pause.Value);
+            //Debug.Log("bool = " + pause.Value);
 
             stayLitCounter -= Time.deltaTime;
         
             if(stayLitCounter < 0 )
             {
-                btns[activeSequence[positionInSequence]].color = new Color(btns[activeSequence[positionInSequence]].color.r, btns[activeSequence[positionInSequence]].color.g, btns[activeSequence[positionInSequence]].color.b, 0.5f);
-
+                //btns[activeSequence[positionInSequence]].color = new Color(btns[activeSequence[positionInSequence]].color.r, btns[activeSequence[positionInSequence]].color.g, btns[activeSequence[positionInSequence]].color.b, 0.5f);
+                btns[activeSequence[positionInSequence]].color = new Color((float)0.1176471, (float)0.1176471, (float)0.1176471, 1);
                 shouldBeLit = false;
 
                 shouldBeDark = true;
@@ -159,7 +160,7 @@ public class GameController_SM : MonoBehaviour
             {
                 //Unpause
                 pause.Value = false;
-                Debug.Log("bool = " + pause.Value);
+                //Debug.Log("bool = " + pause.Value);
                 shouldBeDark = false;
                 gameActive = true;
             }
@@ -169,7 +170,7 @@ public class GameController_SM : MonoBehaviour
                 {
                     
 
-                    btns[activeSequence[positionInSequence]].color = new Color(btns[activeSequence[positionInSequence]].color.r, btns[activeSequence[positionInSequence]].color.g, btns[activeSequence[positionInSequence]].color.b, 1f);
+                    btns[activeSequence[positionInSequence]].color = new Color((float)0.4509804, 1, (float)0.8666667, 1); ;
                     
                     stayLitCounter = stayLit;
                     shouldBeLit = true;
@@ -197,9 +198,11 @@ public class GameController_SM : MonoBehaviour
                 {
                     Debug.Log("Win and new game.");
 
-                    //DDA.Wx += 1;
-                    //DDA.addX(DDA.Wx);
-                    //DDA.heuristic();
+                    DDA.Wx += 1;
+                    DDA.addX(DDA.Wx);
+                    DDA.Accum += 1;
+                    DDA.heuristic();
+                    DDA.reLevel2();
                     //Main Score++
                     scoreSO.Value += 10;
                     scoreText.text = scoreSO.Value + "";
@@ -211,11 +214,13 @@ public class GameController_SM : MonoBehaviour
             }
             else
             {
-                //DDA.Wy += 1;
-                //DDA.addY(DDA.Wy);
-                //DDA.heuristic();
                 Debug.Log("Wrong End game");
                 gameActive = false;
+                DDA.Wy += 1;
+                DDA.Accum = 0;
+                DDA.addY(DDA.Wy);
+                DDA.heuristic();
+                DDA.reLevel2();
                 SceneManager.LoadScene("sequence_memory_game");
             }
         }

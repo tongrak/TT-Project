@@ -866,7 +866,7 @@ MonoBehaviour:
   scoreText: {fileID: 761880066}
   TimeSO: {fileID: 11400000, guid: 36500eefdd050ea4a8e66b731318299a, type: 2}
   pause: {fileID: 11400000, guid: a1e3abab1afd9544faf03030c480e614, type: 2}
-  DDA: {fileID: 0}
+  DDA: {fileID: 11400000, guid: b19e067d5ad02e643ba41f59acb45584, type: 2}
   stayLit: 1
   waitBetweenLights: 0.5
   activeSequence: 
@@ -915,9 +915,10 @@ MonoBehaviour:
   img: {fileID: 1738719302}
   btns: {fileID: 2466669294548411031, guid: 464be89a7dd58084f9705bc0a76ef507, type: 3}
   btns2: {fileID: 2466669294548411031, guid: 5254d0656380c4f45878c4c648d548be, type: 3}
+  btns22: {fileID: 2466669294548411031, guid: 3d2d1e254df910944b0ffa94ac5c457c, type: 3}
   btns3: {fileID: 2466669294548411031, guid: 3ad5d72859d79d844934989a523123df, type: 3}
-  level: 1
-  DDA: {fileID: 0}
+  level: 2
+  DDA: {fileID: 11400000, guid: b19e067d5ad02e643ba41f59acb45584, type: 2}
   quad: {fileID: 396824590}
 --- !u!114 &1583397090
 MonoBehaviour:
