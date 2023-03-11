@@ -158,11 +158,7 @@ public class GameManager : MonoBehaviour
             {
                 print("Puzzle don't Match");
 
-                DDA.Wy += 1;
-                DDA.Accum = 0;
-                DDA.addY(DDA.Wy);
-                DDA.heuristic();
-                DDA.reLevel2();
+                DDA.check(false);
 
                 GameOverScreen.Setup();
             }
@@ -211,6 +207,7 @@ public class GameManager : MonoBehaviour
                 showScore.text = scoreSO.Value + "";
 
                 //DDA
+                DDA.check(true);
 
                 print("game finished");
                 print("it took you " + countGuesses + " ");

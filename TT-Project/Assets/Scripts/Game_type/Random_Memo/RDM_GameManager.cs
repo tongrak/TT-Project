@@ -169,11 +169,7 @@ public class RDM_GameManager : MonoBehaviour
             }else
             {
                 print("Puzzle don't Match");
-                DDA.Wy += 1;
-                DDA.Accum = 0;
-                DDA.addY(DDA.Wy);
-                DDA.heuristic();
-                DDA.reLevel2();
+                DDA.check(false);
 
                 GameOver();
             }
@@ -235,11 +231,7 @@ public class RDM_GameManager : MonoBehaviour
                 showScore.text = scoreSO.Value + "";
 
                 //DDA
-                DDA.Wx += 1;
-                DDA.addX(DDA.Wx);
-                DDA.Accum += 1;
-                DDA.heuristic();
-                DDA.reLevel2();
+                DDA.check(true);
 
                 print("game finished");
                 print("it took you " + countGuesses + " ");
