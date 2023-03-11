@@ -24,6 +24,20 @@ public class GameController_SM : MonoBehaviour
     [SerializeField]
     private DDA DDA;
 
+    //Mix mod
+    [SerializeField]
+    private boolFortime Mix;
+
+    //Sound
+    [SerializeField]
+    private AudioSource Correct;
+
+    [SerializeField]
+    private AudioSource inCorrect;
+
+    [SerializeField]
+    private AudioSource soundBTN;
+
     private int colorSelect;
 
     public float stayLit = 1;
@@ -48,8 +62,8 @@ public class GameController_SM : MonoBehaviour
 
     private void Start()
     {
-        
 
+        
         //TimeSO.Value = 180;
 
         //Main Score++
@@ -170,7 +184,7 @@ public class GameController_SM : MonoBehaviour
                 {
                     
 
-                    btns[activeSequence[positionInSequence]].color = new Color((float)0.4509804, 1, (float)0.8666667, 1); ;
+                    btns[activeSequence[positionInSequence]].color = new Color((float)0.4509804, 1, (float)0.8666667, 1); 
                     
                     stayLitCounter = stayLit;
                     shouldBeLit = true;
@@ -186,7 +200,8 @@ public class GameController_SM : MonoBehaviour
 
     public void ColorPressed(int whichButton)
     {
-        if(gameActive)
+        soundBTN.Play();
+        if (gameActive)
         {
             if (activeSequence[inputInSequence] == whichButton)
             {
@@ -198,30 +213,59 @@ public class GameController_SM : MonoBehaviour
                 {
                     Debug.Log("Win and new game.");
 
-                    DDA.Wx += 1;
-                    DDA.addX(DDA.Wx);
-                    DDA.Accum += 1;
-                    DDA.heuristic();
-                    DDA.reLevel2();
-                    //Main Score++
-                    scoreSO.Value += 10;
-                    scoreText.text = scoreSO.Value + "";
-
-                    SceneManager.LoadScene("sequence_memory_game");
-
+                    Correct.Play();
                     
+                    DDA.check(true);
+
+
+                    //Main Score++
+                    if (DDA.Level == 1)
+                    {
+                        scoreSO.Value += 1;
+                        scoreText.text = scoreSO.Value + "";
+                    }
+                    else if (DDA.Level == 2)
+                    {
+                        scoreSO.Value += 3;
+                        scoreText.text = scoreSO.Value + "";
+                    }
+                    else if(DDA.Level == 3)
+                    {
+                        scoreSO.Value += 7;
+                        scoreText.text = scoreSO.Value + "";
+                    }
+
+                    if (Mix.Value)
+                    {
+                        string[] scenes = { "sequence_memory_game", "ReverseRetention_1", "MemoRandom" };
+                        int random = Random.Range(0, scenes.Length);
+                        SceneManager.LoadScene(scenes[random]);
+                    }
+                    else
+                    {
+                        SceneManager.LoadScene("sequence_memory_game");
+                    }
+
                 }
             }
             else
             {
                 Debug.Log("Wrong End game");
+                inCorrect.Play();
                 gameActive = false;
-                DDA.Wy += 1;
-                DDA.Accum = 0;
-                DDA.addY(DDA.Wy);
-                DDA.heuristic();
-                DDA.reLevel2();
-                SceneManager.LoadScene("sequence_memory_game");
+                DDA.check(false);
+
+                if (Mix.Value)
+                {
+                    string[] scenes = { "sequence_memory_game", "ReverseRetention_1", "MemoRandom" };
+                    int random = Random.Range(0, scenes.Length);
+                    SceneManager.LoadScene(scenes[random]);
+                }
+                else
+                {
+                    SceneManager.LoadScene("sequence_memory_game");
+                }
+                
             }
         }
 

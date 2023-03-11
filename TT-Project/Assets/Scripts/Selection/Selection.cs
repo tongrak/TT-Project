@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class Selection : MonoBehaviour
 {
+
+    [SerializeField]
+    private boolFortime random;
     public void type1()
     {
         Debug.Log("Secene memory game loaded");
@@ -14,7 +17,7 @@ public class Selection : MonoBehaviour
     public void type2()
     {
         Debug.Log("Secene sequence_memory_game loaded");
-        //SceneManager.LoadScene("sequence_memory_game");
+        SceneManager.LoadScene("sequence_memory_game");
     }
 
     public void type3()
@@ -26,7 +29,7 @@ public class Selection : MonoBehaviour
     public void type4()
     {
         Debug.Log("Loading Random-memo scenes");
-        //SceneManager.LoadScene("Random-memo");
+        SceneManager.LoadScene("MemoRandom");
     }
 
     public void type5()
@@ -47,5 +50,10 @@ public class Selection : MonoBehaviour
             type4();
         }
         //SceneManager.LoadScene("Random-memo");
+    }
+
+    public void Mix()
+    {
+        random.Value = true;
     }
 }

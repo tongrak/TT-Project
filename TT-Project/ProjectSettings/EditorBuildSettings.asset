@@ -35,13 +35,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MemoRandom.unity
     guid: 861e8c82704b49449a2a0250d638ca65
-    path: Assets/Scenes/sequence_memory_game.unity
-    guid: d321913768d7c8844ba1bc63b26c17a3
   - enabled: 1
     path: Assets/Scenes/Selection.unity
     guid: db51fd4b014c85148a0f99d992c3360c
-    path: Assets/Scenes/Register.unity
-    guid: c0ad1b094ea90bc4687060743f960254
   - enabled: 1
     path: Assets/Scenes/SelectScoreboard.unity
     guid: 8eacb69296e41f340a0d3fc2fafe96c3
@@ -51,4 +47,7 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/sequence_memory_game.unity
+    guid: d321913768d7c8844ba1bc63b26c17a3
   m_configObjects: {}
