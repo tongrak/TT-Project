@@ -344,4 +344,46 @@ public class DDA : ScriptableObject
         }
     }
 
+    public void reLevel3()
+    {
+        if (this._performance[_performance.Count-1] < 0 && this.Accum == 0)
+        {
+            if (this.level != 1)
+            {
+                this.level -= 1;
+            }
+        }
+        else if (this._performance[_performance.Count - 1] < 1)
+        {
+
+        }
+        else
+        {
+            if (this.level != 3)
+            {
+                this.level += 1;
+            }
+        }
+    }
+
+    public void check(bool cor)
+    {
+        if (cor)
+        {
+            this.Wx += 1;
+            this.addX(this.Wx);
+            this.Accum += 1;
+            this.heuristic();
+            this.reLevel3();
+        }
+        else
+        {
+            this.Wy += 1;
+            this.Accum = 0;
+            this.addY(this.Wy);
+            this.heuristic();
+            this.reLevel3();
+        }
+    }
+
 }

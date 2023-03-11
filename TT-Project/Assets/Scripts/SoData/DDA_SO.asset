@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b6fdf72fd7cc5740890a1d66e21a14a, type: 3}
   m_Name: DDA_SO
   m_EditorClassIdentifier: 
-  level: 2
+  level: 1
   wx: 0
   wy: 0
   _x: []
