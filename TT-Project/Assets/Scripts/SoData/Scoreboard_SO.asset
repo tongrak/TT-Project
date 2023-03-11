@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 914b42d7dd66c204c9bf415f4b66374c, type: 3}
   m_Name: Scoreboard_SO
   m_EditorClassIdentifier: 
-  gameType_table: 
-  bestScoreSO: {fileID: 0}
+  scoreboardHeader: Sequence
+  gameTypeTable: SequenceMem_Score
+  bestScoreSO: {fileID: 11400000, guid: ac0e70a4e142c6a4397dd883fd383895, type: 2}
