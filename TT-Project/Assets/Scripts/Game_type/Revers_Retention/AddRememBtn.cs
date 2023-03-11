@@ -10,8 +10,15 @@ public class AddRememBtn : MonoBehaviour
     [SerializeField]
     private GameObject button;
 
+    [SerializeField]
+    private GameLevel GameLevels;
+
+    [SerializeField]
+    private LevelInfoSO LevelInfoSOs;
+
     private void Awake()
     {
+        GameLevels.levelSet();
         if (button.tag == "PuzzleBtn")
         {
             for (int i = 0; i < 4; i++)
