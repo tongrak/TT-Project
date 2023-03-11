@@ -121,7 +121,7 @@ public class GeneratorBtn : MonoBehaviour
                 
                 pos = new Vector3(x[i], y[i], -99);
                 GameObject button = Instantiate(btns3, pos, btns3.transform.rotation);
-                button.GetComponent<SpriteRenderer>().color = new Color(1, 0, 0, 0.5f); ;
+                button.GetComponent<SpriteRenderer>().color = new Color((float)0.1176471, (float)0.1176471, (float)0.1176471, 1);
                 button.name = "" + i;
 
                 button.transform.SetParent(gameField, false);

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b6fdf72fd7cc5740890a1d66e21a14a, type: 3}
   m_Name: DDA_SO
   m_EditorClassIdentifier: 
-  level: 1
+  level: 2
   wx: 0
   wy: 0
   _x: []
@@ -22,4 +22,4 @@ MonoBehaviour:
   Max: 0
   Min: 0
   Mean: 0
-  SD: 0.5
+  SD: 0
