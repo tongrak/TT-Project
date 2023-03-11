@@ -8,7 +8,7 @@ public class RDM_GameOverScreen : MonoBehaviour
 {
     public Text pointsText;
 
-    private string[] sceneList = { "memory game", "ReverseRetention_1" };
+    private string[] sceneList = { "ReverseRetention_1", "MemoRandom" };
     private int randomIndex;
 
     public void Setup()
@@ -20,8 +20,7 @@ public class RDM_GameOverScreen : MonoBehaviour
 
     public void NextPuzzle() {
         randomIndex = Random.Range(0, sceneList.Length);
-        //SceneManager.LoadScene(sceneList[randomIndex]);
-        SceneManager.LoadScene("MemoRandom");
+        SceneManager.LoadScene(sceneList[randomIndex]);
     }
 
     public void MainMenu() {

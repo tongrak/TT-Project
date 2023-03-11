@@ -169,7 +169,13 @@ public class RDM_GameManager : MonoBehaviour
             }else
             {
                 print("Puzzle don't Match");
-                GameOverScreen.Setup();
+                DDA.Wy += 1;
+                DDA.Accum = 0;
+                DDA.addY(DDA.Wy);
+                DDA.heuristic();
+                DDA.reLevel2();
+
+                GameOver();
             }
 
             StartCoroutine(checkThePuzzleMatch());
@@ -213,11 +219,7 @@ public class RDM_GameManager : MonoBehaviour
             CheckTheGameFinished();
         }else
         {
-            DDA.Wy += 1;
-            DDA.Accum = 0;
-            DDA.addY(DDA.Wy);
-            DDA.heuristic();
-            DDA.reLevel2();
+            //
         }
         //yield return new WaitForSeconds(0.5f);
 
