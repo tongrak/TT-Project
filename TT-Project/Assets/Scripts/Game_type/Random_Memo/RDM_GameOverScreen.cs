@@ -20,11 +20,12 @@ public class RDM_GameOverScreen : MonoBehaviour
 
     public void NextPuzzle() {
         randomIndex = Random.Range(0, sceneList.Length);
-        SceneManager.LoadScene(sceneList[randomIndex]);
+        //SceneManager.LoadScene(sceneList[randomIndex]);
+        SceneManager.LoadScene("MemoRandom");
     }
 
     public void MainMenu() {
-        SceneManager.LoadScene("ReverseRetention_1");
+        SceneManager.LoadScene("MemoRandom");
     
     }
 }

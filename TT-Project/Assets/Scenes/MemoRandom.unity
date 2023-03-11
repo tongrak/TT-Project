@@ -408,7 +408,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1544950149}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameOverScreen, Assembly-CSharp
         m_MethodName: NextPuzzle
         m_Mode: 1
@@ -780,7 +780,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1544950149}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameOverScreen, Assembly-CSharp
         m_MethodName: MainMenu
         m_Mode: 1
@@ -1431,6 +1431,7 @@ MonoBehaviour:
   scoreSO: {fileID: 11400000, guid: 1150a4bdf7e26f8428f99a72fa87ba4e, type: 2}
   showScore: {fileID: 1368309353}
   TimeSO: {fileID: 11400000, guid: 36500eefdd050ea4a8e66b731318299a, type: 2}
+  DDA: {fileID: 11400000, guid: b19e067d5ad02e643ba41f59acb45584, type: 2}
   puzzles: []
   gamePuzzles: []
   btns: []
@@ -2460,7 +2461,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1544950145}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e7444600b364e84b92ce00ae2f2daa8, type: 3}
+  m_Script: {fileID: 11500000, guid: b3028c1fc59e5164985bd18d94b3f7c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pointsText: {fileID: 1597702153}

@@ -29,6 +29,10 @@ public class RDM_GameManager : MonoBehaviour
     [SerializeField]
     private FloatSO TimeSO;
 
+    //DDA
+    [SerializeField]
+    private DDA DDA;
+
     /*  Global variable */
     public Sprite[] puzzles;    //  puzzle image list
 
@@ -37,7 +41,7 @@ public class RDM_GameManager : MonoBehaviour
 
     public List<Button> btns = new List<Button>();
 
-    public GameOverScreen GameOverScreen;   //  get game over screen
+    public RDM_GameOverScreen GameOverScreen;   //  get game over screen
 
     private bool isChoose;  //  check is guessing
 
@@ -209,7 +213,11 @@ public class RDM_GameManager : MonoBehaviour
             CheckTheGameFinished();
         }else
         {
-            //
+            DDA.Wy += 1;
+            DDA.Accum = 0;
+            DDA.addY(DDA.Wy);
+            DDA.heuristic();
+            DDA.reLevel2();
         }
         //yield return new WaitForSeconds(0.5f);
 
@@ -223,6 +231,14 @@ public class RDM_GameManager : MonoBehaviour
             {
                 scoreSO.Value += 10;
                 showScore.text = scoreSO.Value + "";
+
+                //DDA
+                DDA.Wx += 1;
+                DDA.addX(DDA.Wx);
+                DDA.Accum += 1;
+                DDA.heuristic();
+                DDA.reLevel2();
+
                 print("game finished");
                 print("it took you " + countGuesses + " ");
                 GameOver(); // call game over
@@ -245,7 +261,7 @@ public class RDM_GameManager : MonoBehaviour
 
         }
 
-        RandomGuess(puzzleSize, 2);
+        RandomGuess(puzzleSize, DDA.Level+1);
         yield return new WaitForSeconds(3f);
         for (int i=0; i<puzzleSize; i++)
         {
