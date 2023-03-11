@@ -8,28 +8,28 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Login.unity
     guid: e6a07b8c28780084d9ec286c9a00d5fa
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: b1824a806967c68409192c9e48df4e76
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/HowToPlay.unity
     guid: 79ab4206c01b92d469f30c1c50beb0b9
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Scoreboard.unity
     guid: 4e071295e356ab04a97e451f3162aaf9
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Summary.unity
     guid: a6d0281fae6e7ec4a99fc71f89a6ff12
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/memory game.unity
     guid: fe4c7dbeee4040341a824f458a323693
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/ReverseRetention_1.unity
     guid: 091481860539bc943ba484c09143cc44
   - enabled: 1

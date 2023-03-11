@@ -314,7 +314,7 @@ public class RDM_GameManager : MonoBehaviour
         }
         if(TimeSO.Value <= 0)
         {
-            //SceneManager.LoadScene(0);
+            SceneManager.LoadScene(6);
         }
     }
 }
