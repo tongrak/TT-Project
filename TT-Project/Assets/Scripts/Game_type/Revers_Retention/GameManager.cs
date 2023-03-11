@@ -55,6 +55,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private DDA DDA;
 
+    [SerializeField]
+    private LevelInfoSO LevelInfoSOs;
+
 
     /*  Method  */
     private void Awake()
