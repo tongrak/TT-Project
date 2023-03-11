@@ -13,15 +13,12 @@ MonoBehaviour:
   m_Name: DDA_SO
   m_EditorClassIdentifier: 
   level: 1
-  wx: 1
+  wx: 0
   wy: 0
-  _x:
-  - 1
-  _y:
-  - 0
-  _accum: 1
-  _performance:
-  - 0.6
+  _x: []
+  _y: []
+  _accum: 0
+  _performance: []
   Max: 0
   Min: 0
   Mean: 0

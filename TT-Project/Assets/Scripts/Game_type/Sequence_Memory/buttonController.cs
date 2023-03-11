@@ -29,7 +29,7 @@ public class buttonController : MonoBehaviour
     void OnMouseUp()
     {
         theSprite.color = new Color((float)0.1176471, (float)0.1176471, (float)0.1176471, 1);
-        theGM.ColorPressed(thisButtonNumber);
+        theGM.ColorPressed(thisButtonNumber);   
     }
 
 }

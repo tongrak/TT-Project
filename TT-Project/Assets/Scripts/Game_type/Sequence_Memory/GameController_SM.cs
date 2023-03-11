@@ -216,7 +216,7 @@ public class GameController_SM : MonoBehaviour
                     Correct.Play();
                     
                     DDA.check(true);
-
+                     
 
                     //Main Score++
                     if (DDA.Level == 1)
