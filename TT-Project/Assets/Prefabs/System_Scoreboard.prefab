@@ -884,7 +884,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Score
+  m_text: HIgh score
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ee3df8d8aa5fe6244bf64e934fd51c75, type: 2}
   m_sharedMaterial: {fileID: -6549978563190494958, guid: ee3df8d8aa5fe6244bf64e934fd51c75, type: 2}
@@ -1238,7 +1238,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 422, y: 0.000030517578}
+  m_AnchoredPosition: {x: 519, y: 0.000030517578}
   m_SizeDelta: {x: 20, y: 0.000061035}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4616672105196216442
@@ -1475,9 +1475,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -984}
+  m_AnchoredPosition: {x: 0, y: -811}
   m_SizeDelta: {x: 1920, y: 108.56006}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1670013503587009211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1537,9 +1537,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 193, y: 0}
+  m_AnchoredPosition: {x: 509, y: -0.0000038146973}
   m_SizeDelta: {x: 161.4436, y: 108}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &7136597717311400027
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1570,8 +1570,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Yours
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: cfb23839f25da8e45a53a61a6bd73712, type: 2}
-  m_sharedMaterial: {fileID: -8630912199415620028, guid: cfb23839f25da8e45a53a61a6bd73712, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ee3df8d8aa5fe6244bf64e934fd51c75, type: 2}
+  m_sharedMaterial: {fileID: -6549978563190494958, guid: ee3df8d8aa5fe6244bf64e934fd51c75, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1595,14 +1595,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 60
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
