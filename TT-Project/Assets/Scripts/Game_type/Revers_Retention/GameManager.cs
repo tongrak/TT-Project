@@ -49,6 +49,9 @@ public class GameManager : MonoBehaviour
 
     private string currentPuzz, currentAns; //  current guess and answer name
 
+    private bool isRememTime = false;
+    private float rememTimeStamp;
+
 
 
     /*  Method  */
@@ -56,6 +59,16 @@ public class GameManager : MonoBehaviour
     {
         //  Get asset image from Resources
         puzzles = Resources.LoadAll<Sprite>("Sprites_Reverse_Retention/Animal Basic Asset Pack/Free Sprites 1x");
+
+        //  Shuffle image
+        Sprite tmpShuffle;
+        for (int i = 0; i < puzzles.Length; i++)
+        {
+            int rnd = Random.Range(0, puzzles.Length);
+            tmpShuffle = puzzles[rnd];
+            puzzles[rnd] = puzzles[i];
+            puzzles[i] = tmpShuffle;
+        }
     }
     // Start is called before the first frame update
     void Start()
@@ -159,11 +172,12 @@ public class GameManager : MonoBehaviour
         if(currentPuzz == currentAns)
         {
             //yield return new WaitForSeconds(0.5f);
-            btns[currentPuzzIdx].interactable = false;
+            //btns[currentPuzzIdx].interactable = false;    //fix show correct ans
             //btns[currentAnsIdx].interactable = false;
 
-            btns[currentPuzzIdx].image.color = new Color(0, 0, 0, 0);
+            //btns[currentPuzzIdx].image.color = new Color(0, 0, 0, 0); //fix show correct ans
             //btns[currentAnsIdx].image.color = new Color(0, 0, 0, 0);
+            btns[currentPuzzIdx].image.sprite = gamePuzzles[currentPuzzIdx];
 
             CheckTheGameFinished();
             currentPuzzIdx--;
@@ -197,6 +211,9 @@ public class GameManager : MonoBehaviour
     //  Show puzzle for remember
     IEnumerator RememPuzzleTime()
     {
+        rememTimeStamp = TimeSO.Value;
+        isRememTime = true;
+
         ShowAnsChoice(true);
         yield return new WaitForSeconds(0.5f);
         for (int i=0; i<btns.Count/2; i++)
@@ -216,6 +233,7 @@ public class GameManager : MonoBehaviour
         //  show choice 
         yield return new WaitForSeconds(0.5f);
         currentPuzz = gamePuzzles[currentPuzzIdx].name;
+        isRememTime = false;
         ShowAnsChoice(false);
     }
     
@@ -273,6 +291,10 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        if (isRememTime)
+        {
+            TimeSO.Value = rememTimeStamp;
+        }
         if(TimeSO.Value <= 0)
         {
             SceneManager.LoadScene(3);

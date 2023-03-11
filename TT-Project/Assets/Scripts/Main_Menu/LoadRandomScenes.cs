@@ -7,8 +7,9 @@ public class LoadRandomScenes : MonoBehaviour
 {
     public void LoadRandomScene()
     {
-        int index = Random.Range(5,7);
-        SceneManager.LoadScene(index);
-        Debug.Log("Scene " + index + " Loaded");
+        string[] cars = { "memory game", "ReverseRetention_1", "memory game", "memory game" };
+        int index = Random.Range(0,4);
+        SceneManager.LoadScene(cars[index]);
+        Debug.Log("Scene " + cars[index] + " Loaded");
     }
 }

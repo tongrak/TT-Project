@@ -1,32 +1,84 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using System;
 using System.Text;
 
 public class Register : MonoBehaviour
 {
+    [Header("Game objects")]
     [SerializeField] private TMP_InputField usernameField;
     [SerializeField] private TMP_InputField passwordField;
     [SerializeField] private TMP_InputField confirmPasswordField;
+    [SerializeField] private GameObject popup;
+    [Header("Disable objects")]
+    [SerializeField] private Transform buttons;
+    [SerializeField] private Transform inputTextField;
+    [Header("SO file")] 
     [SerializeField] StringSO UsernameSO;
     [SerializeField] IntSO Seq_bestScoreSO;
     [SerializeField] IntSO MemRand_bestScoreSO;
     [SerializeField] IntSO Rev_bestScoreSO;
     [SerializeField] IntSO Mix_bestScoreSO;
+
     private SupabaseManager dbConnector;
 
     // Start is called before the first frame update
     void Start()
     {
         dbConnector = SupabaseManager.getInstance();
+        popup.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKey("space"))
+        {
+            usernameField.text = usernameField.text.Replace(" ", "");
+            passwordField.text = passwordField.text.Replace(" ", "");
+            confirmPasswordField.text = confirmPasswordField.text.Replace(" ", "");
+        }
+    }
 
+    // disable สิ่งต่าง ๆ เมื่อทำการ register
+    public void DisableObjects()
+    {
+        foreach (Transform child in buttons)
+        {
+            child.GetComponent<Button>().interactable = false;
+        }
+
+        foreach (Transform child in inputTextField)
+        {
+            child.GetComponent<TMP_InputField>().interactable = false;
+        }
+    }
+
+    // enable ปุ่มต่าง ๆ หลังจากกด close popup
+    public void EnableObjects()
+    {
+        foreach (Transform child in buttons)
+        {
+            child.GetComponent<Button>().interactable = true;
+        }
+
+        foreach (Transform child in inputTextField)
+        {
+            child.GetComponent<TMP_InputField>().interactable = true;
+        }
+    }
+
+    // pop the popup window when error accur
+    private void popWarning(string message)
+    {
+        // write warning message in popup
+        TextMeshProUGUI warningText = popup.transform.Find("warningText").GetComponent<TextMeshProUGUI>();
+        warningText.text = "" + message;
+        // pop warning
+        popup.SetActive(true);
     }
 
     public void RegisterButton()
@@ -38,10 +90,12 @@ public class Register : MonoBehaviour
         if (password == "" || confirmPass == "" || username == "")
         {
             Debug.Log("Please fill in all text field");
+            popWarning("Please fill in all text field");
         }
         else if(password != confirmPass)
         {
             Debug.Log("Password and ConfimPassword is not same");
+            popWarning("Password and ConfimPassword is not same");
         }
         else
         {
@@ -67,6 +121,7 @@ public class Register : MonoBehaviour
         {
             Debug.Log("err: " + dbConnector.errData);
             Debug.Log("This username have already exist");
+            popWarning("This username have already exist");
         }
         // if new username have never exist in database.
         else

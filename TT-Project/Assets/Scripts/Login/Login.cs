@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 using System;
@@ -8,13 +9,20 @@ using System.Text;
 
 public class Login : MonoBehaviour
 {
+    [Header("Game objects")]
     [SerializeField] private TMP_InputField usernameField;
     [SerializeField] private TMP_InputField passwordField;
+    [SerializeField] private GameObject popup;
+    [Header("Disable objects")]
+    [SerializeField] private Transform buttons;
+    [SerializeField] private Transform inputTextField;
+    [Header("SO file")]
     [SerializeField] StringSO UsernameSO;
     [SerializeField] IntSO Seq_bestScoreSO;
     [SerializeField] IntSO MemRand_bestScoreSO;
     [SerializeField] IntSO Rev_bestScoreSO;
     [SerializeField] IntSO Mix_bestScoreSO;
+
     private SupabaseManager dbConnector;
     private Player_DataList playerData;
 
@@ -22,18 +30,71 @@ public class Login : MonoBehaviour
     void Start()
     {
         dbConnector = SupabaseManager.getInstance();
+        popup.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKey("space"))
+        {
+            usernameField.text = usernameField.text.Replace(" ", "");
+            passwordField.text = passwordField.text.Replace(" ", "");
+        }
+    }
 
+    // pop the popup window when error accur
+    private void popWarning(string message)
+    {
+        // write warning message in popup
+        TextMeshProUGUI warningText =  popup.transform.Find("warningText").GetComponent<TextMeshProUGUI>();
+        warningText.text = "" + message;
+        // pop warning
+        popup.SetActive(true);
     }
 
     // use to change current scene to scoreboard scene
     public void changeScene(string scene)
     {
         SceneManager.LoadScene(scene);
+    }
+
+    // disable สิ่งต่าง ๆ เมื่อทำการ login
+    public void DisableObjects()
+    {
+        foreach(Transform child in buttons)
+        {
+            child.GetComponent<Button>().interactable = false;
+        }
+        foreach(Transform child1 in inputTextField)
+        {
+            foreach(Transform child2 in child1)
+            {
+                if (child2.GetComponent<TMP_InputField>())
+                {
+                    child2.GetComponent<TMP_InputField>().interactable = false;
+                }
+            }
+        }
+    }
+
+    // enable ปุ่มต่าง ๆ หลังจากกด close popup
+    public void EnableObjects()
+    {
+        foreach (Transform child in buttons)
+        {
+            child.GetComponent<Button>().interactable = true;
+        }
+        foreach (Transform child1 in inputTextField)
+        {
+            foreach (Transform child2 in child1)
+            {
+                if (child2.GetComponent<TMP_InputField>())
+                {
+                    child2.GetComponent<TMP_InputField>().interactable = true;
+                }
+            }
+        }
     }
 
     // for login button
@@ -44,6 +105,7 @@ public class Login : MonoBehaviour
         if(username == "" || password == "")
         {
             Debug.Log("Please fill in all text field");
+            popWarning("Please fill in all text field");
         }
         else
         {
@@ -66,6 +128,7 @@ public class Login : MonoBehaviour
         if (playerData.jsonData.Length == 0)
         {
             Debug.Log("username or passsword is not correct");
+            popWarning("username or passsword is not correct");
         }
 
         // if username is in database, then login
@@ -83,18 +146,5 @@ public class Login : MonoBehaviour
             //change scene
             ChangeSceneManager.changeScene("MainMenu");
         }
-
-    //public void TestButton()
-    //{
-    //    StartCoroutine(Test_coroutine());
-    //}
-
-    //IEnumerator Test_coroutine()
-    //{
-    //    string username = "TestP2";
-    //    yield return StartCoroutine(dbConnector.API_GET_Coroutine("Player_account?select=username,MemoRandom_Score!inner(best_score),SequenceMem_Score!inner(best_score),Reverse_Score!inner(best_score),Mix_Score!inner(best_score)&username=eq." + username + "&password=eq.NDU2Nwo="));
-    //    print(dbConnector.jsonData);
-    //}
-
     }
 }
