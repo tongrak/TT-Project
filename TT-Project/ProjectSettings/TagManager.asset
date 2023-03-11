@@ -7,6 +7,8 @@ TagManager:
   - PuzzleBtn
   - AnswerBtn
   - PuzzleButton
+  - btnSeq
+  - btnSeq2
   layers:
   - Default
   - TransparentFX
