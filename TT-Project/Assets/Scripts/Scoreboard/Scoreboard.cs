@@ -7,17 +7,20 @@ using TMPro;
 public class Scoreboard : MonoBehaviour
 {
     [SerializeField] private int maxScoreboardEntries = 10;
+    [Header("Game objects")]
     [SerializeField] private TextMeshProUGUI header;
     [SerializeField] private Transform highscoreContainerTransform = null;
     [SerializeField] private GameObject scoreboardEntryObject = null;
     [SerializeField] private Transform currRankContainerTransform = null;
     [SerializeField] private GameObject currRankEntryObject = null;
-
+    [Header("SO_Data")]
     [SerializeField] private StringSO usernameSO;
     [SerializeField] private IntSO rankFromBS_SO;
     [SerializeField] private IntSO rankFromRS_SO;
     [SerializeField] private IntSO numberOfPlayer_SO;
     [SerializeField] private ScoreboardSO scoreboard_SO;
+    [SerializeField] private IntSO recentSO;
+    [SerializeField] private IntSO bestSO;
 
     private SupabaseManager DBConnector;
     private Player_AllScoreList allPlayer_bestScore;
@@ -87,6 +90,10 @@ public class Scoreboard : MonoBehaviour
         rankFromBS_SO.Value = computeCurrRankFromBS();
         rankFromRS_SO.Value = computeCurrRankFromRS();
         numberOfPlayer_SO.Value = allPlayer_bestScore.jsonData.Length + 1;
+
+        // set best and recent score to unity
+        recentSO.Value = findRecentScore();
+        bestSO.Value = scoreboard_SO.bestScoreSO.Value;
     }
 
     // find rank of current player form best score.

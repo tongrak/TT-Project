@@ -952,6 +952,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5052182318485105271, guid: 845cf3a288a696043b7845aba3391256, type: 3}
+      propertyPath: bestSO
+      value: 
+      objectReference: {fileID: 11400000, guid: de7e554bce732834e99f1746b4598cf5, type: 2}
+    - target: {fileID: 5052182318485105271, guid: 845cf3a288a696043b7845aba3391256, type: 3}
+      propertyPath: recentSO
+      value: 
+      objectReference: {fileID: 11400000, guid: cb1b86d64eb0a9147941cd2adbcbf88a, type: 2}
+    - target: {fileID: 5052182318485105271, guid: 845cf3a288a696043b7845aba3391256, type: 3}
       propertyPath: bestScoreSO
       value: 
       objectReference: {fileID: 11400000, guid: ac0e70a4e142c6a4397dd883fd383895, type: 2}

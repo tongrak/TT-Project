@@ -9,11 +9,9 @@ public class ScoreBarEntryUI : MonoBehaviour
     [Header("Recent")]
     [SerializeField] private GameObject recentLine;
     [SerializeField] private GameObject recentTri;
-    [SerializeField] private TextMeshProUGUI recentText;
     [Header("Best")]
     [SerializeField] private GameObject bestLine;
     [SerializeField] private GameObject bestTri;
-    [SerializeField] private TextMeshProUGUI bestText;
 
     // @param amountOfPlayer นั้นคือจำนวนผู้เล่นทั้งหมด(รวมทั้งตัว player ปัจจุบันด้วย)+1
     public void Initialise(int recentScoreRank, int bestScoreRank, int amountOfPlayer)
@@ -29,13 +27,9 @@ public class ScoreBarEntryUI : MonoBehaviour
         // set best score line position
         bestLine.transform.localPosition = new Vector3(bestLine.transform.localPosition.x - xPos_best, bestLine.transform.localPosition.y, bestLine.transform.localPosition.z);
 
-        // set recent text position
-        recentText.transform.localPosition = new Vector3(recentText.transform.localPosition.x - xPos_recent, recentText.transform.localPosition.y, recentText.transform.localPosition.z);
-        // set best text position
-        bestText.transform.localPosition = new Vector3(bestText.transform.localPosition.x - xPos_best, bestText.transform.localPosition.y, bestText.transform.localPosition.z);
-
         // set recent triangle positions
         recentTri.transform.localPosition = new Vector3(recentTri.transform.localPosition.x - xPos_recent , recentTri.transform.localPosition.y, recentTri.transform.localPosition.z);
+        // set best triangle positions
         bestTri.transform.localPosition = new Vector3(bestTri.transform.localPosition.x - xPos_best , bestTri.transform.localPosition.y, bestTri.transform.localPosition.z);
     }   
 }

@@ -265,7 +265,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 810, y: -751}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 424.28, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &48019587
 MonoBehaviour:
@@ -691,7 +691,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 810, y: -807.4}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 424.28, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &807694828
 MonoBehaviour:
@@ -1139,6 +1139,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1017359161}
     m_Modifications:
+    - target: {fileID: 464045025660157146, guid: 99d765be6e4ac90438691fe4ef5c6b19, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 601015014116243405, guid: 99d765be6e4ac90438691fe4ef5c6b19, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1222,6 +1226,10 @@ PrefabInstance:
     - target: {fileID: 601015014116243405, guid: 99d765be6e4ac90438691fe4ef5c6b19, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8094249744297472698, guid: 99d765be6e4ac90438691fe4ef5c6b19, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8727142925888114478, guid: 99d765be6e4ac90438691fe4ef5c6b19, type: 3}
       propertyPath: m_Name
@@ -1544,9 +1552,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreBarContainerTransform: {fileID: 1017359161}
   scoreBarEntryObject: {fileID: 8727142925888114478, guid: 99d765be6e4ac90438691fe4ef5c6b19, type: 3}
+  recentText: {fileID: 48019587}
+  bestText: {fileID: 807694828}
   rankFromBS_SO: {fileID: 11400000, guid: 0aef0780410bfd94384836cfa20ecbd7, type: 2}
   rankFromRS_SO: {fileID: 11400000, guid: 0ccaaac1acd5ba549a29fde24e87dc3b, type: 2}
   numberOfPlayer_SO: {fileID: 11400000, guid: 87ad3ab90f076bf4ba09da7365397787, type: 2}
+  recentScore_SO: {fileID: 11400000, guid: cb1b86d64eb0a9147941cd2adbcbf88a, type: 2}
+  bestScore_SO: {fileID: 11400000, guid: de7e554bce732834e99f1746b4598cf5, type: 2}
 --- !u!114 &1197480731
 MonoBehaviour:
   m_ObjectHideFlags: 0
