@@ -59,6 +59,16 @@ public class GameManager : MonoBehaviour
     {
         //  Get asset image from Resources
         puzzles = Resources.LoadAll<Sprite>("Sprites_Reverse_Retention/Animal Basic Asset Pack/Free Sprites 1x");
+
+        //  Shuffle image
+        Sprite tmpShuffle;
+        for (int i = 0; i < puzzles.Length; i++)
+        {
+            int rnd = Random.Range(0, puzzles.Length);
+            tmpShuffle = puzzles[rnd];
+            puzzles[rnd] = puzzles[i];
+            puzzles[i] = tmpShuffle;
+        }
     }
     // Start is called before the first frame update
     void Start()
