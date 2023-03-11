@@ -52,6 +52,8 @@ public class GameManager : MonoBehaviour
     private bool isRememTime = false;
     private float rememTimeStamp;
 
+    [SerializeField]
+    private DDA DDA;
 
 
     /*  Method  */
@@ -155,6 +157,13 @@ public class GameManager : MonoBehaviour
             }else
             {
                 print("Puzzle don't Match");
+
+                DDA.Wy += 1;
+                DDA.Accum = 0;
+                DDA.addY(DDA.Wy);
+                DDA.heuristic();
+                DDA.reLevel2();
+
                 GameOverScreen.Setup();
             }
 
@@ -200,6 +209,9 @@ public class GameManager : MonoBehaviour
             {
                 scoreSO.Value += 10;
                 showScore.text = scoreSO.Value + "";
+
+                //DDA
+
                 print("game finished");
                 print("it took you " + countGuesses + " ");
                 GameOver(); // call game over
