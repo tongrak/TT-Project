@@ -708,7 +708,7 @@ RectTransform:
   m_Children:
   - {fileID: 1456566202}
   m_Father: {fileID: 1738719302}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -868,15 +868,8 @@ MonoBehaviour:
   pause: {fileID: 11400000, guid: a1e3abab1afd9544faf03030c480e614, type: 2}
   DDA: {fileID: 11400000, guid: b19e067d5ad02e643ba41f59acb45584, type: 2}
   stayLit: 1
-  stayLitCounter: 0
   waitBetweenLights: 0.5
-  waitBetweenCounter: 0
-  shouldBeLit: 0
-  shouldBeDark: 0
   activeSequence: 
-  positionInSequence: 0
-  gameActive: 0
-  inputInSequence: 0
   btns: []
 --- !u!222 &1583397087
 CanvasRenderer:
@@ -924,7 +917,7 @@ MonoBehaviour:
   btns2: {fileID: 2466669294548411031, guid: 5254d0656380c4f45878c4c648d548be, type: 3}
   btns22: {fileID: 2466669294548411031, guid: 3d2d1e254df910944b0ffa94ac5c457c, type: 3}
   btns3: {fileID: 2466669294548411031, guid: 3ad5d72859d79d844934989a523123df, type: 3}
-  level: 2
+  level: 1
   DDA: {fileID: 11400000, guid: b19e067d5ad02e643ba41f59acb45584, type: 2}
   quad: {fileID: 396824590}
 --- !u!114 &1583397090
@@ -974,7 +967,6 @@ RectTransform:
   m_Children:
   - {fileID: 1376525144}
   - {fileID: 1931756431}
-  - {fileID: 1376525144}
   m_Father: {fileID: 181990912}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1121,7 +1113,7 @@ RectTransform:
   m_Children:
   - {fileID: 159607631}
   m_Father: {fileID: 1738719302}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
