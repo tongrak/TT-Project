@@ -10,31 +10,32 @@ public class Selection : MonoBehaviour
     private boolFortime random;
     public void type1()
     {
-        Debug.Log("Secene memory game loaded");
+        Debug.Log("Scene memory game loaded");
         SceneManager.LoadScene("memory game");
     }
 
     public void type2()
     {
-        Debug.Log("Secene sequence_memory_game loaded");
+        Debug.Log("Scene sequence_memory_game loaded");
         SceneManager.LoadScene("sequence_memory_game");
     }
 
     public void type3()
     {
-        Debug.Log("Secene ReverseRetention loaded");
+        Debug.Log("Scene ReverseRetention loaded");
         SceneManager.LoadScene("ReverseRetention_1");
     }
 
     public void type4()
     {
-        Debug.Log("Loading Random-memo scenes");
+        Debug.Log("Scene Random-memo loaded");
         SceneManager.LoadScene("MemoRandom");
     }
 
     public void type5()
     {
-        Debug.Log("Loading Random scenes");
+        Debug.Log("Loading Random scene");
+        Mix();
         int random = Random.Range(0,4);
         if (random == 0)
         {
@@ -49,7 +50,6 @@ public class Selection : MonoBehaviour
         {
             type4();
         }
-        //SceneManager.LoadScene("Random-memo");
     }
 
     public void Mix()

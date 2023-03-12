@@ -14,11 +14,15 @@ public class ResetGameValue : MonoBehaviour
     [SerializeField]
     private boolFortime random;
 
+    [SerializeField]
+    private DDA DDA;
+
     public void reset()
     {
         scroeSO.Value = 0;
         TimeSO.Value = 180f;
         random.Value = false;
+        DDA.Reset();
     }
 
 }

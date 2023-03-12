@@ -146,7 +146,7 @@ public class GameController_SM : MonoBehaviour
         {
             //Pause
             pause.Value = true;
-            //Debug.Log("bool = " + pause.Value);
+            
 
             stayLitCounter -= Time.deltaTime;
         
@@ -174,7 +174,7 @@ public class GameController_SM : MonoBehaviour
             {
                 //Unpause
                 pause.Value = false;
-                //Debug.Log("bool = " + pause.Value);
+                
                 shouldBeDark = false;
                 gameActive = true;
             }
@@ -182,7 +182,6 @@ public class GameController_SM : MonoBehaviour
             {
                 if(waitBetweenCounter < 0)
                 {
-                    
 
                     btns[activeSequence[positionInSequence]].color = new Color((float)0.4509804, 1, (float)0.8666667, 1); 
                     
@@ -194,8 +193,6 @@ public class GameController_SM : MonoBehaviour
             
         }
     }
-
-    
 
 
     public void ColorPressed(int whichButton)
@@ -235,16 +232,8 @@ public class GameController_SM : MonoBehaviour
                         scoreText.text = scoreSO.Value + "";
                     }
 
-                    if (Mix.Value)
-                    {
-                        string[] scenes = { "sequence_memory_game", "ReverseRetention_1", "MemoRandom" };
-                        int random = Random.Range(0, scenes.Length);
-                        SceneManager.LoadScene(scenes[random]);
-                    }
-                    else
-                    {
-                        SceneManager.LoadScene("sequence_memory_game");
-                    }
+                    StartCoroutine(WaitForSoundToNextScene());
+
 
                 }
             }
@@ -252,24 +241,36 @@ public class GameController_SM : MonoBehaviour
             {
                 Debug.Log("Wrong End game");
                 inCorrect.Play();
+                
                 gameActive = false;
                 DDA.check(false);
 
-                if (Mix.Value)
-                {
-                    string[] scenes = { "sequence_memory_game", "ReverseRetention_1", "MemoRandom" };
-                    int random = Random.Range(0, scenes.Length);
-                    SceneManager.LoadScene(scenes[random]);
-                }
-                else
-                {
-                    SceneManager.LoadScene("sequence_memory_game");
-                }
-                
+                StartCoroutine(WaitForSoundToNextScene());
+
             }
         }
 
+    }
+
+    IEnumerator WaitForSoundToNextScene()
+    {
         
+        pause.Value = true;
+
+        yield return new WaitForSeconds(1);
+        
+        pause.Value = false;
+        if (Mix.Value)
+        {
+            string[] scenes = { "sequence_memory_game", "ReverseRetention_1", "MemoRandom" };
+            int random = Random.Range(0, scenes.Length);
+            SceneManager.LoadScene(scenes[random]);
+        }
+        else
+        {
+            SceneManager.LoadScene("sequence_memory_game");
+        }
+
     }
 
 
