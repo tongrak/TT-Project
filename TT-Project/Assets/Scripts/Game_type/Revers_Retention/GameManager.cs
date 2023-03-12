@@ -66,7 +66,15 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         //  Get asset image from Resources
-        puzzles = Resources.LoadAll<Sprite>("Sprites_Reverse_Retention/Animal Basic Asset Pack/Free Sprites 1x");
+        if(LevelInfoSOs.Img == "Difficult")
+        {
+            puzzles = Resources.LoadAll<Sprite>("Sprites_Reverse_Retention/Puzzle Level/Difficult");
+        }
+        else
+        {
+            puzzles = Resources.LoadAll<Sprite>("Sprites_Reverse_Retention/Puzzle Level/Normal");
+        }
+
         GameLevels.setEnd();
 
         //  Shuffle image

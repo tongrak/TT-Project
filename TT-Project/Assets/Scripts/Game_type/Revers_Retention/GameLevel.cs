@@ -19,21 +19,42 @@ public class GameLevel : MonoBehaviour
             isSet = true;
             if(DDAs.Level == 1)
             {
-                LevelInfoSOs.Slot = Random.Range(3, 5);
-                int temp = Random.Range(0, 1);
-                LevelInfoSOs.Img = imageLevel[temp];
+                int temp = Random.Range(3, 5);
+                LevelInfoSOs.Slot = temp;
+                if(temp == 3)
+                {
+                    LevelInfoSOs.Img = imageLevel[0];
+                }
+                else
+                {
+                    LevelInfoSOs.Img = imageLevel[1];
+                }
             }
             else if(DDAs.Level == 2)
             {
-                LevelInfoSOs.Slot = Random.Range(4, 6);
-                int temp = Random.Range(0, 1);
-                LevelInfoSOs.Img = imageLevel[temp];
+                int temp = Random.Range(4, 6);
+                LevelInfoSOs.Slot = temp;
+                if (temp == 4)
+                {
+                    LevelInfoSOs.Img = imageLevel[0];
+                }
+                else
+                {
+                    LevelInfoSOs.Img = imageLevel[1];
+                }
             }
             else if (DDAs.Level == 3)
             {
-                LevelInfoSOs.Slot = Random.Range(5, 7);
-                int temp = Random.Range(0, 1);
-                LevelInfoSOs.Img = imageLevel[temp];
+                int temp = Random.Range(5, 7);
+                LevelInfoSOs.Slot = temp;
+                if (temp == 5)
+                {
+                    LevelInfoSOs.Img = imageLevel[0];
+                }
+                else
+                {
+                    LevelInfoSOs.Img = imageLevel[1];
+                }
             }
         }
     }
