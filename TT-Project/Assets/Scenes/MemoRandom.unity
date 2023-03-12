@@ -1627,6 +1627,7 @@ MonoBehaviour:
   clickSE: {fileID: 616453802}
   correctSE: {fileID: 1557796512}
   wrongSE: {fileID: 2001869800}
+  boolMixs: {fileID: 11400000, guid: e6b7db5d1874b8444ad8c2c5ac8ceae2, type: 2}
 --- !u!114 &975666049
 MonoBehaviour:
   m_ObjectHideFlags: 0

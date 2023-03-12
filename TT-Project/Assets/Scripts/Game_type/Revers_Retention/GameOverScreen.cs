@@ -33,7 +33,7 @@ public class GameOverScreen : MonoBehaviour
 
     public void RePuzzle()
     {
-        SceneManager.LoadScene("MemoRandom");
+        SceneManager.LoadScene("ReverseRetention_1");
     }
 
     public void MainMenu()

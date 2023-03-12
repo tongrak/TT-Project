@@ -1528,6 +1528,7 @@ MonoBehaviour:
   DDA: {fileID: 11400000, guid: b19e067d5ad02e643ba41f59acb45584, type: 2}
   LevelInfoSOs: {fileID: 11400000, guid: ff791148e16e445439f12cc1032cc2e2, type: 2}
   GameLevels: {fileID: 975666051}
+  boolMixs: {fileID: 11400000, guid: e6b7db5d1874b8444ad8c2c5ac8ceae2, type: 2}
 --- !u!114 &975666051
 MonoBehaviour:
   m_ObjectHideFlags: 0

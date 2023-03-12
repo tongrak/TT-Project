@@ -330,7 +330,7 @@ public class RDM_GameManager : MonoBehaviour
     //  show game over
     void GameOver()
     {
-        GameOverScreen.Setup(boolMixs);
+        GameOverScreen.Setup(boolMixs.Value);
     }
 
     private void Update()
