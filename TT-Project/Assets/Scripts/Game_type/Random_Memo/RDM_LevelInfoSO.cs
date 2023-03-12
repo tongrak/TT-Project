@@ -7,15 +7,33 @@ using UnityEngine;
 public class RDM_LevelInfoSO : ScriptableObject
 {
     [SerializeField]
-    private int slot;
+    private int slotTop;
+
+    [SerializeField]
+    private int slotDown;
+
+    [SerializeField]
+    private int slotOpened;
 
     [SerializeField]
     private string img;
 
-    public int Slot
+    public int SlotTop
     {
-        get { return slot; }
-        set { slot = value; }
+        get { return slotTop; }
+        set { slotTop = value; }
+    }
+
+    public int SlotDown
+    {
+        get { return slotDown; }
+        set { slotDown = value; }
+    }
+
+    public int SlotOpened
+    {
+        get { return slotOpened; }
+        set { slotOpened = value; }
     }
 
     public string Img

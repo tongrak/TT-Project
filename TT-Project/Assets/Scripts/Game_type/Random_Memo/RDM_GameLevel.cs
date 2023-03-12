@@ -8,7 +8,11 @@ public class RDM_GameLevel : MonoBehaviour
     DDA DDAs;
 
     [SerializeField]
-    LevelInfoSO LevelInfoSOs;
+    RDM_LevelInfoSO RDM_LevelInfoSOs;
+
+    [SerializeField]
+    RDM_Config RDM_Configs;
+
 
     private bool isSet;
     private string[] imageLevel = { "Difficult", "Normal" };
@@ -17,45 +21,26 @@ public class RDM_GameLevel : MonoBehaviour
         if (!isSet)
         {
             isSet = true;
+            int[] temp; 
             if(DDAs.Level == 1)
             {
-                int temp = Random.Range(3, 5);
-                LevelInfoSOs.Slot = temp;
-                if(temp == 3)
-                {
-                    LevelInfoSOs.Img = imageLevel[0];
-                }
-                else
-                {
-                    LevelInfoSOs.Img = imageLevel[1];
-                }
+                temp = RDM_Config.easyConfig();
             }
             else if(DDAs.Level == 2)
             {
-                int temp = Random.Range(4, 6);
-                LevelInfoSOs.Slot = temp;
-                if (temp == 4)
-                {
-                    LevelInfoSOs.Img = imageLevel[0];
-                }
-                else
-                {
-                    LevelInfoSOs.Img = imageLevel[1];
-                }
+                temp = RDM_Config.normalConfig();
             }
-            else if (DDAs.Level == 3)
+            else 
             {
-                int temp = Random.Range(5, 7);
-                LevelInfoSOs.Slot = temp;
-                if (temp == 5)
-                {
-                    LevelInfoSOs.Img = imageLevel[0];
-                }
-                else
-                {
-                    LevelInfoSOs.Img = imageLevel[1];
-                }
+                temp = RDM_Config.hardConfig();
             }
+            while (temp[0] > temp[2])
+            {
+                temp[2]++;
+            }
+            RDM_LevelInfoSOs.SlotTop = temp[0];
+            RDM_LevelInfoSOs.SlotDown = temp[2];
+            RDM_LevelInfoSOs.SlotOpened = temp[3];
         }
     }
 

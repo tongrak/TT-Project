@@ -315,7 +315,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: REVERSE RETENTION
+  m_Text: RANDOM MEMORY
 --- !u!222 &212746510
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1446,6 +1446,8 @@ GameObject:
   - component: {fileID: 975666050}
   - component: {fileID: 975666049}
   - component: {fileID: 975666048}
+  - component: {fileID: 975666051}
+  - component: {fileID: 975666052}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1492,6 +1494,8 @@ MonoBehaviour:
   btns: []
   GameOverScreen: {fileID: 1544950149}
   guessesList: []
+  RDM_GameLevels: {fileID: 975666051}
+  RDM_LevelInfoSOs: {fileID: 11400000, guid: a112a8a5705a38642b8acd68de718b14, type: 2}
 --- !u!114 &975666049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1506,6 +1510,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   puzzlefield: {fileID: 887717684}
   button: {fileID: 287125112121865835, guid: 4a3b23b1b7f2a7a468aff30dc7bcd68d, type: 3}
+  RDM_GameLevels: {fileID: 975666051}
+  RDM_LevelInfoSOs: {fileID: 11400000, guid: a112a8a5705a38642b8acd68de718b14, type: 2}
 --- !u!114 &975666050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1520,6 +1526,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   puzzlefield: {fileID: 1042814934}
   button: {fileID: 5167141523042492730, guid: 9348f2b083235a347840036284e5a72c, type: 3}
+  RDM_GameLevels: {fileID: 975666051}
+  RDM_LevelInfoSOs: {fileID: 11400000, guid: a112a8a5705a38642b8acd68de718b14, type: 2}
+--- !u!114 &975666051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 975666046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae00153699c591c44a30b1f133fa93c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DDAs: {fileID: 11400000, guid: b19e067d5ad02e643ba41f59acb45584, type: 2}
+  RDM_LevelInfoSOs: {fileID: 11400000, guid: a112a8a5705a38642b8acd68de718b14, type: 2}
+  RDM_Configs: {fileID: 975666052}
+--- !u!114 &975666052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 975666046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4fa2e48786eda541a223c34d275dc77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1042814933
 GameObject:
   m_ObjectHideFlags: 0
