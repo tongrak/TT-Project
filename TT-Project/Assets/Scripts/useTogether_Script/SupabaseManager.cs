@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using System.Collections.Generic;
 using System;
+using Newtonsoft.Json;
 
 public class SupabaseManager
 {
@@ -37,6 +38,44 @@ public class SupabaseManager
         // if request is error for some reason.
         if (request.result == UnityWebRequest.Result.ConnectionError || request.result == UnityWebRequest.Result.DataProcessingError || request.result == UnityWebRequest.Result.ProtocolError)
         {
+            Debug.LogError(request.error);
+            Debug.LogError("Check from this request: " + request.url);
+            request.Dispose();
+            //yield break;
+        }
+        // if request success
+        else
+        {
+            errData = null;
+            jsonData = "{\"jsonData\":" + request.downloadHandler.text + "}";
+            request.Dispose();
+            //yield break;
+        }
+    }
+
+    public IEnumerator API_PATCH_Coroutine(Dictionary<string, string> data, string parameter)
+    {
+        // Serialize body as a Json string
+        string requestBodyString = JsonConvert.SerializeObject(data);
+        // Convert Json body string into a byte array
+        byte[] requestBodyData = System.Text.Encoding.UTF8.GetBytes(requestBodyString);
+        // create request for POST API
+        string api_url = DATABASE_URL + parameter;
+
+        UnityWebRequest request = UnityWebRequest.Put(api_url, requestBodyData);
+        // Specify that our method is of type 'patch'
+        request.method = "PATCH";
+        // add important header to make request complete.
+        request.SetRequestHeader("apikey", SUPABASE_KEY);
+        request.SetRequestHeader("Authorization", "Bearer " + SUPABASE_KEY);
+        request.SetRequestHeader("Content-Type", "application/json");
+        request.SetRequestHeader("Prefer", "return=minimal");
+        yield return request.SendWebRequest();
+
+        // if request is error for some reason.
+        if (request.result == UnityWebRequest.Result.ConnectionError || request.result == UnityWebRequest.Result.DataProcessingError || request.result == UnityWebRequest.Result.ProtocolError)
+        {
+            errData = request.error;
             Debug.LogError(request.error);
             Debug.LogError("Check from this request: " + request.url);
             request.Dispose();

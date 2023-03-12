@@ -13,6 +13,6 @@ public class Summary : MonoBehaviour
 
     private void Start()
     {
-        scoreText.text = scoreSO.Value + "";
+        scoreText.text = scoreSO.Value.ToString();
     }
 }
