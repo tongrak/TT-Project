@@ -29,6 +29,7 @@ public class UpdateDBScore : MonoBehaviour
         if (scoreSO.Value > sb_SO.bestScoreSO.Value)
         {
             reqBody.Add("best_score", scoreSO.Value.ToString());
+            sb_SO.bestScoreSO.Value = (int)scoreSO.Value;
         }
         // update score in DB
         yield return dbConnector.API_PATCH_Coroutine(reqBody, sb_SO.gameTypeTable+"?username=eq." + usernameSO.Value);
