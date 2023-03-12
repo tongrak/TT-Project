@@ -66,7 +66,17 @@ public class RDM_GameManager : MonoBehaviour
     [SerializeField]
     private RDM_LevelInfoSO RDM_LevelInfoSOs;
 
+    [SerializeField]
+    private AudioSource clickSE;
 
+    [SerializeField]
+    private AudioSource correctSE;
+
+    [SerializeField]
+    private AudioSource wrongSE;
+
+    [SerializeField]
+    private boolFortime boolMixs;
 
     /*  Method  */
     private void Awake()
@@ -154,7 +164,7 @@ public class RDM_GameManager : MonoBehaviour
     //  Check picked answer
     public void PickPuzzle()
     {
-
+        clickSE.Play();
         if (!isChoose)
         {
             isChoose = true;
@@ -320,7 +330,7 @@ public class RDM_GameManager : MonoBehaviour
     //  show game over
     void GameOver()
     {
-        GameOverScreen.Setup();
+        GameOverScreen.Setup(boolMixs);
     }
 
     private void Update()
@@ -331,7 +341,7 @@ public class RDM_GameManager : MonoBehaviour
         }
         if(TimeSO.Value <= 0)
         {
-            SceneManager.LoadScene(6);
+            SceneManager.LoadScene("Summary");
         }
     }
 }

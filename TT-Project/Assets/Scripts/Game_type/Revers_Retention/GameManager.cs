@@ -61,6 +61,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameLevel GameLevels;
 
+    [SerializeField]
+    private boolFortime boolMixs;
 
     /*  Method  */
     private void Awake()
@@ -175,7 +177,7 @@ public class GameManager : MonoBehaviour
 
                 DDA.check(false);
 
-                GameOverScreen.Setup();
+                GameOver();
             }
 
             StartCoroutine(checkThePuzzleMatch());
@@ -310,7 +312,7 @@ public class GameManager : MonoBehaviour
     //  show game over
     void GameOver()
     {
-        GameOverScreen.Setup();
+        GameOverScreen.Setup(boolMixs);
     }
 
     private void Update()
@@ -321,7 +323,7 @@ public class GameManager : MonoBehaviour
         }
         if(TimeSO.Value <= 0)
         {
-            SceneManager.LoadScene(3);
+            SceneManager.LoadScene("Summary");
         }
     }
 }

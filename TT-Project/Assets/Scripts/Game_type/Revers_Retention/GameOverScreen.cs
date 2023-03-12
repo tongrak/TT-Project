@@ -8,23 +8,37 @@ public class GameOverScreen : MonoBehaviour
 {
     public Text pointsText;
 
-    private string[] sceneList = { "MemoRandom", "ReverseRetention_1" };
+    private string[] sceneList = { "ReverseRetention_1", "MemoRandom", "sequence_memory_game" };
     private int randomIndex;
 
-    public void Setup()
+    public void Setup(bool isMix)
     {
         //gameObject.SetActive(true);
         //pointsText.text = score.ToString() + " POINTS"; //show point 
-        NextPuzzle();
+        if (isMix)
+        {
+            NextPuzzle();
+        }
+        else
+        {
+            RePuzzle();
+        }
     }
 
-    public void NextPuzzle() {
+    public void NextPuzzle()
+    {
         randomIndex = Random.Range(0, sceneList.Length);
         SceneManager.LoadScene(sceneList[randomIndex]);
     }
 
-    public void MainMenu() {
-        SceneManager.LoadScene("ReverseRetention_1");
-    
+    public void RePuzzle()
+    {
+        SceneManager.LoadScene("MemoRandom");
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("MemoRandom");
+
     }
 }
