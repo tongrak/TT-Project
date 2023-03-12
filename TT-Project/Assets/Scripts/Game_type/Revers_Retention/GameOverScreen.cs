@@ -8,7 +8,7 @@ public class GameOverScreen : MonoBehaviour
 {
     public Text pointsText;
 
-    private string[] sceneList = { "MemoRandom", "ReverseRetention_1", "sequence_memory_game" };
+    private string[] sceneList = { "MemoRandom", "ReverseRetention_1" };
     private int randomIndex;
 
     public void Setup()

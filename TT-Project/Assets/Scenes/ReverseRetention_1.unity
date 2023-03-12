@@ -1486,6 +1486,7 @@ MonoBehaviour:
   puzzlefield: {fileID: 1042814934}
   button: {fileID: 5167141523042492730, guid: 9348f2b083235a347840036284e5a72c, type: 3}
   GameLevels: {fileID: 975666051}
+  LevelInfoSOs: {fileID: 11400000, guid: ff791148e16e445439f12cc1032cc2e2, type: 2}
 --- !u!114 &975666049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1501,6 +1502,7 @@ MonoBehaviour:
   puzzlefield: {fileID: 887717684}
   button: {fileID: 287125112121865835, guid: 4a3b23b1b7f2a7a468aff30dc7bcd68d, type: 3}
   GameLevels: {fileID: 975666051}
+  LevelInfoSOs: {fileID: 11400000, guid: ff791148e16e445439f12cc1032cc2e2, type: 2}
 --- !u!114 &975666050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1524,6 +1526,8 @@ MonoBehaviour:
   btns: []
   GameOverScreen: {fileID: 1544950149}
   DDA: {fileID: 11400000, guid: b19e067d5ad02e643ba41f59acb45584, type: 2}
+  LevelInfoSOs: {fileID: 11400000, guid: ff791148e16e445439f12cc1032cc2e2, type: 2}
+  GameLevels: {fileID: 975666051}
 --- !u!114 &975666051
 MonoBehaviour:
   m_ObjectHideFlags: 0

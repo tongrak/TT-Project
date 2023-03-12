@@ -58,12 +58,16 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private LevelInfoSO LevelInfoSOs;
 
+    [SerializeField]
+    private GameLevel GameLevels;
+
 
     /*  Method  */
     private void Awake()
     {
         //  Get asset image from Resources
         puzzles = Resources.LoadAll<Sprite>("Sprites_Reverse_Retention/Animal Basic Asset Pack/Free Sprites 1x");
+        GameLevels.setEnd();
 
         //  Shuffle image
         Sprite tmpShuffle;

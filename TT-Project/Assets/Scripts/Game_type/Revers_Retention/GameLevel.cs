@@ -16,7 +16,6 @@ public class GameLevel : MonoBehaviour
     public void levelSet() {
         if (!isSet)
         {
-            print("WAH");
             isSet = true;
             if(DDAs.Level == 1)
             {
@@ -37,5 +36,10 @@ public class GameLevel : MonoBehaviour
                 LevelInfoSOs.Img = imageLevel[temp];
             }
         }
+    }
+
+    public void setEnd()
+    {
+        isSet = false;
     }
 }
