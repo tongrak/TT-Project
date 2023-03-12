@@ -9,4 +9,5 @@ public class SaveSOData : MonoBehaviour
     [SerializeField] private IntSO rev_bestScoreSO;
     [SerializeField] private IntSO memRand_bestScoreSO;
     [SerializeField] private IntSO mix_bestScoreSO;
+    [SerializeField] private ScoreboardSO scoreboardSO;
 }

@@ -270,6 +270,56 @@ MonoBehaviour:
   puzzles: []
   gamePuzzle: []
   btns: []
+--- !u!1 &830373776
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 830373778}
+  - component: {fileID: 830373777}
+  m_Layer: 0
+  m_Name: SaveSOData
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &830373777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 830373776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa985f0a2c5f2ec4381ab965c9259d12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  usernameSO: {fileID: 11400000, guid: 0c056b497423e774b9a3b41358654d20, type: 2}
+  seq_bestScoreSO: {fileID: 11400000, guid: ac0e70a4e142c6a4397dd883fd383895, type: 2}
+  rev_bestScoreSO: {fileID: 11400000, guid: aa4a20ce4f9dea641b90c8eed852422e, type: 2}
+  memRand_bestScoreSO: {fileID: 11400000, guid: c5a7862769e75de4eaefb1ea95bcbce8, type: 2}
+  mix_bestScoreSO: {fileID: 11400000, guid: dce09a380b81ec84f8ba78585e23104b, type: 2}
+  scoreboardSO: {fileID: 11400000, guid: 0d64ac22c53d4a7479673a3316cc0686, type: 2}
+--- !u!4 &830373778
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 830373776}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.86046636, y: -0.08626916, z: 60.225822}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &860106533
 GameObject:
   m_ObjectHideFlags: 0
@@ -725,8 +775,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0358462efb8606741b2e63c82217c8e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  countdownText: {fileID: 124853084}
+  timeText: {fileID: 0}
   timeCount: {fileID: 11400000, guid: 36500eefdd050ea4a8e66b731318299a, type: 2}
+  pause: {fileID: 0}
 --- !u!1 &1476705970
 GameObject:
   m_ObjectHideFlags: 0

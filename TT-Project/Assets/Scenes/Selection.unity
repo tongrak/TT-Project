@@ -258,6 +258,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 297481178}
   m_CullTransparentMesh: 1
+--- !u!1 &471925993
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 471925994}
+  - component: {fileID: 471925995}
+  m_Layer: 0
+  m_Name: SaveSOdata
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &471925994
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 471925993}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.35836756, y: 0.847992, z: 56.795185}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &471925995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 471925993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa985f0a2c5f2ec4381ab965c9259d12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  usernameSO: {fileID: 11400000, guid: 0c056b497423e774b9a3b41358654d20, type: 2}
+  seq_bestScoreSO: {fileID: 11400000, guid: ac0e70a4e142c6a4397dd883fd383895, type: 2}
+  rev_bestScoreSO: {fileID: 11400000, guid: aa4a20ce4f9dea641b90c8eed852422e, type: 2}
+  memRand_bestScoreSO: {fileID: 11400000, guid: c5a7862769e75de4eaefb1ea95bcbce8, type: 2}
+  mix_bestScoreSO: {fileID: 11400000, guid: dce09a380b81ec84f8ba78585e23104b, type: 2}
+  scoreboardSO: {fileID: 11400000, guid: 0d64ac22c53d4a7479673a3316cc0686, type: 2}
 --- !u!1 &501276601
 GameObject:
   m_ObjectHideFlags: 0
@@ -929,6 +979,7 @@ GameObject:
   - component: {fileID: 1334495269}
   - component: {fileID: 1334495268}
   - component: {fileID: 1334495267}
+  - component: {fileID: 1334495270}
   m_Layer: 5
   m_Name: GameType3
   m_TagString: Untagged
@@ -1002,6 +1053,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1334495270}
+        m_TargetAssemblyTypeName: SelectSBUI, Assembly-CSharp
+        m_MethodName: ChangeScoreSOValue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 2070119117}
         m_TargetAssemblyTypeName: Selection, Assembly-CSharp
         m_MethodName: type4
@@ -1052,6 +1115,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1334495265}
   m_CullTransparentMesh: 1
+--- !u!114 &1334495270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1334495265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2917728c6a1bd9c4ea61df9ed8faebe3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  headerSB: Memo random
+  gameTypeTable: MemoRandom_Score
+  bestScoreSO: {fileID: 11400000, guid: c5a7862769e75de4eaefb1ea95bcbce8, type: 2}
+  sb_SO: {fileID: 11400000, guid: 0d64ac22c53d4a7479673a3316cc0686, type: 2}
 --- !u!1 &1522043982
 GameObject:
   m_ObjectHideFlags: 0
@@ -1267,6 +1346,7 @@ GameObject:
   - component: {fileID: 1613487231}
   - component: {fileID: 1613487230}
   - component: {fileID: 1613487229}
+  - component: {fileID: 1613487232}
   m_Layer: 5
   m_Name: GameTypeBox
   m_TagString: Untagged
@@ -1400,6 +1480,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1613487227}
   m_CullTransparentMesh: 1
+--- !u!114 &1613487232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1613487227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2917728c6a1bd9c4ea61df9ed8faebe3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  headerSB: Mix mode
+  gameTypeTable: Mix_Score
+  bestScoreSO: {fileID: 11400000, guid: dce09a380b81ec84f8ba78585e23104b, type: 2}
+  sb_SO: {fileID: 11400000, guid: 0d64ac22c53d4a7479673a3316cc0686, type: 2}
 --- !u!1 &1682447585
 GameObject:
   m_ObjectHideFlags: 0
@@ -1914,6 +2010,7 @@ GameObject:
   - component: {fileID: 1888384104}
   - component: {fileID: 1888384103}
   - component: {fileID: 1888384102}
+  - component: {fileID: 1888384105}
   m_Layer: 5
   m_Name: GameType1
   m_TagString: Untagged
@@ -1987,6 +2084,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1888384105}
+        m_TargetAssemblyTypeName: SelectSBUI, Assembly-CSharp
+        m_MethodName: ChangeScoreSOValue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 2070119117}
         m_TargetAssemblyTypeName: Selection, Assembly-CSharp
         m_MethodName: type2
@@ -2037,6 +2146,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1888384100}
   m_CullTransparentMesh: 1
+--- !u!114 &1888384105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1888384100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2917728c6a1bd9c4ea61df9ed8faebe3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  headerSB: Sequence memory
+  gameTypeTable: SequenceMem_Score
+  bestScoreSO: {fileID: 11400000, guid: ac0e70a4e142c6a4397dd883fd383895, type: 2}
+  sb_SO: {fileID: 11400000, guid: 0d64ac22c53d4a7479673a3316cc0686, type: 2}
 --- !u!1 &1903958641
 GameObject:
   m_ObjectHideFlags: 0
@@ -2194,6 +2319,7 @@ GameObject:
   - component: {fileID: 1979071887}
   - component: {fileID: 1979071886}
   - component: {fileID: 1979071885}
+  - component: {fileID: 1979071888}
   m_Layer: 5
   m_Name: GameType2
   m_TagString: Untagged
@@ -2267,6 +2393,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1979071888}
+        m_TargetAssemblyTypeName: SelectSBUI, Assembly-CSharp
+        m_MethodName: ChangeScoreSOValue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 2070119117}
         m_TargetAssemblyTypeName: Selection, Assembly-CSharp
         m_MethodName: type3
@@ -2317,6 +2455,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1979071883}
   m_CullTransparentMesh: 1
+--- !u!114 &1979071888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1979071883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2917728c6a1bd9c4ea61df9ed8faebe3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  headerSB: Reverse retention
+  gameTypeTable: Reverse_Score
+  bestScoreSO: {fileID: 11400000, guid: aa4a20ce4f9dea641b90c8eed852422e, type: 2}
+  sb_SO: {fileID: 11400000, guid: 0d64ac22c53d4a7479673a3316cc0686, type: 2}
 --- !u!1 &2002889963
 GameObject:
   m_ObjectHideFlags: 0
@@ -2360,6 +2514,7 @@ GameObject:
   - component: {fileID: 2028806742}
   - component: {fileID: 2028806741}
   - component: {fileID: 2028806740}
+  - component: {fileID: 2028806743}
   m_Layer: 5
   m_Name: GameType4
   m_TagString: Untagged
@@ -2433,6 +2588,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 2028806743}
+        m_TargetAssemblyTypeName: SelectSBUI, Assembly-CSharp
+        m_MethodName: ChangeScoreSOValue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 2070119117}
         m_TargetAssemblyTypeName: Selection, Assembly-CSharp
         m_MethodName: type5
@@ -2483,6 +2650,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2028806738}
   m_CullTransparentMesh: 1
+--- !u!114 &2028806743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2028806738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2917728c6a1bd9c4ea61df9ed8faebe3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  headerSB: 
+  gameTypeTable: 
+  bestScoreSO: {fileID: 0}
+  sb_SO: {fileID: 0}
 --- !u!1 &2070119113
 GameObject:
   m_ObjectHideFlags: 0
@@ -2544,6 +2727,7 @@ MonoBehaviour:
   scroeSO: {fileID: 11400000, guid: 1150a4bdf7e26f8428f99a72fa87ba4e, type: 2}
   TimeSO: {fileID: 11400000, guid: 36500eefdd050ea4a8e66b731318299a, type: 2}
   random: {fileID: 11400000, guid: e6b7db5d1874b8444ad8c2c5ac8ceae2, type: 2}
+  DDA: {fileID: 0}
 --- !u!114 &2070119117
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1756,6 +1756,7 @@ MonoBehaviour:
   rev_bestScoreSO: {fileID: 11400000, guid: aa4a20ce4f9dea641b90c8eed852422e, type: 2}
   memRand_bestScoreSO: {fileID: 11400000, guid: c5a7862769e75de4eaefb1ea95bcbce8, type: 2}
   mix_bestScoreSO: {fileID: 11400000, guid: dce09a380b81ec84f8ba78585e23104b, type: 2}
+  scoreboardSO: {fileID: 11400000, guid: 0d64ac22c53d4a7479673a3316cc0686, type: 2}
 --- !u!114 &1551376337
 MonoBehaviour:
   m_ObjectHideFlags: 0
