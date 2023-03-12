@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using System;
 using System.Text;
+using Newtonsoft.Json;
 
 public class Login : MonoBehaviour
 {
@@ -147,4 +148,16 @@ public class Login : MonoBehaviour
             ChangeSceneManager.changeScene("MainMenu");
         }
     }
+
+    //public void TestButton()
+    //{
+    //    StartCoroutine(Test_Coroutine());
+    //}
+    //IEnumerator Test_Coroutine()
+    //{
+    //    Dictionary<string, string> reqBody = new Dictionary<string, string>();
+    //    reqBody.Add("best_score", "100");
+    //    reqBody.Add("recent_score", "50");
+    //    yield return dbConnector.API_PATCH_Coroutine(reqBody, "SequenceMem_Score?username=eq.TestAPI2");
+    //}
 }
