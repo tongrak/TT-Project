@@ -10,13 +10,20 @@ public class RDM_AddRememBtn : MonoBehaviour
     [SerializeField]
     private GameObject button;
 
+    [SerializeField]
+    private RDM_GameLevel RDM_GameLevels;
+
+    [SerializeField]
+    private RDM_LevelInfoSO RDM_LevelInfoSOs;
+
     private int puzzleSize;
     private int ansSize;
 
     private void Awake()
     {
-        puzzleSize = 3;
-        ansSize = 4;
+        RDM_GameLevels.levelSet();
+        puzzleSize = RDM_LevelInfoSOs.SlotTop;
+        ansSize = RDM_LevelInfoSOs.SlotDown;
         if (button.tag == "PuzzleBtn")
         {
             for (int i = 0; i < puzzleSize; i++)

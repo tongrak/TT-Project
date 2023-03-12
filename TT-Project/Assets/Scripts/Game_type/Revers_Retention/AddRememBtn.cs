@@ -10,11 +10,18 @@ public class AddRememBtn : MonoBehaviour
     [SerializeField]
     private GameObject button;
 
+    [SerializeField]
+    private GameLevel GameLevels;
+
+    [SerializeField]
+    private LevelInfoSO LevelInfoSOs;
+
     private void Awake()
     {
+        GameLevels.levelSet();
         if (button.tag == "PuzzleBtn")
         {
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < LevelInfoSOs.Slot; i++)
             {
                 //  create puzzle btn
                 GameObject _button = Instantiate(button);
@@ -23,7 +30,7 @@ public class AddRememBtn : MonoBehaviour
             }
         }else if (button.tag == "AnswerBtn")
         {
-            for (int i = 4; i < 8; i++)
+            for (int i = LevelInfoSOs.Slot; i < LevelInfoSOs.Slot*2; i++)
             {
                 //  create puzzle btn
                 GameObject _button = Instantiate(button);

@@ -52,13 +52,30 @@ public class GameManager : MonoBehaviour
     private bool isRememTime = false;
     private float rememTimeStamp;
 
+    [SerializeField]
+    private DDA DDA;
+
+    [SerializeField]
+    private LevelInfoSO LevelInfoSOs;
+
+    [SerializeField]
+    private GameLevel GameLevels;
 
 
     /*  Method  */
     private void Awake()
     {
         //  Get asset image from Resources
-        puzzles = Resources.LoadAll<Sprite>("Sprites_Reverse_Retention/Animal Basic Asset Pack/Free Sprites 1x");
+        if(LevelInfoSOs.Img == "Difficult")
+        {
+            puzzles = Resources.LoadAll<Sprite>("Sprites_Reverse_Retention/Puzzle Level/Difficult");
+        }
+        else
+        {
+            puzzles = Resources.LoadAll<Sprite>("Sprites_Reverse_Retention/Puzzle Level/Normal");
+        }
+
+        GameLevels.setEnd();
 
         //  Shuffle image
         Sprite tmpShuffle;
@@ -155,6 +172,9 @@ public class GameManager : MonoBehaviour
             }else
             {
                 print("Puzzle don't Match");
+
+                DDA.check(false);
+
                 GameOverScreen.Setup();
             }
 
@@ -200,6 +220,10 @@ public class GameManager : MonoBehaviour
             {
                 scoreSO.Value += 10;
                 showScore.text = scoreSO.Value + "";
+
+                //DDA
+                DDA.check(true);
+
                 print("game finished");
                 print("it took you " + countGuesses + " ");
                 GameOver(); // call game over

@@ -60,6 +60,12 @@ public class RDM_GameManager : MonoBehaviour
     private int ansSize;
     public List<string> guessesList;
 
+    [SerializeField]
+    private RDM_GameLevel RDM_GameLevels;
+
+    [SerializeField]
+    private RDM_LevelInfoSO RDM_LevelInfoSOs;
+
 
 
     /*  Method  */
@@ -67,6 +73,7 @@ public class RDM_GameManager : MonoBehaviour
     {
         //  Get asset image from Resources
         puzzles = Resources.LoadAll<Sprite>("Sprites_Memo_Random/Animal Basic Asset Pack/Free Sprites 1x");
+        RDM_GameLevels.setEnd();
 
         //  Shuffle image
         Sprite tmpShuffle;
@@ -169,7 +176,9 @@ public class RDM_GameManager : MonoBehaviour
             }else
             {
                 print("Puzzle don't Match");
-                GameOverScreen.Setup();
+                DDA.check(false);
+
+                GameOver();
             }
 
             StartCoroutine(checkThePuzzleMatch());
@@ -213,11 +222,7 @@ public class RDM_GameManager : MonoBehaviour
             CheckTheGameFinished();
         }else
         {
-            DDA.Wy += 1;
-            DDA.Accum = 0;
-            DDA.addY(DDA.Wy);
-            DDA.heuristic();
-            DDA.reLevel2();
+            //
         }
         //yield return new WaitForSeconds(0.5f);
 
@@ -233,11 +238,7 @@ public class RDM_GameManager : MonoBehaviour
                 showScore.text = scoreSO.Value + "";
 
                 //DDA
-                DDA.Wx += 1;
-                DDA.addX(DDA.Wx);
-                DDA.Accum += 1;
-                DDA.heuristic();
-                DDA.reLevel2();
+                DDA.check(true);
 
                 print("game finished");
                 print("it took you " + countGuesses + " ");
@@ -261,7 +262,7 @@ public class RDM_GameManager : MonoBehaviour
 
         }
 
-        RandomGuess(puzzleSize, DDA.Level+1);
+        RandomGuess(puzzleSize, RDM_LevelInfoSOs.SlotOpened);
         yield return new WaitForSeconds(3f);
         for (int i=0; i<puzzleSize; i++)
         {
