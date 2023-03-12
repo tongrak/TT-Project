@@ -64,6 +64,15 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private boolFortime boolMixs;
 
+    [SerializeField]
+    private AudioSource clickSE;
+
+    [SerializeField]
+    private AudioSource correctSE;
+
+    [SerializeField]
+    private AudioSource wrongSE;
+
     /*  Method  */
     private void Awake()
     {
@@ -159,7 +168,7 @@ public class GameManager : MonoBehaviour
     //  Check picked answer
     public void PickPuzzle()
     {
-
+        clickSE.Play();
         if (!isChoose)
         {
             isChoose = true;
@@ -177,7 +186,8 @@ public class GameManager : MonoBehaviour
 
                 DDA.check(false);
 
-                GameOver();
+                wrongSE.Play();
+                StartCoroutine(runOver());
             }
 
             StartCoroutine(checkThePuzzleMatch());
@@ -228,10 +238,18 @@ public class GameManager : MonoBehaviour
 
                 print("game finished");
                 print("it took you " + countGuesses + " ");
-                GameOver(); // call game over
+
+                correctSE.Play();
+                StartCoroutine(runOver()); // call game over
             }
         }
 
+    }
+
+    IEnumerator runOver()
+    {
+        yield return new WaitForSeconds(1f);
+        GameOver();
     }
 
     //  Show puzzle for remember

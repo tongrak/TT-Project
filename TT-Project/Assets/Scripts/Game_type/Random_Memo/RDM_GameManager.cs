@@ -186,14 +186,21 @@ public class RDM_GameManager : MonoBehaviour
             }else
             {
                 print("Puzzle don't Match");
+                wrongSE.Play();
                 DDA.check(false);
 
-                GameOver();
+                StartCoroutine(runOver());
             }
 
             StartCoroutine(checkThePuzzleMatch());
 
         }
+    }
+
+    IEnumerator runOver()
+    {
+        yield return new WaitForSeconds(1f);
+        GameOver();
     }
 
     //  Random guesses
@@ -229,7 +236,11 @@ public class RDM_GameManager : MonoBehaviour
         {
             btns[currentGuessesIdx].image.sprite = gamePuzzles[currentAnsIdx];
 
-            CheckTheGameFinished();
+            if (CheckTheGameFinished())
+            {
+                correctSE.Play();
+                StartCoroutine(runOver());
+            }
         }else
         {
             //
@@ -238,12 +249,13 @@ public class RDM_GameManager : MonoBehaviour
 
         isChoose = false;
 
-        void CheckTheGameFinished()
+        bool CheckTheGameFinished()
         {
             countCorrectGuesses++;
 
             if (countCorrectGuesses == gameGuesses)
             {
+                correctSE.Play();
                 scoreSO.Value += 10;
                 showScore.text = scoreSO.Value + "";
 
@@ -252,8 +264,9 @@ public class RDM_GameManager : MonoBehaviour
 
                 print("game finished");
                 print("it took you " + countGuesses + " ");
-                GameOver(); // call game over
+                return true;
             }
+            return false;
         }
 
     }
