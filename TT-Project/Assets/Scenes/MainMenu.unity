@@ -237,7 +237,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 250, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &146868727
@@ -2069,7 +2069,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scroeSO: {fileID: 11400000, guid: 1150a4bdf7e26f8428f99a72fa87ba4e, type: 2}
   TimeSO: {fileID: 11400000, guid: 36500eefdd050ea4a8e66b731318299a, type: 2}
-  random: {fileID: 0}
+  random: {fileID: 11400000, guid: e6b7db5d1874b8444ad8c2c5ac8ceae2, type: 2}
+  DDA: {fileID: 11400000, guid: b19e067d5ad02e643ba41f59acb45584, type: 2}
 --- !u!114 &2070119117
 MonoBehaviour:
   m_ObjectHideFlags: 0
