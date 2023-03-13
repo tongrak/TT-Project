@@ -76,7 +76,7 @@ public class GeneratorBtn : MonoBehaviour
             for (int i = 0; i < 7; i++)
             {
                 
-                int[] x = { -270, -180,-90,0,90, 180, 270 };
+                int[] x = { -330, -220,-110,0,110, 220, 330 };
                 int[] y = { -20, 20, -20, 20,-20,20,-20 };
 
                 Color[] color = { new Color(1, 0, 0, 0.5f), new Color(0, 0, 1, 0.5f), new Color(1, 1, 0, 0.5f), new Color(0, 1, 0, 0.5f), new Color(249, 120, 224, 0.5f), new Color(33, 236, 65, 0.5f) };

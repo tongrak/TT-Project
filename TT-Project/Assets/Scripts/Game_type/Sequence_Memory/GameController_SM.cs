@@ -76,13 +76,31 @@ public class GameController_SM : MonoBehaviour
         positionInSequence = 0;
         inputInSequence = 0;
 
-        for (int i = 0; i < btns.Count; i++)
+        if (DDA.Level == 1)
         {
-            colorSelect = Random.Range(0, btns.Count);
-            activeSequence.Add(colorSelect);
-            //Debug.Log(activeSequence.Count);
-            //Debug.Log("btns = " + btns.Count);
+            for (int i = 0; i < btns.Count; i++)
+            {
+                colorSelect = Random.Range(0, btns.Count);
+                activeSequence.Add(colorSelect);
+            }
+        } 
+        else if (DDA.Level == 2)
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                colorSelect = Random.Range(0, btns.Count);
+                activeSequence.Add(colorSelect);
+            }
         }
+        else if (DDA.Level == 3)
+        {
+            for (int i = 0; i < 7; i++)
+            {
+                colorSelect = Random.Range(0, btns.Count);
+                activeSequence.Add(colorSelect);
+            }
+        }
+        
 
         btns[activeSequence[positionInSequence]].color = new Color((float)0.4509804, 1, (float)0.8666667, 1); ;
 
@@ -93,6 +111,7 @@ public class GameController_SM : MonoBehaviour
     void GetButtons()
     {
         GameObject[] objects = GameObject.FindGameObjectsWithTag("btnSeq");
+
 
         for (int i = 0; i < objects.Length; i++)
         {

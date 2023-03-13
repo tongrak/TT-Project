@@ -20,7 +20,7 @@ public class ResetGameValue : MonoBehaviour
     public void reset()
     {
         scroeSO.Value = 0;
-        TimeSO.Value = 180f;
+        TimeSO.Value = 60f;
         random.Value = false;
         DDA.Reset();
     }
