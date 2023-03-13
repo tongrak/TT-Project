@@ -36,17 +36,14 @@ public class Selection : MonoBehaviour
     {
         Debug.Log("Loading Random scene");
         Mix();
-        int random = Random.Range(0,4);
+        int random = Random.Range(0,3);
         if (random == 0)
         {
-            type1();
-        }else if (random == 1)
-        {
             type2();
-        }else if(random == 2)
+        }else if(random == 1)
         {
             type3();
-        }else if(random == 3)
+        }else if(random == 2)
         {
             type4();
         }
