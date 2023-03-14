@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RDM_AddRememBtn : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class RDM_AddRememBtn : MonoBehaviour
         RDM_GameLevels.levelSet();
         puzzleSize = RDM_LevelInfoSOs.SlotTop;
         ansSize = RDM_LevelInfoSOs.SlotDown;
+
         if (button.tag == "PuzzleBtn")
         {
             for (int i = 0; i < puzzleSize; i++)
