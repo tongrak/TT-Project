@@ -76,9 +76,44 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject placeHold;
 
+    [SerializeField]
+    private Transform backGround;
+
+    [SerializeField]
+    private TMP_Text gameLevelText;
+
+    [SerializeField]
+    private TMP_Text easyPass;
+
+    [SerializeField]
+    private TMP_Text normalPass;
+
+    [SerializeField]
+    private TMP_Text hardPass;
+
     /*  Method  */
     private void Awake()
     {
+        if (DDA.Level == 1)
+        {
+            backGround.GetComponent<Image>().color = new Color((float)0.6039216, (float)0.9764706, (float)0.4705882, 1);
+            gameLevelText.text = "EASY";
+        }
+        else if (DDA.Level == 2)
+        {
+            backGround.GetComponent<Image>().color = new Color((float)0.9764706, (float)0.8941177, (float)0.4705882, 1);
+            gameLevelText.text = "NORMAL";
+            gameLevelText.fontSize = 64;
+        }
+        else
+        {
+            backGround.GetComponent<Image>().color = new Color((float)0.9372549, (float)0.3490196, (float)0.2666667, 1);
+            gameLevelText.text = "HARD";
+        }
+        easyPass.text = DDA.Ex.ToString();
+        normalPass.text = DDA.Nx.ToString();
+        hardPass.text = DDA.Hx.ToString();
+
         //  Get asset image from Resources
         int rndSet = Random.Range(1, 5);
         if(LevelInfoSOs.Img == "Difficult")
@@ -208,12 +243,6 @@ public class GameManager : MonoBehaviour
 
         if(currentPuzz == currentAns)
         {
-            //yield return new WaitForSeconds(0.5f);
-            //btns[currentPuzzIdx].interactable = false;    //fix show correct ans
-            //btns[currentAnsIdx].interactable = false;
-
-            //btns[currentPuzzIdx].image.color = new Color(0, 0, 0, 0); //fix show correct ans
-            //btns[currentAnsIdx].image.color = new Color(0, 0, 0, 0);
             btns[currentPuzzIdx].image.sprite = gamePuzzles[currentPuzzIdx];
 
             CheckTheGameFinished();

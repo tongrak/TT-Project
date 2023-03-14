@@ -456,7 +456,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -50.94375, y: 0, z: -52.70043, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2487,6 +2487,11 @@ MonoBehaviour:
   correctSE: {fileID: 1033360168}
   wrongSE: {fileID: 1299041479}
   placeHold: {fileID: 1710653009}
+  backGround: {fileID: 240876279}
+  gameLevelText: {fileID: 151466349}
+  easyPass: {fileID: 129244535}
+  normalPass: {fileID: 1040070821}
+  hardPass: {fileID: 2077382299}
 --- !u!114 &975666051
 MonoBehaviour:
   m_ObjectHideFlags: 0
