@@ -13,6 +13,19 @@ public class GameController_SM : MonoBehaviour
     [SerializeField]
     private TMP_Text scoreText;
 
+    //level tmp
+    [SerializeField]
+    private TMP_Text mod_level;
+
+    [SerializeField]
+    private TMP_Text easy_passed;
+
+    [SerializeField]
+    private TMP_Text normal_passed;
+
+    [SerializeField]
+    private TMP_Text hard_passed;
+
     //Time
     [SerializeField]
     private FloatSO TimeSO;
@@ -63,8 +76,23 @@ public class GameController_SM : MonoBehaviour
     private void Start()
     {
 
-        
-        //TimeSO.Value = 180;
+        if(DDA.Level == 1)
+        {
+            mod_level.text = "EASY";
+        }
+        else if (DDA.Level == 2)
+        {
+            mod_level.text = "NORMAL";
+        }
+        else
+        {
+            mod_level.text = "HARD";
+        }
+
+        easy_passed.text = DDA.Ex.ToString();
+        normal_passed.text = DDA.Nx.ToString();
+        hard_passed.text = DDA.Hx.ToString();
+
 
         //Main Score++
         scoreText.text = scoreSO.Value + "";
@@ -160,6 +188,25 @@ public class GameController_SM : MonoBehaviour
             DDA.Reset();
             SceneManager.LoadScene("Summary");
         }
+
+        if (DDA.Level == 1)
+        {
+            mod_level.text = "EASY";
+        }
+        else if (DDA.Level == 2)
+        {
+            mod_level.text = "NORMAL";
+            mod_level.fontSize = 64;
+        }
+        else
+        {
+            mod_level.text = "HARD";
+        }
+
+        easy_passed.text = DDA.Ex.ToString();
+        normal_passed.text = DDA.Nx.ToString();
+        hard_passed.text = DDA.Hx.ToString();
+
 
         if (shouldBeLit)
         {
