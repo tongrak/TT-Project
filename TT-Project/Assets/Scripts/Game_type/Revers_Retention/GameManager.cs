@@ -239,7 +239,7 @@ public class GameManager : MonoBehaviour
     //  Check selected is match
     IEnumerator checkThePuzzleMatch()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.1f);
 
         if(currentPuzz == currentAns)
         {
