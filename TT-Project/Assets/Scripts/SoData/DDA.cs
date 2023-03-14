@@ -15,16 +15,47 @@ public class DDA : ScriptableObject
     private int level = 1;
 
     [SerializeField]
-    private int wx;
+    private int ex;
 
     [SerializeField]
-    private int wy;
+    private int ey;
 
     [SerializeField]
-    private List<Double> _x = new List<Double>();
+    private int nx;
 
     [SerializeField]
-    private List<Double> _y = new List<Double>();
+    private int ny;
+
+    [SerializeField]
+    private int hx;
+
+    [SerializeField]
+    private int hy;
+
+    //correct easy list
+    [SerializeField]
+    private List<Double> _easyCorrect = new List<Double>();
+
+    //correct easy list
+    [SerializeField]
+    private List<Double> _easyInCorrect = new List<Double>();
+
+    //correct normal list
+    [SerializeField]
+    private List<Double> _normalCorrect = new List<Double>();
+
+    //correct normal list
+    [SerializeField]
+    private List<Double> _normalInCorrect = new List<Double>();
+
+    //correct hard list
+    [SerializeField]
+    private List<Double> _hardCorrect = new List<Double>();
+
+    //incorrect hard list
+    [SerializeField]
+    private List<Double> _hardInCorrect = new List<Double>();
+
 
     [SerializeField]
     private Double _accum;
@@ -72,62 +103,98 @@ public class DDA : ScriptableObject
         set { level = value; }
     }
 
-    public int Wx
+    public int Ex
     {
-        get { return wx; }
-        set { wx = value; }
+        get { return ex; }
+        set { ex = value; }
     }
 
-    public int Wy
+    public int Ey
     {
-        get { return wy; }
-        set { wy = value; }
+        get { return ey; }
+        set { ey = value; }
     }
 
-    public void addX(int value)
+    public int Nx
     {
-        _x.Add(value);
-        _y.Add(0);
+        get { return nx; }
+        set { nx = value; }
+    }
+
+    public int Ny
+    {
+        get { return ny; }
+        set { ny = value; }
+    }
+
+    public int Hx
+    {
+        get { return hx; }
+        set { hx = value; }
+    }
+
+    public int Hy
+    {
+        get { return hy; }
+        set { hy = value; }
+    }
+
+    //add method
+    //correct
+    public void addEX(int value)
+    {
+        _easyCorrect.Add(value);
+        _easyInCorrect.Add(0);
+    }
+
+    //Incorrect
+    public void addEY(int value)
+    {
+        _easyInCorrect.Add(value);
+        _easyCorrect.Add(0);
+    }
+
+    public void addNX(int value)
+    {
+        _normalCorrect.Add(value);
+        _normalInCorrect.Add(0);
     }
 
 
-    public void addY(int value)
+    public void addNY(int value)
     {
-        _y.Add(value);
-        _x.Add(0);
+        _normalInCorrect.Add(value);
+        _normalCorrect.Add(0);
+    }
+
+    public void addHX(int value)
+    {
+        _hardCorrect.Add(value);
+        _hardInCorrect.Add(0);
+    }
+
+
+    public void addHY(int value)
+    {
+        _hardInCorrect.Add(value);
+        _hardCorrect.Add(0);
     }
 
     public void heuristic()
     {
         if (this.level == 1)
         {
-            this._performance.Add((wxe1 * _x[_x.Count - 1] - wye2 * _y[_y.Count - 1]) + (accum_e* this._accum));
+            this._performance.Add((wxe1 * _easyCorrect[_easyCorrect.Count - 1] - wye2 * _easyInCorrect[_easyInCorrect.Count - 1]) + (accum_e* this._accum));
         }
         else if (this.level == 2)
         {
-            this._performance.Add((wxn1 * _x[_x.Count - 1] - wyn2 * _y[_y.Count - 1]) + (accum_n * this._accum));
+            this._performance.Add((wxn1 * _normalCorrect[_normalCorrect.Count - 1] - wyn2 * _normalInCorrect[_normalInCorrect.Count - 1]) + (accum_n * this._accum));
         }
         else
         {
-            this._performance.Add((wxh1 * _x[_x.Count - 1] - wyh2 * _y[_y.Count - 1]) + (accum_h * this._accum));
+            this._performance.Add((wxh1 * _hardCorrect[_hardCorrect.Count - 1] - wyh2 * _hardInCorrect[_hardInCorrect.Count - 1]) + (accum_h * this._accum));
         }
         
-    }
-
-    public void Placeholder()
-    {
-        if (this.level == 1)
-        {
-            this._performance.Add((wxe1 * _x[_x.Count - 1] - wye2 * _y[_y.Count - 1]));
-        }
-        else if (this.level == 2)
-        {
-            this._performance.Add((wxn1 * _x[_x.Count - 1] - wyn2 * _y[_y.Count - 1]));
-        }
-        else
-        {
-            this._performance.Add((wxh1 * _x[_x.Count - 1 ] - wyh2 * _y[_y.Count - 1]));
-        }
     }
 
 
@@ -191,10 +258,18 @@ public class DDA : ScriptableObject
     public void Reset()
     {
         this.level = 1;
-        this.Wx = 0;
-        this.Wy = 0;
-        this._x.Clear();
-        this._y.Clear();
+        this.Ex = 0;
+        this.Ey = 0;
+        this.Nx = 0;
+        this.Ny = 0;
+        this.Hx = 0;
+        this.Hy = 0;
+        this._easyCorrect.Clear();
+        this._easyInCorrect.Clear();
+        this._normalCorrect.Clear();
+        this._normalInCorrect.Clear();
+        this._hardCorrect.Clear();
+        this._hardInCorrect.Clear();
         this._performance.Clear();
         this._accum = 0;
         this.Mean = 0;
@@ -276,7 +351,6 @@ public class DDA : ScriptableObject
     {
         if(min() < 0.5 && mean() < 0.5 && max() < 0 && std() >= 0.25 && std() <= 1)
         {
-            Debug.Log("1111111111111111111111111111");
             if (this.level != 1)
             {
                 this.level -= 1;
@@ -284,7 +358,7 @@ public class DDA : ScriptableObject
         }
         else if (min() < 0.5 && mean() < 0.5 && max() > 0.5 && std() > 1)
         {
-            Debug.Log("2222222222222222222222222222");
+                
             if (this.level != 1)
             {
                 this.level -= 1;
@@ -292,7 +366,6 @@ public class DDA : ScriptableObject
         }
         else if (min() < 0.5 && mean() < 0.5 && max() > 0.5 && std() >= 0.5 && std() <= 1)
         {
-            Debug.Log("3333333333333333333333333");
             if (this.level != 3)
             {
                 this.level += 1;
@@ -300,7 +373,6 @@ public class DDA : ScriptableObject
         }
         else if (min() < 0.5 && mean() > 0.5 && max() > 0.5 && std() >= 0.25 && std() <= 1)
         {
-            Debug.Log("44444444444444444444444");
             if (this.level != 3)
             {
                 this.level += 1;
@@ -308,7 +380,7 @@ public class DDA : ScriptableObject
         }
         else if (min() <= 0 && min() >= -0.5 && mean() > 0.5 && max() > 0.5 && std() >= 0.25 && std() <= 1)
         {
-            Debug.Log("5555555555555555555555");
+            
             if (this.level != 3)
             {
                 this.level += 1;
@@ -316,7 +388,7 @@ public class DDA : ScriptableObject
         }
         else if (min() <= 0 && min() >= -0.5 && mean() > 0.5 && max() > 0.5 && std() > 1)
         {
-            Debug.Log("6666666666666666666666");
+            
             if (this.level != 3)
             {
                 this.level += 1;
@@ -324,7 +396,7 @@ public class DDA : ScriptableObject
         }
         else if (min() > 0 && mean() > 0.5 && max() > 0.5 && std() > 1)
         {
-            Debug.Log("7777777777777777777777777");
+            
             if (this.level != 3)
             {
                 this.level += 1;
@@ -332,16 +404,13 @@ public class DDA : ScriptableObject
         }
         else if (min() > 0 && mean() > 0.5 && max() > 0.5 && std() >= 0.25 && std() <= 1)
         {
-            Debug.Log("888888888888888888888");
+            
             if (this.level != 3)
             {
                 this.level += 1;
             }
         }
-        else
-        {
-            Debug.Log("Fineeeeeeeee!?");
-        }
+        
     }
 
     public void reLevel3()
@@ -370,19 +439,59 @@ public class DDA : ScriptableObject
     {
         if (cor)
         {
-            this.Wx += 1;
-            this.addX(this.Wx);
-            this.Accum += 1;
-            this.heuristic();
-            this.reLevel3();
+            if (this.level == 1)
+            {
+                this.Ex += 1;
+                this.addEX(this.Ex);
+                this.Accum += 1;
+                this.heuristic();
+                this.reLevel3();
+            } 
+            else if (this.level == 2)
+            {
+                this.Nx += 1;
+                this.addNX(this.Nx);
+                this.Accum += 1;
+                this.heuristic();
+                this.reLevel3();
+            }
+            else if (this.level == 3)
+            {
+                this.Hx += 1;
+                this.addHX(this.Hx);
+                this.Accum += 1;
+                this.heuristic();
+                this.reLevel3();
+            }
+            
         }
         else
         {
-            this.Wy += 1;
-            this.Accum = 0;
-            this.addY(this.Wy);
-            this.heuristic();
-            this.reLevel3();
+            if (this.level == 1)
+            {
+                this.Ey += 1;
+                this.Accum = 0;
+                this.addEY(this.Ey);
+                this.heuristic();
+                this.reLevel3();
+            }
+            else if (this.level == 2)
+            {
+                this.Ny += 1;
+                this.Accum = 0;
+                this.addNY(this.Ny);
+                this.heuristic();
+                this.reLevel3();
+            }
+            else if (this.level == 3)
+            {
+                this.Hy += 1;
+                this.Accum = 0;
+                this.addHY(this.Hy);
+                this.heuristic();
+                this.reLevel3();
+            }
+            
         }
     }
 
