@@ -81,9 +81,43 @@ public class RDM_GameManager : MonoBehaviour
     [SerializeField]
     private GameObject placeHold;
 
+    [SerializeField]
+    private Transform backGround;
+
+    [SerializeField]
+    private TMP_Text gameLevelText;
+
+    [SerializeField]
+    private TMP_Text easyPass;
+
+    [SerializeField]
+    private TMP_Text normalPass;
+
+    [SerializeField]
+    private TMP_Text hardPass;
+
     /*  Method  */
     private void Awake()
     {
+        if (DDA.Level == 1)
+        {
+            backGround.GetComponent<Image>().color = new Color((float)0.6039216, (float)0.9764706, (float)0.4705882, 1);
+            gameLevelText.text = "EASY";
+        }
+        else if(DDA.Level == 2)
+        {
+            backGround.GetComponent<Image>().color = new Color((float)0.9764706, (float)0.8941177, (float)0.4705882, 1);
+            gameLevelText.text = "NORMAL";
+            gameLevelText.fontSize = 64;
+        }else
+        {
+            backGround.GetComponent<Image>().color = new Color((float)0.9372549, (float)0.3490196, (float)0.2666667, 1);
+            gameLevelText.text = "HARD";
+        }
+        easyPass.text = DDA.Ex.ToString();
+        normalPass.text = DDA.Nx.ToString();
+        hardPass.text = DDA.Hx.ToString();
+
         //  Get asset image from Resources
         puzzles = Resources.LoadAll<Sprite>("Sprites_Memo_Random/Animal Basic Asset Pack/Free Sprites 1x");
         RDM_GameLevels.setEnd();

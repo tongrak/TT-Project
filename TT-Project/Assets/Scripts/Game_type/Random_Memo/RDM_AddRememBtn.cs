@@ -26,6 +26,7 @@ public class RDM_AddRememBtn : MonoBehaviour
         puzzleSize = RDM_LevelInfoSOs.SlotTop;
         ansSize = RDM_LevelInfoSOs.SlotDown;
 
+
         if (button.tag == "PuzzleBtn")
         {
             for (int i = 0; i < puzzleSize; i++)
