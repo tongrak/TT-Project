@@ -277,6 +277,7 @@ public class RDM_GameManager : MonoBehaviour
         if(guessesList.Contains(currentAns))
         {
             btns[currentGuessesIdx].transform.GetComponent<Image>().sprite = gamePuzzles[currentAnsIdx];
+            guessesList.Remove(currentAns);
 
             if (CheckTheGameFinished())
             {

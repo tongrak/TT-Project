@@ -2692,7 +2692,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ad926dee9197f04497b64a241f4db83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Puzzle_bgImage: {fileID: 21300000, guid: 0265a4982d26abb4fa69600c6c80a6b4, type: 3}
+  Puzzle_bgImage: {fileID: 21300000, guid: e8649a1462aa82747bc4e62733a62eda, type: 3}
   Answer_bgImage: {fileID: 21300000, guid: 64aa609ff79c2454f8c6921e9fe9a369, type: 3}
   CurrentGuess_bgImage: {fileID: 21300000, guid: 0265a4982d26abb4fa69600c6c80a6b4, type: 3}
   scoreSO: {fileID: 11400000, guid: 1150a4bdf7e26f8428f99a72fa87ba4e, type: 2}

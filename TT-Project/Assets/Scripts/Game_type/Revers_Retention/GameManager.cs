@@ -29,29 +29,6 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private FloatSO TimeSO;
 
-    /*  Global variable */
-    public Sprite[] puzzles;    //  puzzle image list
-
-    public List<Sprite> gamePuzzles = new List<Sprite>();
-
-
-    public List<Button> btns = new List<Button>();
-
-    public GameOverScreen GameOverScreen;   //  get game over screen
-
-    private bool isChoose;  //  check is guessing
-
-    private int countGuesses;   //  guess already done
-    private int countCorrectGuesses;    
-    private int gameGuesses;
-
-    private int currentPuzzIdx, currentAnsIdx;  //  current guess and answer index
-
-    private string currentPuzz, currentAns; //  current guess and answer name
-
-    private bool isRememTime = false;
-    private float rememTimeStamp;
-
     [SerializeField]
     private DDA DDA;
 
@@ -90,6 +67,31 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private TMP_Text hardPass;
+
+    /*  Global variable */
+    public Sprite[] puzzles;    //  puzzle image list
+
+    public List<Sprite> gamePuzzles = new List<Sprite>();
+
+
+    public List<Button> btns = new List<Button>();
+
+    public GameOverScreen GameOverScreen;   //  get game over screen
+
+    private bool isChoose;  //  check is guessing
+
+    private int countGuesses;   //  guess already done
+    private int countCorrectGuesses;    
+    private int gameGuesses;
+
+    private int currentPuzzIdx, currentAnsIdx;  //  current guess and answer index
+
+    private string currentPuzz, currentAns; //  current guess and answer name
+
+    private bool isRememTime = false;
+    private float rememTimeStamp;
+
+    
 
     /*  Method  */
     private void Awake()
