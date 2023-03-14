@@ -77,13 +77,14 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         //  Get asset image from Resources
+        int rndSet = Random.Range(0, 5);
         if(LevelInfoSOs.Img == "Difficult")
         {
-            puzzles = Resources.LoadAll<Sprite>("Sprites_Reverse_Retention/Puzzle Level/Difficult");
+            puzzles = Resources.LoadAll<Sprite>("Sprites_Reverse_Retention/Puzzle Level/Difficult/Set" + rndSet.ToString());
         }
         else
         {
-            puzzles = Resources.LoadAll<Sprite>("Sprites_Reverse_Retention/Puzzle Level/Normal");
+            puzzles = Resources.LoadAll<Sprite>("Sprites_Reverse_Retention/Puzzle Level/Normal/Set" + rndSet.ToString());
         }
 
         GameLevels.setEnd();
