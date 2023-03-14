@@ -39,7 +39,7 @@ public class RDM_GameManager : MonoBehaviour
     public List<Sprite> gamePuzzles = new List<Sprite>();
 
 
-    public List<Button> btns = new List<Button>();
+    public List<GameObject> btns = new List<GameObject>();
 
     public RDM_GameOverScreen GameOverScreen;   //  get game over screen
 
@@ -118,10 +118,13 @@ public class RDM_GameManager : MonoBehaviour
 
         for (int i=0; i< puzzleSize; i++)
         {
-            btns.Add(Puzzle_objects[i].GetComponent<Button>()); //  Add btn to btnList
-            btns[i].image.sprite = Puzzle_bgImage;  // Change that btn bgImage
-            btns[i].enabled = false;    // Set btn can't interactable   // fixed bug interact
-            
+            btns.Add(Puzzle_objects[i]); //  Add btn to btnList
+            btns[i].transform.GetComponent<Image>().sprite = Puzzle_bgImage;  // Change that btn bgImage
+            btns[i].transform.GetComponent<Button>().enabled = false;    // Set btn can't interactable   // fixed bug interact
+            print("x" + btns[i].transform.gameObject.transform);
+            print("y" + btns[i].transform.localScale.y);
+            print("z" + btns[i].transform.localScale.z);
+
         }
 
         //  Ans btn
@@ -130,8 +133,8 @@ public class RDM_GameManager : MonoBehaviour
 
         for (int i = 0; i < ansSize; i++)
         {
-            btns.Add(Answer_objects[i].GetComponent<Button>());
-            btns[puzzleSize+i].image.sprite = Answer_bgImage;
+            btns.Add(Answer_objects[i]);
+            btns[puzzleSize+i].GetComponent<Image>().sprite = Answer_bgImage;
 
         }
     }
@@ -155,9 +158,9 @@ public class RDM_GameManager : MonoBehaviour
     //  Check button interaction
     void AddListeners()
     {
-        foreach(Button btn in btns)
+        foreach(GameObject btn in btns)
         {
-            btn.onClick.AddListener(() => PickPuzzle());    //  Use PickPuzzle when button has clicked
+            btn.transform.GetComponent<Button>().onClick.AddListener(() => PickPuzzle());    //  Use PickPuzzle when button has clicked
         }
     }
 
@@ -234,7 +237,7 @@ public class RDM_GameManager : MonoBehaviour
 
         if(guessesList.Contains(currentAns))
         {
-            btns[currentGuessesIdx].image.sprite = gamePuzzles[currentAnsIdx];
+            btns[currentGuessesIdx].transform.GetComponent<Image>().sprite = gamePuzzles[currentAnsIdx];
 
             if (CheckTheGameFinished())
             {
@@ -281,7 +284,7 @@ public class RDM_GameManager : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         for (int i=0; i<puzzleSize; i++)
         {
-            btns[i].image.sprite = gamePuzzles[i];
+            btns[i].transform.GetComponent<Image>().sprite = gamePuzzles[i];
 
         }
 
@@ -291,7 +294,7 @@ public class RDM_GameManager : MonoBehaviour
         {
             if (guessesList.Contains(gamePuzzles[i].name))    //  if puzzle in guesslist change it bg
             {
-                btns[i].image.sprite = Puzzle_bgImage;
+                btns[i].transform.GetComponent<Image>().sprite = Puzzle_bgImage;
             }
         }
 
@@ -329,12 +332,12 @@ public class RDM_GameManager : MonoBehaviour
         {
             if (isShowTime) //  set can't interact btn in show puzzle time  // fixed btn bug 
             {
-                btns[i].enabled = false;
+                btns[i].transform.GetComponent<Button>().enabled = false;
             }
             else
             {
-                btns[i].image.sprite = gamePuzzles[i];
-                btns[i].enabled = true;
+                btns[i].transform.GetComponent<Image>().sprite = gamePuzzles[i];
+                btns[i].transform.GetComponent<Button>().enabled = true;
             }
         }
         
