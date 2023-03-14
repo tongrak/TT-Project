@@ -1820,6 +1820,8 @@ MonoBehaviour:
   numberOfPlayer_SO: {fileID: 11400000, guid: 87ad3ab90f076bf4ba09da7365397787, type: 2}
   recentScore_SO: {fileID: 11400000, guid: cb1b86d64eb0a9147941cd2adbcbf88a, type: 2}
   bestScore_SO: {fileID: 11400000, guid: de7e554bce732834e99f1746b4598cf5, type: 2}
+  highestScore_SO: {fileID: 11400000, guid: 64e5b6de60d7f7c4c80be8b303656137, type: 2}
+  lowest_SO: {fileID: 11400000, guid: 21131e072a5af724fafe77760f6c8fd0, type: 2}
 --- !u!114 &1197480731
 MonoBehaviour:
   m_ObjectHideFlags: 0

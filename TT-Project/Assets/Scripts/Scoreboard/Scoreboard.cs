@@ -21,6 +21,8 @@ public class Scoreboard : MonoBehaviour
     [SerializeField] private ScoreboardSO scoreboard_SO;
     [SerializeField] private IntSO recentSO;
     [SerializeField] private IntSO bestSO;
+    [SerializeField] private IntSO highestScore_SO;
+    [SerializeField] private IntSO lowestScore_SO;
 
     private SupabaseManager DBConnector;
     private Player_AllScoreList allPlayer_bestScore;
@@ -96,6 +98,12 @@ public class Scoreboard : MonoBehaviour
         // set best and recent score to unity
         recentSO.Value = findRecentScore();
         bestSO.Value = scoreboard_SO.bestScoreSO.Value;
+
+        // set highest score
+        highestScore_SO.Value = findHighestScore();
+
+        // set lowest score
+        lowestScore_SO.Value = findLowestScore();
     }
 
     // find rank of current player form best score.
@@ -140,5 +148,15 @@ public class Scoreboard : MonoBehaviour
             }
         }
         return 0;
+    }
+
+    private int findHighestScore()
+    {
+        return allPlayer_bestScore.jsonData[0].best_score;
+    }
+
+    private int findLowestScore()
+    {
+        return allPlayer_bestScore.jsonData[allPlayer_bestScore.jsonData.Length - 1].best_score;
     }
 }

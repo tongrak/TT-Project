@@ -16,6 +16,8 @@ public class ScoreBar : MonoBehaviour
     [SerializeField] private IntSO numberOfPlayer_SO;
     [SerializeField] private IntSO recentScore_SO;
     [SerializeField] private IntSO bestScore_SO;
+    [SerializeField] private IntSO highestScore_SO;
+    [SerializeField] private IntSO lowest_SO;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +28,7 @@ public class ScoreBar : MonoBehaviour
         }
         // create new score bar
         Instantiate(scoreBarEntryObject, scoreBarContainerTransform).
-            GetComponent<ScoreBarEntryUI>().Initialise(rankFromRS_SO.Value, rankFromBS_SO.Value, numberOfPlayer_SO.Value);
+            GetComponent<ScoreBarEntryUI>().Initialise(rankFromRS_SO.Value, rankFromBS_SO.Value, numberOfPlayer_SO.Value, highestScore_SO.Value, lowest_SO.Value);
 
         //show score
         recentText.text = "Recent score: " + recentScore_SO.Value.ToString();

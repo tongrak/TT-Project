@@ -804,6 +804,14 @@ PrefabInstance:
       value: SequenceMem_Score
       objectReference: {fileID: 0}
     - target: {fileID: 5052182318485105271, guid: 845cf3a288a696043b7845aba3391256, type: 3}
+      propertyPath: lowestScore_SO
+      value: 
+      objectReference: {fileID: 11400000, guid: 21131e072a5af724fafe77760f6c8fd0, type: 2}
+    - target: {fileID: 5052182318485105271, guid: 845cf3a288a696043b7845aba3391256, type: 3}
+      propertyPath: highestScore_SO
+      value: 
+      objectReference: {fileID: 11400000, guid: 64e5b6de60d7f7c4c80be8b303656137, type: 2}
+    - target: {fileID: 5052182318485105271, guid: 845cf3a288a696043b7845aba3391256, type: 3}
       propertyPath: maxScoreboardEntries
       value: 10
       objectReference: {fileID: 0}

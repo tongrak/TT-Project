@@ -12,9 +12,12 @@ public class ScoreBarEntryUI : MonoBehaviour
     [Header("Best")]
     [SerializeField] private GameObject bestLine;
     [SerializeField] private GameObject bestTri;
+    [Header("High&Low")]
+    [SerializeField] private TextMeshProUGUI highestScore;
+    [SerializeField] private TextMeshProUGUI lowestScore;
 
     // @param amountOfPlayer นั้นคือจำนวนผู้เล่นทั้งหมด(รวมทั้งตัว player ปัจจุบันด้วย)+1
-    public void Initialise(int recentScoreRank, int bestScoreRank, int amountOfPlayer)
+    public void Initialise(int recentScoreRank, int bestScoreRank, int amountOfPlayer, int highestS, int lowestS)
     {
         RectTransform rt_bar = (RectTransform)bar.transform;
         float barLength = rt_bar.rect.width;
@@ -31,5 +34,11 @@ public class ScoreBarEntryUI : MonoBehaviour
         recentTri.transform.localPosition = new Vector3(recentTri.transform.localPosition.x - xPos_recent , recentTri.transform.localPosition.y, recentTri.transform.localPosition.z);
         // set best triangle positions
         bestTri.transform.localPosition = new Vector3(bestTri.transform.localPosition.x - xPos_best , bestTri.transform.localPosition.y, bestTri.transform.localPosition.z);
+
+        // set highest score
+        highestScore.text = "Max score\n" + highestS.ToString();
+
+        // set lowest score
+        lowestScore.text = "Min score\n" + lowestS.ToString();
     }   
 }
