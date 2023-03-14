@@ -283,12 +283,12 @@ public class GameController_SM : MonoBehaviour
                     }
                     else if (DDA.Level == 2)
                     {
-                        scoreSO.Value += 3;
+                        scoreSO.Value += 5;
                         scoreText.text = scoreSO.Value + "";
                     }
                     else if(DDA.Level == 3)
                     {
-                        scoreSO.Value += 7;
+                        scoreSO.Value += 10;
                         scoreText.text = scoreSO.Value + "";
                     }
 
