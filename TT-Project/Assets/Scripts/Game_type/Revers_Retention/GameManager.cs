@@ -81,10 +81,12 @@ public class GameManager : MonoBehaviour
         if(LevelInfoSOs.Img == "Difficult")
         {
             puzzles = Resources.LoadAll<Sprite>("Sprites_Reverse_Retention/Puzzle Level/Difficult/Set" + rndSet.ToString());
+            print("dif" + rndSet.ToString());
         }
         else
         {
             puzzles = Resources.LoadAll<Sprite>("Sprites_Reverse_Retention/Puzzle Level/Normal/Set" + rndSet.ToString());
+            print("nor" + rndSet.ToString());
         }
 
         GameLevels.setEnd();
