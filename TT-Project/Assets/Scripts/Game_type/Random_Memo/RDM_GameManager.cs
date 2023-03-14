@@ -272,7 +272,7 @@ public class RDM_GameManager : MonoBehaviour
     IEnumerator checkThePuzzleMatch()
     {
         
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.1f);
 
         if(guessesList.Contains(currentAns))
         {
