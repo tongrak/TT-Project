@@ -2496,8 +2496,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 669.2951, y: -158}
-  m_SizeDelta: {x: 581.4099, y: 70}
+  m_AnchoredPosition: {x: 617.805, y: -158}
+  m_SizeDelta: {x: 684.39, y: 70}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1888784566
 MonoBehaviour:
@@ -2519,9 +2519,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Select the game
-
-'
+  m_text: Select leaderboard
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 83f4af4c902c48348832182d34f0dcec, type: 2}
   m_sharedMaterial: {fileID: 203290733349454169, guid: 83f4af4c902c48348832182d34f0dcec, type: 2}

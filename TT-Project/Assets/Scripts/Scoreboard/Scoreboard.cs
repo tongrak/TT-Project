@@ -38,6 +38,8 @@ public class Scoreboard : MonoBehaviour
     // Use to update scoreboard UI
     private void UpdateUI()
     {
+        // Change scoreboard header follow by each game type
+        header.text = scoreboard_SO.scoreboardHeader;
         // Delete child object in HigscoreContainer
         foreach (Transform child in highscoreContainerTransform)
         {
