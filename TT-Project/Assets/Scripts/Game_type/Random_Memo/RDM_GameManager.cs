@@ -296,7 +296,9 @@ public class RDM_GameManager : MonoBehaviour
             if (countCorrectGuesses == gameGuesses)
             {
                 correctSE.Play();
-                scoreSO.Value += 10;
+                if (DDA.Level == 1) scoreSO.Value += 1;
+                else if (DDA.Level == 2) scoreSO.Value += 5;
+                else if (DDA.Level == 3) scoreSO.Value += 10;
                 showScore.text = scoreSO.Value + "";
 
                 //DDA
