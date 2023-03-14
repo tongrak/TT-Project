@@ -10,6 +10,11 @@ public class GameController_SM : MonoBehaviour
     [SerializeField]
     private FloatSO scoreSO;
 
+    //holding
+    [SerializeField]
+    private GameObject holding;
+
+    //score text
     [SerializeField]
     private TMP_Text scoreText;
 
@@ -83,6 +88,7 @@ public class GameController_SM : MonoBehaviour
         else if (DDA.Level == 2)
         {
             mod_level.text = "NORMAL";
+            mod_level.fontSize = 64;
         }
         else
         {
@@ -189,19 +195,7 @@ public class GameController_SM : MonoBehaviour
             SceneManager.LoadScene("Summary");
         }
 
-        if (DDA.Level == 1)
-        {
-            mod_level.text = "EASY";
-        }
-        else if (DDA.Level == 2)
-        {
-            mod_level.text = "NORMAL";
-            mod_level.fontSize = 64;
-        }
-        else
-        {
-            mod_level.text = "HARD";
-        }
+        
 
         easy_passed.text = DDA.Ex.ToString();
         normal_passed.text = DDA.Nx.ToString();
@@ -212,7 +206,7 @@ public class GameController_SM : MonoBehaviour
         {
             //Pause
             pause.Value = true;
-            
+            holding.SetActive(true);
 
             stayLitCounter -= Time.deltaTime;
         
@@ -240,7 +234,7 @@ public class GameController_SM : MonoBehaviour
             {
                 //Unpause
                 pause.Value = false;
-                
+                holding.SetActive(false);
                 shouldBeDark = false;
                 gameActive = true;
             }
@@ -326,6 +320,20 @@ public class GameController_SM : MonoBehaviour
         yield return new WaitForSeconds(1);
         
         pause.Value = false;
+
+        if (DDA.Level == 1)
+        {
+            mod_level.text = "EASY";
+        }
+        else if (DDA.Level == 2)
+        {
+            mod_level.text = "NORMAL";
+            mod_level.fontSize = 64;
+        }
+        else
+        {
+            mod_level.text = "HARD";
+        }
         if (Mix.Value)
         {
             string[] scenes = { "sequence_memory_game", "ReverseRetention_1", "MemoRandom" };
