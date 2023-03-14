@@ -78,6 +78,9 @@ public class RDM_GameManager : MonoBehaviour
     [SerializeField]
     private boolFortime boolMixs;
 
+    [SerializeField]
+    private GameObject placeHold;
+
     /*  Method  */
     private void Awake()
     {
@@ -333,11 +336,13 @@ public class RDM_GameManager : MonoBehaviour
             if (isShowTime) //  set can't interact btn in show puzzle time  // fixed btn bug 
             {
                 btns[i].transform.GetComponent<Button>().enabled = false;
+                placeHold.SetActive(true);
             }
             else
             {
                 btns[i].transform.GetComponent<Image>().sprite = gamePuzzles[i];
                 btns[i].transform.GetComponent<Button>().enabled = true;
+                placeHold.SetActive(false);
             }
         }
         
