@@ -1698,6 +1698,7 @@ GameObject:
   - component: {fileID: 620083601}
   - component: {fileID: 620083600}
   - component: {fileID: 620083599}
+  - component: {fileID: 620083602}
   m_Layer: 5
   m_Name: homeBTN
   m_TagString: Untagged
@@ -1769,21 +1770,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ChangeSceneManager, Assembly-CSharp
-        m_MethodName: changeScene
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: MainMenu
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ResetGameValue, Assembly-CSharp
-        m_MethodName: reset
+      - m_Target: {fileID: 620083602}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: BackToHome
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1831,6 +1820,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 620083597}
   m_CullTransparentMesh: 1
+--- !u!114 &620083602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 620083597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7746dee3bb8ece498f11abaae4d430b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &645525146
 GameObject:
   m_ObjectHideFlags: 0
@@ -2698,11 +2699,6 @@ MonoBehaviour:
   showScore: {fileID: 960489156}
   TimeSO: {fileID: 11400000, guid: 36500eefdd050ea4a8e66b731318299a, type: 2}
   DDA: {fileID: 11400000, guid: b19e067d5ad02e643ba41f59acb45584, type: 2}
-  puzzles: []
-  gamePuzzles: []
-  btns: []
-  GameOverScreen: {fileID: 1544950149}
-  guessesList: []
   RDM_GameLevels: {fileID: 975666051}
   RDM_LevelInfoSOs: {fileID: 11400000, guid: a112a8a5705a38642b8acd68de718b14, type: 2}
   clickSE: {fileID: 616453802}
@@ -2715,6 +2711,11 @@ MonoBehaviour:
   easyPass: {fileID: 313533425}
   normalPass: {fileID: 1871058056}
   hardPass: {fileID: 1153875571}
+  puzzles: []
+  gamePuzzles: []
+  btns: []
+  GameOverScreen: {fileID: 1544950149}
+  guessesList: []
 --- !u!114 &975666049
 MonoBehaviour:
   m_ObjectHideFlags: 0

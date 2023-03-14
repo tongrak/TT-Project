@@ -33,33 +33,6 @@ public class RDM_GameManager : MonoBehaviour
     [SerializeField]
     private DDA DDA;
 
-    /*  Global variable */
-    public Sprite[] puzzles;    //  puzzle image list
-
-    public List<Sprite> gamePuzzles = new List<Sprite>();
-
-
-    public List<GameObject> btns = new List<GameObject>();
-
-    public RDM_GameOverScreen GameOverScreen;   //  get game over screen
-
-    private bool isChoose;  //  check is guessing
-
-    private int countGuesses;   //  guess already done
-    private int countCorrectGuesses;    
-    private int gameGuesses;
-
-    private int currentAnsIdx, currentGuessesIdx;  //  current guess and answer index
-
-    private string currentAns; //  current answer name
-
-    private bool isRememTime = false;
-    private float rememTimeStamp;
-
-    private int puzzleSize;
-    private int ansSize;
-    public List<string> guessesList;
-
     [SerializeField]
     private RDM_GameLevel RDM_GameLevels;
 
@@ -95,6 +68,35 @@ public class RDM_GameManager : MonoBehaviour
 
     [SerializeField]
     private TMP_Text hardPass;
+
+    /*  Global variable */
+    public Sprite[] puzzles;    //  puzzle image list
+
+    public List<Sprite> gamePuzzles = new List<Sprite>();
+
+
+    public List<GameObject> btns = new List<GameObject>();
+
+    public RDM_GameOverScreen GameOverScreen;   //  get game over screen
+
+    private bool isChoose;  //  check is guessing
+
+    private int countGuesses;   //  guess already done
+    private int countCorrectGuesses;    
+    private int gameGuesses;
+
+    private int currentAnsIdx, currentGuessesIdx;  //  current guess and answer index
+
+    private string currentAns; //  current answer name
+
+    private bool isRememTime = false;
+    private float rememTimeStamp;
+
+    private int puzzleSize;
+    private int ansSize;
+    public List<string> guessesList;
+
+    
 
     /*  Method  */
     private void Awake()
