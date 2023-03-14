@@ -73,11 +73,14 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private AudioSource wrongSE;
 
+    [SerializeField]
+    private GameObject placeHold;
+
     /*  Method  */
     private void Awake()
     {
         //  Get asset image from Resources
-        int rndSet = Random.Range(0, 5);
+        int rndSet = Random.Range(1, 5);
         if(LevelInfoSOs.Img == "Difficult")
         {
             puzzles = Resources.LoadAll<Sprite>("Sprites_Reverse_Retention/Puzzle Level/Difficult/Set" + rndSet.ToString());
@@ -201,7 +204,6 @@ public class GameManager : MonoBehaviour
     //  Check selected is match
     IEnumerator checkThePuzzleMatch()
     {
-        
         yield return new WaitForSeconds(0.5f);
 
         if(currentPuzz == currentAns)
@@ -313,11 +315,13 @@ public class GameManager : MonoBehaviour
             if (isShowTime) //  set can't interact btn in show puzzle time  // fixed btn bug 
             {
                 btns[i].enabled = false;
+                placeHold.SetActive(true);
             }
             else
             {
                 btns[i].image.sprite = gamePuzzles[i];
                 btns[i].enabled = true;
+                placeHold.SetActive(false);
             }
         }
         
