@@ -467,6 +467,10 @@ PrefabInstance:
       propertyPath: m_text
       value: back
       objectReference: {fileID: 0}
+    - target: {fileID: 1387512267, guid: 845cf3a288a696043b7845aba3391256, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -3
+      objectReference: {fileID: 0}
     - target: {fileID: 2011388664, guid: 845cf3a288a696043b7845aba3391256, type: 3}
       propertyPath: m_Camera
       value: 
@@ -922,6 +926,10 @@ PrefabInstance:
     - target: {fileID: 7043061822799047995, guid: 845cf3a288a696043b7845aba3391256, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7150788635842892705, guid: 845cf3a288a696043b7845aba3391256, type: 3}
+      propertyPath: m_Padding.m_Top
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7281013060330551426, guid: 845cf3a288a696043b7845aba3391256, type: 3}
       propertyPath: m_RootOrder

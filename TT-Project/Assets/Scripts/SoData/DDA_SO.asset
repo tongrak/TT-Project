@@ -12,21 +12,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b6fdf72fd7cc5740890a1d66e21a14a, type: 3}
   m_Name: DDA_SO
   m_EditorClassIdentifier: 
-  level: 3
-  ex: 0
+  level: 2
+  ex: 2
   ey: 0
   nx: 0
   ny: 0
   hx: 0
   hy: 0
-  _easyCorrect: []
-  _easyInCorrect: []
+  _easyCorrect:
+  - 1
+  - 1
+  - 2
+  _easyInCorrect:
+  - 0
+  - 0
+  - 0
   _normalCorrect: []
   _normalInCorrect: []
   _hardCorrect: []
   _hardInCorrect: []
-  _accum: 0
-  _performance: []
+  _accum: 3
+  _performance:
+  - 0.6
+  - 0.7
+  - 1.3
   Max: 0
   Min: 0
   Mean: 0

@@ -272,9 +272,7 @@ public class GameController_SM : MonoBehaviour
 
                     Correct.Play();
                     
-                    DDA.check(true);
-                     
-
+                    
                     //Main Score++
                     if (DDA.Level == 1)
                     {
@@ -291,6 +289,8 @@ public class GameController_SM : MonoBehaviour
                         scoreSO.Value += 10;
                         scoreText.text = scoreSO.Value + "";
                     }
+
+                    DDA.check(true);
 
                     StartCoroutine(WaitForSoundToNextScene());
 
