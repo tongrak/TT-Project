@@ -300,12 +300,12 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         for (int i=0; i<btns.Count/2; i++)
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.5f);
             btns[i].image.sprite = gamePuzzles[i];
 
         }
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.5f);
         for (int i=0; i<btns.Count/2; i++)
         {
             btns[i].image.sprite = Puzzle_bgImage;
@@ -313,7 +313,7 @@ public class GameManager : MonoBehaviour
         btns[btns.Count / 2 - 1].image.sprite = CurrentGuess_bgImage;
 
         //  show choice 
-        yield return new WaitForSeconds(0.5f);
+        //yield return new WaitForSeconds(0.5f);
         currentPuzz = gamePuzzles[currentPuzzIdx].name;
         isRememTime = false;
         ShowAnsChoice(false);
