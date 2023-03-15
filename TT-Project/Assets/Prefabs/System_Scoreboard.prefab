@@ -324,8 +324,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: c89eb7aa413f47245abc6ab4d7305455, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1314,7 +1314,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8229587433986310631}
   m_HandleRect: {fileID: 6746256636337887563}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -1823,6 +1823,8 @@ MonoBehaviour:
   scoreboard_SO: {fileID: 11400000, guid: 0d64ac22c53d4a7479673a3316cc0686, type: 2}
   recentSO: {fileID: 0}
   bestSO: {fileID: 0}
+  highestScore_SO: {fileID: 0}
+  lowestScore_SO: {fileID: 0}
 --- !u!114 &5928245581824322365
 MonoBehaviour:
   m_ObjectHideFlags: 0

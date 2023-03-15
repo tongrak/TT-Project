@@ -449,7 +449,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2917728c6a1bd9c4ea61df9ed8faebe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  headerSB: Mix mode
+  headerSB: Random&Mix
   gameTypeTable: Mix_Score
   bestScoreSO: {fileID: 11400000, guid: dce09a380b81ec84f8ba78585e23104b, type: 2}
   sb_SO: {fileID: 11400000, guid: 0d64ac22c53d4a7479673a3316cc0686, type: 2}
@@ -906,7 +906,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2917728c6a1bd9c4ea61df9ed8faebe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  headerSB: Memo random
+  headerSB: Random-memo
   gameTypeTable: MemoRandom_Score
   bestScoreSO: {fileID: 11400000, guid: c5a7862769e75de4eaefb1ea95bcbce8, type: 2}
   sb_SO: {fileID: 11400000, guid: 0d64ac22c53d4a7479673a3316cc0686, type: 2}
@@ -1854,7 +1854,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Random
+  m_text: Random&Mix
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 18d8b04bb6f2c7942a49c3a2eeed576c, type: 2}
   m_sharedMaterial: {fileID: 2261489450672723955, guid: 18d8b04bb6f2c7942a49c3a2eeed576c, type: 2}
