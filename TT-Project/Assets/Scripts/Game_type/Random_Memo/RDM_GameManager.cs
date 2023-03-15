@@ -33,6 +33,42 @@ public class RDM_GameManager : MonoBehaviour
     [SerializeField]
     private DDA DDA;
 
+    [SerializeField]
+    private RDM_GameLevel RDM_GameLevels;
+
+    [SerializeField]
+    private RDM_LevelInfoSO RDM_LevelInfoSOs;
+
+    [SerializeField]
+    private AudioSource clickSE;
+
+    [SerializeField]
+    private AudioSource correctSE;
+
+    [SerializeField]
+    private AudioSource wrongSE;
+
+    [SerializeField]
+    private boolFortime boolMixs;
+
+    [SerializeField]
+    private GameObject placeHold;
+
+    [SerializeField]
+    private Transform backGround;
+
+    [SerializeField]
+    private TMP_Text gameLevelText;
+
+    [SerializeField]
+    private TMP_Text easyPass;
+
+    [SerializeField]
+    private TMP_Text normalPass;
+
+    [SerializeField]
+    private TMP_Text hardPass;
+
     /*  Global variable */
     public Sprite[] puzzles;    //  puzzle image list
 
@@ -60,27 +96,30 @@ public class RDM_GameManager : MonoBehaviour
     private int ansSize;
     public List<string> guessesList;
 
-    [SerializeField]
-    private RDM_GameLevel RDM_GameLevels;
-
-    [SerializeField]
-    private RDM_LevelInfoSO RDM_LevelInfoSOs;
-
-    [SerializeField]
-    private AudioSource clickSE;
-
-    [SerializeField]
-    private AudioSource correctSE;
-
-    [SerializeField]
-    private AudioSource wrongSE;
-
-    [SerializeField]
-    private boolFortime boolMixs;
+    
 
     /*  Method  */
     private void Awake()
     {
+        if (DDA.Level == 1)
+        {
+            backGround.GetComponent<Image>().color = new Color((float)0.6039216, (float)0.9764706, (float)0.4705882, 1);
+            gameLevelText.text = "EASY";
+        }
+        else if(DDA.Level == 2)
+        {
+            backGround.GetComponent<Image>().color = new Color((float)0.9764706, (float)0.8941177, (float)0.4705882, 1);
+            gameLevelText.text = "NORMAL";
+            gameLevelText.fontSize = 64;
+        }else
+        {
+            backGround.GetComponent<Image>().color = new Color((float)0.9372549, (float)0.3490196, (float)0.2666667, 1);
+            gameLevelText.text = "HARD";
+        }
+        easyPass.text = DDA.Ex.ToString();
+        normalPass.text = DDA.Nx.ToString();
+        hardPass.text = DDA.Hx.ToString();
+
         //  Get asset image from Resources
         puzzles = Resources.LoadAll<Sprite>("Sprites_Memo_Random/Animal Basic Asset Pack/Free Sprites 1x");
         RDM_GameLevels.setEnd();
@@ -233,11 +272,12 @@ public class RDM_GameManager : MonoBehaviour
     IEnumerator checkThePuzzleMatch()
     {
         
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.1f);
 
         if(guessesList.Contains(currentAns))
         {
             btns[currentGuessesIdx].transform.GetComponent<Image>().sprite = gamePuzzles[currentAnsIdx];
+            guessesList.Remove(currentAns);
 
             if (CheckTheGameFinished())
             {
@@ -259,7 +299,9 @@ public class RDM_GameManager : MonoBehaviour
             if (countCorrectGuesses == gameGuesses)
             {
                 correctSE.Play();
-                scoreSO.Value += 10;
+                if (DDA.Level == 1) scoreSO.Value += 1;
+                else if (DDA.Level == 2) scoreSO.Value += 5;
+                else if (DDA.Level == 3) scoreSO.Value += 10;
                 showScore.text = scoreSO.Value + "";
 
                 //DDA
@@ -333,11 +375,13 @@ public class RDM_GameManager : MonoBehaviour
             if (isShowTime) //  set can't interact btn in show puzzle time  // fixed btn bug 
             {
                 btns[i].transform.GetComponent<Button>().enabled = false;
+                placeHold.SetActive(true);
             }
             else
             {
                 btns[i].transform.GetComponent<Image>().sprite = gamePuzzles[i];
                 btns[i].transform.GetComponent<Button>().enabled = true;
+                placeHold.SetActive(false);
             }
         }
         

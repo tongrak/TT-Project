@@ -29,6 +29,45 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private FloatSO TimeSO;
 
+    [SerializeField]
+    private DDA DDA;
+
+    [SerializeField]
+    private LevelInfoSO LevelInfoSOs;
+
+    [SerializeField]
+    private GameLevel GameLevels;
+
+    [SerializeField]
+    private boolFortime boolMixs;
+
+    [SerializeField]
+    private AudioSource clickSE;
+
+    [SerializeField]
+    private AudioSource correctSE;
+
+    [SerializeField]
+    private AudioSource wrongSE;
+
+    [SerializeField]
+    private GameObject placeHold;
+
+    [SerializeField]
+    private Transform backGround;
+
+    [SerializeField]
+    private TMP_Text gameLevelText;
+
+    [SerializeField]
+    private TMP_Text easyPass;
+
+    [SerializeField]
+    private TMP_Text normalPass;
+
+    [SerializeField]
+    private TMP_Text hardPass;
+
     /*  Global variable */
     public Sprite[] puzzles;    //  puzzle image list
 
@@ -52,38 +91,42 @@ public class GameManager : MonoBehaviour
     private bool isRememTime = false;
     private float rememTimeStamp;
 
-    [SerializeField]
-    private DDA DDA;
-
-    [SerializeField]
-    private LevelInfoSO LevelInfoSOs;
-
-    [SerializeField]
-    private GameLevel GameLevels;
-
-    [SerializeField]
-    private boolFortime boolMixs;
-
-    [SerializeField]
-    private AudioSource clickSE;
-
-    [SerializeField]
-    private AudioSource correctSE;
-
-    [SerializeField]
-    private AudioSource wrongSE;
+    
 
     /*  Method  */
     private void Awake()
     {
-        //  Get asset image from Resources
-        if(LevelInfoSOs.Img == "Difficult")
+        if (DDA.Level == 1)
         {
-            puzzles = Resources.LoadAll<Sprite>("Sprites_Reverse_Retention/Puzzle Level/Difficult");
+            backGround.GetComponent<Image>().color = new Color((float)0.6039216, (float)0.9764706, (float)0.4705882, 1);
+            gameLevelText.text = "EASY";
+        }
+        else if (DDA.Level == 2)
+        {
+            backGround.GetComponent<Image>().color = new Color((float)0.9764706, (float)0.8941177, (float)0.4705882, 1);
+            gameLevelText.text = "NORMAL";
+            gameLevelText.fontSize = 64;
         }
         else
         {
-            puzzles = Resources.LoadAll<Sprite>("Sprites_Reverse_Retention/Puzzle Level/Normal");
+            backGround.GetComponent<Image>().color = new Color((float)0.9372549, (float)0.3490196, (float)0.2666667, 1);
+            gameLevelText.text = "HARD";
+        }
+        easyPass.text = DDA.Ex.ToString();
+        normalPass.text = DDA.Nx.ToString();
+        hardPass.text = DDA.Hx.ToString();
+
+        //  Get asset image from Resources
+        int rndSet = Random.Range(1, 5);
+        if(LevelInfoSOs.Img == "Difficult")
+        {
+            puzzles = Resources.LoadAll<Sprite>("Sprites_Reverse_Retention/Puzzle Level/Difficult/Set" + rndSet.ToString());
+            print("dif" + rndSet.ToString());
+        }
+        else
+        {
+            puzzles = Resources.LoadAll<Sprite>("Sprites_Reverse_Retention/Puzzle Level/Normal/Set" + rndSet.ToString());
+            print("nor" + rndSet.ToString());
         }
 
         GameLevels.setEnd();
@@ -198,17 +241,10 @@ public class GameManager : MonoBehaviour
     //  Check selected is match
     IEnumerator checkThePuzzleMatch()
     {
-        
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.1f);
 
         if(currentPuzz == currentAns)
         {
-            //yield return new WaitForSeconds(0.5f);
-            //btns[currentPuzzIdx].interactable = false;    //fix show correct ans
-            //btns[currentAnsIdx].interactable = false;
-
-            //btns[currentPuzzIdx].image.color = new Color(0, 0, 0, 0); //fix show correct ans
-            //btns[currentAnsIdx].image.color = new Color(0, 0, 0, 0);
             btns[currentPuzzIdx].image.sprite = gamePuzzles[currentPuzzIdx];
 
             CheckTheGameFinished();
@@ -230,7 +266,9 @@ public class GameManager : MonoBehaviour
 
             if (countCorrectGuesses == gameGuesses)
             {
-                scoreSO.Value += 10;
+                if (DDA.Level == 1) scoreSO.Value += 1;
+                else if (DDA.Level == 2) scoreSO.Value += 5;
+                else if (DDA.Level == 3) scoreSO.Value += 10;
                 showScore.text = scoreSO.Value + "";
 
                 //DDA
@@ -310,11 +348,13 @@ public class GameManager : MonoBehaviour
             if (isShowTime) //  set can't interact btn in show puzzle time  // fixed btn bug 
             {
                 btns[i].enabled = false;
+                placeHold.SetActive(true);
             }
             else
             {
                 btns[i].image.sprite = gamePuzzles[i];
                 btns[i].enabled = true;
+                placeHold.SetActive(false);
             }
         }
         
