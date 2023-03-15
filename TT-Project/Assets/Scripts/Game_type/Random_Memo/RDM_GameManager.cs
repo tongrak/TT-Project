@@ -331,7 +331,13 @@ public class RDM_GameManager : MonoBehaviour
         }
 
         RandomGuess(puzzleSize, RDM_LevelInfoSOs.SlotOpened);
-        yield return new WaitForSeconds(3f);
+        if(puzzleSize == 1) yield return new WaitForSeconds(1f);
+        else if(puzzleSize == 2) yield return new WaitForSeconds(1.5f);
+        else if(puzzleSize == 3) yield return new WaitForSeconds(2f);
+        else if(puzzleSize == 4) yield return new WaitForSeconds(2.5f);
+        else if(puzzleSize == 5) yield return new WaitForSeconds(3.5f);
+        else if(puzzleSize == 6) yield return new WaitForSeconds(4f);
+
         for (int i=0; i<puzzleSize; i++)
         {
             if (guessesList.Contains(gamePuzzles[i].name))    //  if puzzle in guesslist change it bg
@@ -341,7 +347,7 @@ public class RDM_GameManager : MonoBehaviour
         }
 
         //  show choice 
-        yield return new WaitForSeconds(0.5f);
+        //yield return new WaitForSeconds(0.5f);
         isRememTime = false;
         ShowAnsChoice(false);
     }

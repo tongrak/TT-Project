@@ -1974,8 +1974,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -5.669998, y: 185.70001}
-  m_SizeDelta: {x: -32.15, y: -432}
+  m_AnchoredPosition: {x: 0.33000183, y: 185.70001}
+  m_SizeDelta: {x: -8.16, y: -432}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &788515469
 MonoBehaviour:
@@ -2031,7 +2031,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -2475,10 +2475,6 @@ MonoBehaviour:
   scoreSO: {fileID: 11400000, guid: 1150a4bdf7e26f8428f99a72fa87ba4e, type: 2}
   showScore: {fileID: 434515171}
   TimeSO: {fileID: 11400000, guid: 36500eefdd050ea4a8e66b731318299a, type: 2}
-  puzzles: []
-  gamePuzzles: []
-  btns: []
-  GameOverScreen: {fileID: 1544950149}
   DDA: {fileID: 11400000, guid: b19e067d5ad02e643ba41f59acb45584, type: 2}
   LevelInfoSOs: {fileID: 11400000, guid: ff791148e16e445439f12cc1032cc2e2, type: 2}
   GameLevels: {fileID: 975666051}
@@ -2492,6 +2488,10 @@ MonoBehaviour:
   easyPass: {fileID: 129244535}
   normalPass: {fileID: 1040070821}
   hardPass: {fileID: 2077382299}
+  puzzles: []
+  gamePuzzles: []
+  btns: []
+  GameOverScreen: {fileID: 1544950149}
 --- !u!114 &975666051
 MonoBehaviour:
   m_ObjectHideFlags: 0

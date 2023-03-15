@@ -7,6 +7,13 @@ public class howtoplay : MonoBehaviour
 
     [SerializeField]
     public GameObject nexthowto;
+
+    [SerializeField]
+    public GameObject playClip;
+
+    [SerializeField]
+    public GameObject oldPage;
+
     public void Setup()
     {
         gameObject.SetActive(true);
@@ -21,5 +28,17 @@ public class howtoplay : MonoBehaviour
     {
         Setdown();
         nexthowto.SetActive(true);
+    }
+
+    public void PlayClip()
+    {
+        playClip.SetActive(true);
+        oldPage.SetActive(false);
+    }
+
+    public void CloseClip()
+    {
+        playClip.SetActive(false);
+        oldPage.SetActive(true);
     }
 }
